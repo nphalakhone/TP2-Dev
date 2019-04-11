@@ -16,7 +16,7 @@ namespace TP2
         public FenetrePrincipale()
         {
             InitializeComponent();
-
+            int argent = 100;
         }
 
     }

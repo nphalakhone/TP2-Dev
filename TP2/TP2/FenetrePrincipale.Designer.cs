@@ -33,7 +33,7 @@
             // 
             // Map1
             // 
-            this.Map1.Location = new System.Drawing.Point(-1, 31);
+            this.Map1.Location = new System.Drawing.Point(0, 31);
             this.Map1.Name = "Map1";
             this.Map1.Size = new System.Drawing.Size(1040, 482);
             this.Map1.TabIndex = 0;
@@ -44,6 +44,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 511);
             this.Controls.Add(this.Map1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP2";
