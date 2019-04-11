@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Map1 = new TP2.Map();
+            this.map1 = new TP2.Map();
             this.SuspendLayout();
             // 
-            // Map1
+            // map1
             // 
-            this.Map1.Location = new System.Drawing.Point(0, 31);
-            this.Map1.Name = "Map1";
-            this.Map1.Size = new System.Drawing.Size(1040, 482);
-            this.Map1.TabIndex = 0;
+            this.map1.Location = new System.Drawing.Point(0, 33);
+            this.map1.Name = "map1";
+            this.map1.Size = new System.Drawing.Size(1376, 832);
+            this.map1.TabIndex = 0;
             // 
             // FenetrePrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 511);
-            this.Controls.Add(this.Map1);
+            this.ClientSize = new System.Drawing.Size(1584, 918);
+            this.Controls.Add(this.map1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -54,7 +54,7 @@
 
         #endregion
 
-        private Map Map1;
+        private Map map1;
     }
 }
 

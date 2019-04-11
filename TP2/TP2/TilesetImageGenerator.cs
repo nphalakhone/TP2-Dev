@@ -15,12 +15,11 @@ namespace TestTilesetZoo
         private const int SEPARATEUR_TILE = 0;
 
         // La valeur entière correspond "par hasard" à la position de l'image dans la List<TileCoord>
-        public static int GAZON = 0;
-        public static int ENCLOS1 = 1;
-        public static int ENCLOS2 = 2;
-        public static int COIN_BLOCK = 3;
-        public static int NUAGE = 4;
-        public static int HACHE = 5;
+        public static int GRASS = 0;
+        public static int FENCE1 = 1;
+        public static int FENCE2 = 2;
+        public static int PILLAR1 = 3;
+        public static int PILLAR2 = 4;
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
@@ -30,19 +29,17 @@ namespace TestTilesetZoo
         /// </summary>
         static TilesetImageGenerator()
         {
-            listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 }); // grass
+            listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 });
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 });
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 23 });
-            listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 8 });
-            listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 12 });
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 7 });
+            listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 27 });
+            listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 27 });
 
-            listeBitmap.Add(LoadTile(GAZON)); // PLANCHER
-            listeBitmap.Add(LoadTile(ENCLOS1)); // BRIQUE_BRUNE
-            listeBitmap.Add(LoadTile(ENCLOS2)); // CIEL_BLEU
-            listeBitmap.Add(LoadTile(COIN_BLOCK)); // COIN_BLOCK
-            listeBitmap.Add(LoadTile(NUAGE)); // TUYAU_TOP_LEFT
-            listeBitmap.Add(LoadTile(HACHE)); // TUYAU_TOP_RIGHT
+            listeBitmap.Add(LoadTile(GRASS)); 
+            listeBitmap.Add(LoadTile(FENCE1)); 
+            listeBitmap.Add(LoadTile(FENCE2));
+            listeBitmap.Add(LoadTile(PILLAR1));
+            listeBitmap.Add(LoadTile(PILLAR2));
         }
 
         private static Bitmap LoadTile(int posListe)
