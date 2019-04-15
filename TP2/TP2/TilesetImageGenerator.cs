@@ -25,6 +25,8 @@ namespace TestTilesetZoo
         public static int BENCH1 = 34;
         public static int BENCH2 = 37;
         public static int APPLE = 39;
+        public static int ROAD1 = 41;
+        public static int ROAD2 = 42;
 
 
 
@@ -95,6 +97,10 @@ namespace TestTilesetZoo
                 APPLE++;
             }
 
+            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 22 });
+            
+
+            listeBitmap.Add(LoadTile(ROAD1));
 
         }
 

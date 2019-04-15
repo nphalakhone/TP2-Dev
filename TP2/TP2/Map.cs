@@ -23,6 +23,7 @@ namespace TP2
         Bitmap[] bmApple = new Bitmap[2];
 
 
+
         public Map()
         {
             InitializeComponent();
@@ -31,12 +32,20 @@ namespace TP2
 
         private void creerInterface()
         {
-            //Creation interface gazon.
+            //Creation interface du gazon et du sentier.
             for (int i = 0; i < bmMap.GetLength(0); i++)
             {
                 for (int j = 0; j < bmMap.GetLength(1); j++)
                 {
-                    bmMap[i, j] = TilesetImageGenerator.GetTile(0);
+                    if ((i == 2 && (j > 1 && j < 23)) || i == 19 || (i == 36 && (j > 1 && j < 23)) || 
+                        (i == 40 && (j > 4 && j < 13)) || (j == 2 && (i > 1 && i < 37)) || (j == 12  && (i > 1 && i < 41)) || (j == 22 && (i > 1 && i < 37)))
+                    {
+                        bmMap[i, j] = TilesetImageGenerator.GetTile(41);
+                    }
+                    else
+                    {
+                        bmMap[i, j] = TilesetImageGenerator.GetTile(0);
+                    }
                 }
             }
 
@@ -57,7 +66,6 @@ namespace TP2
                     {
                         bmFence[i, j] = TilesetImageGenerator.GetTile(0);
                     }
-
                 }
             }
 
@@ -85,15 +93,17 @@ namespace TP2
 
             for (int i = 0; i < bmFenceVert.GetLength(0); i++)
             {
-                if (i == 12 || i == 19 || i == 20 || i == 21)
+                if (i == 19 || i == 20 || i == 21)
                 {
                     bmFenceVert[i] = TilesetImageGenerator.GetTile(0);
+                } else if (i == 12)
+                {
+                    bmFenceVert[i] = TilesetImageGenerator.GetTile(41);
                 }
                 else
                 {
                     bmFenceVert[i] = TilesetImageGenerator.GetTile(2);
                 }
-
             }
 
             int countBenchH = 34;
