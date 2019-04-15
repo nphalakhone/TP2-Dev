@@ -17,6 +17,10 @@ namespace TP2
         Bitmap[,] bmFence = new Bitmap[14, 7];
         Bitmap[,] bmHouse = new Bitmap[4, 5];
         Bitmap[,] bmWell = new Bitmap[3, 3];
+        Bitmap[] bmFenceVert = new Bitmap[25];
+        Bitmap[] bmBenchH = new Bitmap[3];
+        Bitmap[] bmBenchV = new Bitmap[2];
+        Bitmap[] bmApple = new Bitmap[2];
 
 
         public Map()
@@ -79,6 +83,43 @@ namespace TP2
                 }
             }
 
+            for (int i = 0; i < bmFenceVert.GetLength(0); i++)
+            {
+                if (i == 12 || i == 19 || i == 20 || i == 21)
+                {
+                    bmFenceVert[i] = TilesetImageGenerator.GetTile(0);
+                }
+                else
+                {
+                    bmFenceVert[i] = TilesetImageGenerator.GetTile(2);
+                }
+
+            }
+
+            int countBenchH = 34;
+
+            for (int i = 0; i < bmBenchH.GetLength(0); i++)
+            {
+                bmBenchH[i] = TilesetImageGenerator.GetTile(countBenchH);
+                countBenchH++;
+            }
+
+            int countBenchV = 37;
+
+            for (int i = 0; i < bmBenchV.GetLength(0); i++)
+            {
+                bmBenchV[i] = TilesetImageGenerator.GetTile(countBenchV);
+                countBenchV++;
+            }
+
+            int countApple = 39;
+
+            for (int i = 0; i < bmApple.GetLength(0); i++)
+            {
+                bmApple[i] = TilesetImageGenerator.GetTile(countApple);
+                countApple++;
+            }
+
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -99,11 +140,69 @@ namespace TP2
             dessinerEnclos(gr, 4, 14);
             dessinerEnclos(gr, 21, 14);
 
+            dessinerEnclosVertical(gr);
+
             dessinerHouse(gr, 39, 0);
 
-            dessinerWell(gr, 37, 16);
+            dessinerWell(gr, 38, 19);
 
             dessinerPillar(gr);
+
+            dessinerBenchH(gr, 23, 13);
+            dessinerBenchH(gr, 30, 13);
+
+            dessinerBenchV(gr, 3, 15);
+            dessinerBenchV(gr, 18, 18);
+
+            dessinerApple(gr, 10, 11);
+            dessinerApple(gr, 28, 3);
+        }
+
+        private void dessinerApple(Graphics gr, int x, int y)
+        {
+            int y2 = y;
+            int x2 = x;
+            for (int i2 = 0; i2 < bmApple.GetLength(0); i2++)
+            {
+                gr.DrawImage(bmApple[i2], x2 * 32, y2 * 32, 32, 32);
+                y2++;
+
+                x2++;
+                y2 = y;
+            }
+        }
+
+        private void dessinerBenchH(Graphics gr, int x, int y)
+        {
+            int y2 = y;
+            int x2 = x;
+            for (int i2 = 0; i2 < bmBenchH.GetLength(0); i2++)
+            {
+                gr.DrawImage(bmBenchH[i2], x2 * 32, y2 * 32, 32, 32);
+                y2++;
+
+                x2++;
+                y2 = y;
+            }
+        }
+
+        private void dessinerBenchV(Graphics gr, int x, int y)
+        {
+            int y2 = y;
+            int x2 = x;
+            for (int i2 = 0; i2 < bmBenchV.GetLength(0); i2++)
+            {
+                gr.DrawImage(bmBenchV[i2], x2 * 32, y2 * 32, 32, 32);
+                y2++;
+            }
+        }
+
+        private void dessinerEnclosVertical(Graphics gr)
+        {
+            for (int i2 = 0; i2 < bmFenceVert.GetLength(0); i2++)
+            {
+                gr.DrawImage(bmFenceVert[i2], 38 * 32, i2 * 32, 32, 32);
+            }
         }
 
         private void dessinerEnclos(Graphics gr, int x, int y)
@@ -137,7 +236,8 @@ namespace TP2
                 y2 = y;
             }
 
-        }private void dessinerWell(Graphics gr, int x, int y)
+        }
+        private void dessinerWell(Graphics gr, int x, int y)
         {
             int y2 = y;
             int x2 = x;

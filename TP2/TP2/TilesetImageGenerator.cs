@@ -21,13 +21,21 @@ namespace TestTilesetZoo
         public static int PILLAR1 = 3;
         public static int PILLAR2 = 4;
         public static int HOUSE = 5; //Goes from 5 to 24
-        public static int WELL = 25;
+        public static int WELL = 25; //Goes from 25 to 33
+        public static int BENCH1 = 34;
+        public static int BENCH2 = 37;
+        public static int APPLE = 39;
+
+
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
 
         private static int[,] gridHouse = new int[4, 5];
         private static int[,] gridWell = new int[3, 3];
+        private static int[] bench1 = new int[3];
+        private static int[] bench2 = new int[2];
+        private static int[] apple = new int[2];
 
         /// <summary>
         /// Constructeur statique
@@ -38,10 +46,10 @@ namespace TestTilesetZoo
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 });
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 23 });
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 27 });
-            listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 27 });            
+            listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 27 });
 
-            listeBitmap.Add(LoadTile(GRASS)); 
-            listeBitmap.Add(LoadTile(FENCE1)); 
+            listeBitmap.Add(LoadTile(GRASS));
+            listeBitmap.Add(LoadTile(FENCE1));
             listeBitmap.Add(LoadTile(FENCE2));
             listeBitmap.Add(LoadTile(PILLAR1));
             listeBitmap.Add(LoadTile(PILLAR2));
@@ -65,6 +73,29 @@ namespace TestTilesetZoo
                     WELL++;
                 }
             }
+
+            for (int i = 0; i < bench1.GetLength(0); i++)
+            {
+                listeCoord.Add(new TileCoord() { Ligne = 7, Colonne = i + 24 });
+                listeBitmap.Add(LoadTile(BENCH1));
+                BENCH1++;
+            }
+
+            for (int i = 0; i < bench2.GetLength(0); i++)
+            {
+                listeCoord.Add(new TileCoord() { Ligne = i + 5, Colonne = 24 });
+                listeBitmap.Add(LoadTile(BENCH2));
+                BENCH2++;
+            }
+
+            for (int i = 0; i < apple.GetLength(0); i++)
+            {
+                listeCoord.Add(new TileCoord() { Ligne = 6, Colonne = i + 22 });
+                listeBitmap.Add(LoadTile(APPLE));
+                APPLE++;
+            }
+
+
         }
 
         private static Bitmap LoadTile(int posListe)
