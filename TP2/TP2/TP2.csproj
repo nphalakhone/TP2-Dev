@@ -52,7 +52,6 @@
     <Compile Include="FenetrePrincipale.Designer.cs">
       <DependentUpon>FenetrePrincipale.cs</DependentUpon>
     </Compile>
-    <Compile Include="House.cs" />
     <Compile Include="Map.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -62,7 +61,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TilesetImageGenerator.cs" />
-    <Compile Include="Well.cs" />
     <EmbeddedResource Include="FenetrePrincipale.resx">
       <DependentUpon>FenetrePrincipale.cs</DependentUpon>
     </EmbeddedResource>
