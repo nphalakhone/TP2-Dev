@@ -22,11 +22,10 @@ namespace TestTilesetZoo
         public static int PILLAR2 = 4;
         public static int HOUSE = 5; //Goes from 5 to 24
         public static int WELL = 25; //Goes from 25 to 33
-        public static int BENCH1 = 34;
+        public static int BENCH1 = 34; 
         public static int BENCH2 = 37;
         public static int APPLE = 39;
         public static int ROAD1 = 41;
-        public static int ROAD2 = 42;
 
 
 
