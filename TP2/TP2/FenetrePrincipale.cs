@@ -12,11 +12,11 @@ namespace TP2
 {
     public partial class FenetrePrincipale : Form
     {
-
+        Hero h;
         public FenetrePrincipale()
         {
             InitializeComponent();
-            int argent = 100;
+
         }
 
     }
