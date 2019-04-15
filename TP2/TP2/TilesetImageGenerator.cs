@@ -20,9 +20,14 @@ namespace TestTilesetZoo
         public static int FENCE2 = 2;
         public static int PILLAR1 = 3;
         public static int PILLAR2 = 4;
+        public static int HOUSE = 5; //Goes from 5 to 24
+        public static int WELL = 25;
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
+
+        private static int[,] gridHouse = new int[4, 5];
+        private static int[,] gridWell = new int[3, 3];
 
         /// <summary>
         /// Constructeur statique
@@ -33,13 +38,33 @@ namespace TestTilesetZoo
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 });
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 23 });
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 27 });
-            listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 27 });
+            listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 27 });            
 
             listeBitmap.Add(LoadTile(GRASS)); 
             listeBitmap.Add(LoadTile(FENCE1)); 
             listeBitmap.Add(LoadTile(FENCE2));
             listeBitmap.Add(LoadTile(PILLAR1));
             listeBitmap.Add(LoadTile(PILLAR2));
+
+            for (int i = 0; i < gridHouse.GetLength(0); i++)
+            {
+                for (int j = 0; j < gridHouse.GetLength(1); j++)
+                {
+                    listeCoord.Add(new TileCoord() { Ligne = j, Colonne = i + 18 });
+                    listeBitmap.Add(LoadTile(HOUSE));
+                    HOUSE++;
+                }
+            }
+
+            for (int i = 0; i < gridWell.GetLength(0); i++)
+            {
+                for (int j = 0; j < gridWell.GetLength(1); j++)
+                {
+                    listeCoord.Add(new TileCoord() { Ligne = j + 13, Colonne = i + 24 });
+                    listeBitmap.Add(LoadTile(WELL));
+                    WELL++;
+                }
+            }
         }
 
         private static Bitmap LoadTile(int posListe)
