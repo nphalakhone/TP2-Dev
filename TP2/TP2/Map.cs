@@ -21,8 +21,9 @@ namespace TP2
         Bitmap[] bmBenchH = new Bitmap[3];
         Bitmap[] bmBenchV = new Bitmap[2];
         Bitmap[] bmApple = new Bitmap[2];
+        Bitmap[] bmHero = new Bitmap[1];
 
-
+        Hero h = new Hero();
 
         public Map()
         {
@@ -166,6 +167,13 @@ namespace TP2
 
             dessinerApple(gr, 10, 11);
             dessinerApple(gr, 28, 3);
+
+            dessinerHero(gr, h.x, h.y);
+        }
+
+        private void dessinerHero(Graphics gr, int x, int y)
+        {
+            gr.DrawImage(h.bas1, x * 32, y * 32, 32, 32);
         }
 
         private void dessinerApple(Graphics gr, int x, int y)
@@ -276,6 +284,33 @@ namespace TP2
             gr.DrawImage(pillarBot, 20 * 32, 1 * 32, 32, 32);
             gr.DrawImage(pillarBot, 18 * 32, 24 * 32, 32, 32);
             gr.DrawImage(pillarBot, 20 * 32, 24 * 32, 32, 32);
+        }
+
+        public void faireDeplacement(KeyEventArgs key)
+        {
+            if (key.KeyCode == Keys.W)
+            {
+                h.y--;
+                Refresh();
+            }
+
+            else if (key.KeyCode == Keys.A)
+            {
+                h.x--;
+                Refresh();
+            }
+
+            else if (key.KeyCode == Keys.S)
+            {
+                h.y++;
+                Refresh();
+            }
+
+            else if (key.KeyCode == Keys.D)
+            {
+                h.x++;
+                Refresh();
+            }
         }
 
     }

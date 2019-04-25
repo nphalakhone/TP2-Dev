@@ -12,12 +12,28 @@ namespace TP2
 {
     public partial class FenetrePrincipale : Form
     {
-        Hero h;
+        Map m;
         public FenetrePrincipale()
         {
             InitializeComponent();
-
+            int argent = 100;
+            m = MappeMonde;
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+    
+
+    private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
+        {
+            m.faireDeplacement(e);
+        }
     }
 }

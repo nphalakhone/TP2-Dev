@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.map1 = new TP2.Map();
+            this.MappeMonde = new TP2.Map();
             this.SuspendLayout();
             // 
-            // map1
+            // MappeMonde
             // 
-            this.map1.Location = new System.Drawing.Point(0, 33);
-            this.map1.Name = "map1";
-            this.map1.Size = new System.Drawing.Size(1376, 832);
-            this.map1.TabIndex = 0;
+            this.MappeMonde.Location = new System.Drawing.Point(0, 33);
+            this.MappeMonde.Name = "MappeMonde";
+            this.MappeMonde.Size = new System.Drawing.Size(1376, 832);
+            this.MappeMonde.TabIndex = 0;
+            this.MappeMonde.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyDown);
             // 
             // FenetrePrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 918);
-            this.Controls.Add(this.map1);
+            this.Controls.Add(this.MappeMonde);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -54,7 +55,7 @@
 
         #endregion
 
-        private Map map1;
+        private Map MappeMonde;
     }
 }
 
