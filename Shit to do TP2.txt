@@ -1,0 +1,50 @@
+Interfaces Utilisateur -
+-Info (day/$/nb animal/nb trash)
+-Interaction(mouse click)
+
+Hero -
+-Places he can move
+
+Animal-
+-Create class 
+-Create thread random mouvement
+-Left Click animal = feed + right sound
+
+Visiteur-
+-Create class
+-Create thread random mouvement
+-1:1 visitor:animal
+-Spawn entrance
+-Can't leave if there for < 1 min
+-Walks on exit + > 1 min = leaves
+-Replace visitor few seconds later
+-Randomly drops trash
+
+Renum-
+-2$ per animal = entrance fee
+-Every min(real time) : 1$ more per animal - .10$ per trash
+
+Concierge-
+-Hire 1 or more Janitors
+-Randomly moves where the visitors can move
+-Picks up trash
+-2$ per min(real time) per janitor
+
+Enclos-
+-Put a door
+
+Map-
+-Limit zones for player mouvement
+-Add deco
+
+Left Click-
+-Buy new animal(Adult + Random Gender)
+-Feed
+-Pick up trash
+-Hire janitor
+
+Right Click-
+-Animal
+--Info
+-Visitor
+--Info
