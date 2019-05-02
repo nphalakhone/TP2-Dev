@@ -23,6 +23,8 @@ namespace TP2
         public Image haut2 = TP2.Properties.Resources.haut2;
         public Image haut3 = TP2.Properties.Resources.haut3;
 
+        public Image currentDir { get; set; }
+        
         public int x { get; set; }
         public int y { get; set; }
 
@@ -30,6 +32,7 @@ namespace TP2
         {
             this.x = 40;
             this.y = 5;
+            currentDir = bas1;
         }
 
         public void paintDeplacement()

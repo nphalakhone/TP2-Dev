@@ -27,6 +27,11 @@ namespace TP2
 
         Hero h = new Hero();
 
+        int up = 0;
+        int down = 0;
+        int left = 0;
+        int right = 0;
+
         public Map()
         {
             InitializeComponent();
@@ -186,7 +191,7 @@ namespace TP2
 
         private void dessinerHero(Graphics gr, int x, int y)
         {
-            gr.DrawImage(h.bas1, x * 32, y * 32, 32, 32);
+            gr.DrawImage(h.currentDir, x * 32, y * 32, 32, 32);
         }
 
         private void dessinerApple(Graphics gr, int x, int y)
@@ -247,8 +252,19 @@ namespace TP2
             {
                 for (int j2 = 0; j2 < bmFence.GetLength(1); j2++)
                 {
-                    gr.DrawImage(bmFence[i2, j2], x2 * 32, y2 * 32, 32, 32);
-                    noMouvCoord[x2, y2] = false;
+                    gr.DrawImage(bmFence[i2, j2], x2 * 32, y2 * 32, 32, 32);                    
+                    if (j2 == 6 && i2 == 10)
+                    {
+                        noMouvCoord[x2, y2] = true;
+                    }
+                    else if ((j2 == 0 && i2 != 13) || (j2 == 6 && i2 != 13))
+                    {
+                        noMouvCoord[x2, y2] = false;
+                    }
+                    else if ((i2 == 0 || i2 == 13) && (j2 != 0 || j2 != 6))
+                    {
+                        noMouvCoord[x2, y2] = false;
+                    }
                     y2++;
                 }
                 x2++;
@@ -326,7 +342,7 @@ namespace TP2
 
             int x2 = h.x;
             int y2 = h.y;
-
+                        
             if (key.KeyCode == Keys.W)
             {
                 y2--;
@@ -335,7 +351,17 @@ namespace TP2
                     if (noMouvCoord[x2, y2])
                     {
                         h.y--;
-                        Refresh();
+                        if (up == 0)
+                        {
+                            h.currentDir = h.haut2;
+                            Refresh();
+                            up++;
+                        } else if (up == 1)
+                        {
+                            h.currentDir = h.haut3;
+                            Refresh();
+                            up--;
+                        }
                     }
                 }
             }
@@ -347,19 +373,39 @@ namespace TP2
                     if (noMouvCoord[x2, y2])
                     {
                         h.x--;
-                        Refresh();
+                        if (left == 0)
+                        {
+                            h.currentDir = h.gauche2;
+                            Refresh();
+                            left++;
+                        } else if (left == 1)
+                        {
+                            h.currentDir = h.gauche1;
+                            Refresh();
+                            left--;
+                        }
                     }
                 }
             }
             else if (key.KeyCode == Keys.S)
             {
-                y2++;
+                y2++;                
                 if (y2 <= 24)
                 {
                     if (noMouvCoord[x2, y2])
                     {
                         h.y++;
-                        Refresh();
+                        if (down == 0)
+                        {
+                            h.currentDir = h.bas2;
+                            Refresh();
+                            down++;
+                        } else if (down == 1)
+                        {
+                            h.currentDir = h.bas3;
+                            Refresh();
+                            down--;
+                        }                        
                     }
                 }
             }
@@ -371,7 +417,17 @@ namespace TP2
                     if (noMouvCoord[x2, y2])
                     {
                         h.x++;
-                        Refresh();
+                        if(right == 0)
+                        {
+                            h.currentDir = h.droite2;
+                            Refresh();
+                            right++;
+                        } else if (right == 1)
+                        {
+                            h.currentDir = h.droite1;
+                            Refresh();
+                            right--;
+                        }
                     }
                 }
             }
