@@ -107,7 +107,7 @@ namespace TestTilesetZoo
 
             listeBitmap.Add(LoadTile(TRASH));
 
-            listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 17 });
+            listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 24 });
 
             listeBitmap.Add(LoadTile(GATE));
         }
