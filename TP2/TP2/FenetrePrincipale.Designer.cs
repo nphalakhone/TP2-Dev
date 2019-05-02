@@ -37,7 +37,6 @@
             this.GrpInfo = new System.Windows.Forms.GroupBox();
             this.TimerPrincipal = new System.Windows.Forms.Timer(this.components);
             this.LblDollarSign = new System.Windows.Forms.Label();
-            this.TimerDate = new System.Windows.Forms.Timer(this.components);
             this.BtnAchatLion = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -96,15 +95,15 @@
             this.LblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblDate.Location = new System.Drawing.Point(59, 18);
             this.LblDate.Name = "LblDate";
-            this.LblDate.Size = new System.Drawing.Size(180, 20);
+            this.LblDate.Size = new System.Drawing.Size(126, 20);
             this.LblDate.TabIndex = 2;
-            this.LblDate.Text = "Date : 1 Janvier 2019";
+            this.LblDate.Text = "1 Janvier 2019";
             // 
             // LblDechets
             // 
             this.LblDechets.AutoSize = true;
             this.LblDechets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDechets.Location = new System.Drawing.Point(635, 18);
+            this.LblDechets.Location = new System.Drawing.Point(680, 15);
             this.LblDechets.Name = "LblDechets";
             this.LblDechets.Size = new System.Drawing.Size(101, 20);
             this.LblDechets.TabIndex = 3;
@@ -114,7 +113,7 @@
             // 
             this.LblAnimal.AutoSize = true;
             this.LblAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAnimal.Location = new System.Drawing.Point(437, 18);
+            this.LblAnimal.Location = new System.Drawing.Point(468, 18);
             this.LblAnimal.Name = "LblAnimal";
             this.LblAnimal.Size = new System.Drawing.Size(102, 20);
             this.LblAnimal.TabIndex = 4;
@@ -144,12 +143,6 @@
             this.LblDollarSign.Size = new System.Drawing.Size(19, 20);
             this.LblDollarSign.TabIndex = 10;
             this.LblDollarSign.Text = "$";
-            // 
-            // TimerDate
-            // 
-            this.TimerDate.Enabled = true;
-            this.TimerDate.Interval = 820;
-            this.TimerDate.Tick += new System.EventHandler(this.TimerDate_Tick);
             // 
             // BtnAchatLion
             // 
@@ -248,7 +241,7 @@
             // PicDechets
             // 
             this.PicDechets.Image = global::TP2.Properties.Resources.trashcan;
-            this.PicDechets.Location = new System.Drawing.Point(588, 6);
+            this.PicDechets.Location = new System.Drawing.Point(633, 3);
             this.PicDechets.Name = "PicDechets";
             this.PicDechets.Size = new System.Drawing.Size(41, 41);
             this.PicDechets.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -258,7 +251,7 @@
             // PicAnimal
             // 
             this.PicAnimal.Image = global::TP2.Properties.Resources.animal_logo;
-            this.PicAnimal.Location = new System.Drawing.Point(390, 6);
+            this.PicAnimal.Location = new System.Drawing.Point(421, 6);
             this.PicAnimal.Name = "PicAnimal";
             this.PicAnimal.Size = new System.Drawing.Size(41, 41);
             this.PicAnimal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -433,7 +426,6 @@
         private System.Windows.Forms.PictureBox PicDechets;
         private System.Windows.Forms.Timer TimerPrincipal;
         private System.Windows.Forms.Label LblDollarSign;
-        private System.Windows.Forms.Timer TimerDate;
         private System.Windows.Forms.Button BtnAchatLion;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
