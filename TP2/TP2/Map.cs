@@ -23,6 +23,8 @@ namespace TP2
         Bitmap[] bmApple = new Bitmap[2];
         Bitmap[] bmHero = new Bitmap[1];
 
+        bool[,] noMouvCoord = new bool[43, 25];               
+
         Hero h = new Hero();
 
         public Map()
@@ -55,7 +57,11 @@ namespace TP2
             {
                 for (int j = 0; j < bmFence.GetLength(1); j++)
                 {
-                    if ((j == 0 && i != 13) || (j == 6 && i != 13))
+                    if (j == 6 && i == 10)
+                    {
+                        bmFence[i, j] = TilesetImageGenerator.GetTile(43);
+                    }
+                    else if ((j == 0 && i != 13) || (j == 6 && i != 13))
                     {
                         bmFence[i, j] = TilesetImageGenerator.GetTile(1);
                     }
@@ -131,6 +137,13 @@ namespace TP2
                 countApple++;
             }
 
+            for (int i = 0; i < noMouvCoord.GetLength(0); i++)
+            {
+                for (int j = 0; j < noMouvCoord.GetLength(1); j++)
+                {
+                    noMouvCoord[i, j] = true;
+                }
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -183,6 +196,7 @@ namespace TP2
             for (int i2 = 0; i2 < bmApple.GetLength(0); i2++)
             {
                 gr.DrawImage(bmApple[i2], x2 * 32, y2 * 32, 32, 32);
+                noMouvCoord[x2, y2] = false;
                 y2++;
 
                 x2++;
@@ -220,7 +234,9 @@ namespace TP2
             for (int i2 = 0; i2 < bmFenceVert.GetLength(0); i2++)
             {
                 gr.DrawImage(bmFenceVert[i2], 38 * 32, i2 * 32, 32, 32);
+                noMouvCoord[38, i2] = false;
             }
+            noMouvCoord[38, 12] = true;
         }
 
         private void dessinerEnclos(Graphics gr, int x, int y)
@@ -232,6 +248,7 @@ namespace TP2
                 for (int j2 = 0; j2 < bmFence.GetLength(1); j2++)
                 {
                     gr.DrawImage(bmFence[i2, j2], x2 * 32, y2 * 32, 32, 32);
+                    noMouvCoord[x2, y2] = false;
                     y2++;
                 }
                 x2++;
@@ -248,6 +265,7 @@ namespace TP2
                 for (int j2 = 0; j2 < bmHouse.GetLength(1); j2++)
                 {
                     gr.DrawImage(bmHouse[i2, j2], x2 * 32, y2 * 32, 32, 32);
+                    noMouvCoord[x2, y2] = false;
                     y2++;
                 }
                 x2++;
@@ -264,6 +282,7 @@ namespace TP2
                 for (int j2 = 0; j2 < bmWell.GetLength(1); j2++)
                 {
                     gr.DrawImage(bmWell[i2, j2], x2 * 32, y2 * 32, 32, 32);
+                    noMouvCoord[x2, y2] = false;
                     y2++;
                 }
                 x2++;
@@ -284,32 +303,77 @@ namespace TP2
             gr.DrawImage(pillarBot, 20 * 32, 1 * 32, 32, 32);
             gr.DrawImage(pillarBot, 18 * 32, 24 * 32, 32, 32);
             gr.DrawImage(pillarBot, 20 * 32, 24 * 32, 32, 32);
+
+            noMouvCoord[18, 0] = false;
+            noMouvCoord[18, 23] = false;
+            noMouvCoord[18, 1] = false;
+            noMouvCoord[18, 24] = false;
+            noMouvCoord[20, 0] = false;
+            noMouvCoord[20, 23] = false;
+            noMouvCoord[20, 1] = false;
+            noMouvCoord[20, 24] = false;
         }
 
         public void faireDeplacement(KeyEventArgs key)
         {
+            for (int i = 0; i < noMouvCoord.GetLength(0); i++)
+            {
+                for (int j = 0; j < noMouvCoord.GetLength(1); j++)
+                {
+                    Console.WriteLine(i+","+j+"="+noMouvCoord[i, j]);
+                }
+            }
+
+            int x2 = h.x;
+            int y2 = h.y;
+
             if (key.KeyCode == Keys.W)
             {
-                h.y--;
-                Refresh();
+                y2--;
+                if (y2 >= 0)
+                {
+                    if (noMouvCoord[x2, y2])
+                    {
+                        h.y--;
+                        Refresh();
+                    }
+                }
             }
-
             else if (key.KeyCode == Keys.A)
             {
-                h.x--;
-                Refresh();
+                x2--;
+                if (x2 >= 0)
+                {
+                    if (noMouvCoord[x2, y2])
+                    {
+                        h.x--;
+                        Refresh();
+                    }
+                }
             }
-
             else if (key.KeyCode == Keys.S)
             {
-                h.y++;
-                Refresh();
+                y2++;
+                if (y2 <= 24)
+                {
+                    if (noMouvCoord[x2, y2])
+                    {
+                        h.y++;
+                        Refresh();
+                    }
+                }
             }
-
             else if (key.KeyCode == Keys.D)
             {
-                h.x++;
-                Refresh();
+                x2++;
+                if (x2 <= 42)
+                {
+                    if (noMouvCoord[x2, y2])
+                    {
+                        h.x++;
+                        Refresh();
+                    }
+                }
             }
         }
 
