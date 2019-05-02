@@ -27,6 +27,7 @@ namespace TestTilesetZoo
         public static int APPLE = 39;
         public static int ROAD1 = 41;
         public static int TRASH = 42;
+        public static int GATE = 43;
 
 
 
@@ -106,6 +107,9 @@ namespace TestTilesetZoo
 
             listeBitmap.Add(LoadTile(TRASH));
 
+            listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 17 });
+
+            listeBitmap.Add(LoadTile(GATE));
         }
 
         private static Bitmap LoadTile(int posListe)
