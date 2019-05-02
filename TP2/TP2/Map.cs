@@ -316,14 +316,6 @@ namespace TP2
 
         public void faireDeplacement(KeyEventArgs key)
         {
-            for (int i = 0; i < noMouvCoord.GetLength(0); i++)
-            {
-                for (int j = 0; j < noMouvCoord.GetLength(1); j++)
-                {
-                    Console.WriteLine(i+","+j+"="+noMouvCoord[i, j]);
-                }
-            }
-
             int x2 = h.x;
             int y2 = h.y;
 

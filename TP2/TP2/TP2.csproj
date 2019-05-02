@@ -148,5 +148,26 @@
   <ItemGroup>
     <None Include="Resources\bgcolor.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buffalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grizzly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licorne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rhino.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sheep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lion.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
