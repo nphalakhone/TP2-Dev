@@ -330,8 +330,7 @@ namespace TP2
             noMouvCoord[20, 24] = false;
         }
 
-        public void faireDeplacement(KeyEventArgs key)
-        {          
+        public void faireDeplacement(KeyEventArgs key) { 
             int x2 = h.x;
             int y2 = h.y;
                         

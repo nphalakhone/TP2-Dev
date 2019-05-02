@@ -8,5 +8,6 @@ namespace TP2
 {
     class Visiteur
     {
+        int nbVisiteur = 0;
     }
 }

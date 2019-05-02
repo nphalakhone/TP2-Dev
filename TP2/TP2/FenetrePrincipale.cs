@@ -50,5 +50,10 @@ namespace TP2
         {
 
         }
+
+        private void Mouse_Click_Animal(object sender, EventArgs e)
+        {
+
+        }
     }
 }
