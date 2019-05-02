@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,10 +14,12 @@ namespace TP2
     public partial class FenetrePrincipale : Form
     {
         Map m;
+        int argent;
+        int tempsMax = 300000; // 5 minustes in milliseconds
+
         public FenetrePrincipale()
         {
             InitializeComponent();
-            int argent = 100;
             m = MappeMonde;
         }
 
@@ -29,11 +32,23 @@ namespace TP2
                 return cp;
             }
         }
-    
 
-    private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
+
+        private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
         {
             m.faireDeplacement(e);
+        }
+
+        private void TimerPrincipal_Tick(object sender, EventArgs e)
+        {
+            argent = int.Parse(LblArgent.Text);
+            argent += 1;
+            LblArgent.Text = argent.ToString();
+        }
+
+        private void TimerDate_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

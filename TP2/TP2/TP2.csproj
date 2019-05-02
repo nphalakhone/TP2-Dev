@@ -127,5 +127,23 @@
   <ItemGroup>
     <None Include="Resources\personnages.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\848116.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-united-states-dollar-computer-icons-money-dollar-s-sand-dollar-5ae7e9beeca6d8.1296598715251480949694.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money-stack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trashcan.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
