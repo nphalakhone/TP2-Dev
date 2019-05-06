@@ -31,6 +31,8 @@ namespace TP2
         int left = 0;
         int right = 0;
 
+        public string animalChoisi { get; set; }
+
         public Map()
         {
             InitializeComponent();
@@ -154,6 +156,7 @@ namespace TP2
         {
             base.OnPaint(e);
             Graphics gr = e.Graphics;
+            
 
             for (int i = 0; i < bmMap.GetLength(0); i++)
             {
@@ -186,6 +189,8 @@ namespace TP2
             dessinerApple(gr, 28, 3);
 
             dessinerHero(gr, h.x, h.y);
+
+
         }
 
         private void dessinerHero(Graphics gr, int x, int y)
@@ -421,7 +426,25 @@ namespace TP2
                     }
                 }
             }
-        }
+        }        
 
+        private void Map_MouseClick(object sender, MouseEventArgs e)
+        {            
+            switch (animalChoisi)
+            {
+                case "Lion":                    
+                    break;
+                case "Mouton":
+                    break;
+                case "Grizzly":
+                    break;
+                case "Rhino":
+                    break;
+                case "Licorne":
+                    break;
+                case "Buffle":
+                    break;
+            }
+        }
     }
 }

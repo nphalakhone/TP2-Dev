@@ -40,6 +40,7 @@ namespace TP2
         public FenetrePrincipale()
         {
             InitializeComponent();
+            InitializeBtnAchat();
             m = MappeMonde;
             dates = Enum.GetName(typeof(Date), 1);
             comptDate = 1;
@@ -57,6 +58,15 @@ namespace TP2
             }
         }
 
+        private void InitializeBtnAchat()
+        {
+            BtnAchatLion.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixLion.Text, "Lion"); };
+            BtnAchatMouton.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixMouton.Text, "Mouton"); };
+            BtnAchatGrizzly.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixGrizzly.Text, "Grizzly"); };
+            BtnAchatRhino.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixRhino.Text, "Rhino"); };
+            BtnAchatLicorne.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixLicorne.Text, "Licorne"); };
+            BtnAchatBuffle.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixBuffle.Text, "Buffle"); };
+        }
 
         private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
         {
@@ -93,6 +103,16 @@ namespace TP2
             }
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
+        }
+
+        private void Acheter_Animal_Click(object sender, EventArgs e, string prix, string nomAnimal)
+        {
+            //int price = Int32.Parse(prix);
+
+            //if ((argent - price) >= 0)
+            //{
+                m.animalChoisi = nomAnimal;
+            //}
         }
 
         private void Mouse_Click_Animal(object sender, EventArgs e)

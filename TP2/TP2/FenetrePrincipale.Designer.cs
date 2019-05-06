@@ -44,8 +44,8 @@
             this.BtnAchatLicorne = new System.Windows.Forms.Button();
             this.BtnAchatBuffle = new System.Windows.Forms.Button();
             this.LblPrixLion = new System.Windows.Forms.Label();
-            this.LblPrixMoutton = new System.Windows.Forms.Label();
-            this.PicMoutton = new System.Windows.Forms.PictureBox();
+            this.LblPrixMouton = new System.Windows.Forms.Label();
+            this.PicMouton = new System.Windows.Forms.PictureBox();
             this.PicLion = new System.Windows.Forms.PictureBox();
             this.PicDechets = new System.Windows.Forms.PictureBox();
             this.PicAnimal = new System.Windows.Forms.PictureBox();
@@ -59,7 +59,7 @@
             this.LblPrixRhino = new System.Windows.Forms.Label();
             this.LblPrixLicorne = new System.Windows.Forms.Label();
             this.LblPrixBuffle = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PicMoutton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicMouton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicAnimal)).BeginInit();
@@ -159,7 +159,7 @@
             this.BtnAchatMouton.Name = "BtnAchatMouton";
             this.BtnAchatMouton.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatMouton.TabIndex = 12;
-            this.BtnAchatMouton.Text = "Acheter un moutton";
+            this.BtnAchatMouton.Text = "Acheter un mouton";
             this.BtnAchatMouton.UseVisualStyleBackColor = true;
             // 
             // BtnAchatGrizzly
@@ -208,25 +208,25 @@
             this.LblPrixLion.TabIndex = 18;
             this.LblPrixLion.Text = "35 $";
             // 
-            // LblPrixMoutton
+            // LblPrixMouton
             // 
-            this.LblPrixMoutton.AutoSize = true;
-            this.LblPrixMoutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixMoutton.Location = new System.Drawing.Point(1506, 221);
-            this.LblPrixMoutton.Name = "LblPrixMoutton";
-            this.LblPrixMoutton.Size = new System.Drawing.Size(44, 20);
-            this.LblPrixMoutton.TabIndex = 20;
-            this.LblPrixMoutton.Text = "20 $";
+            this.LblPrixMouton.AutoSize = true;
+            this.LblPrixMouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPrixMouton.Location = new System.Drawing.Point(1506, 221);
+            this.LblPrixMouton.Name = "LblPrixMouton";
+            this.LblPrixMouton.Size = new System.Drawing.Size(44, 20);
+            this.LblPrixMouton.TabIndex = 20;
+            this.LblPrixMouton.Text = "20 $";
             // 
-            // PicMoutton
+            // PicMouton
             // 
-            this.PicMoutton.Image = global::TP2.Properties.Resources.sheep;
-            this.PicMoutton.Location = new System.Drawing.Point(1414, 180);
-            this.PicMoutton.Name = "PicMoutton";
-            this.PicMoutton.Size = new System.Drawing.Size(90, 90);
-            this.PicMoutton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicMoutton.TabIndex = 19;
-            this.PicMoutton.TabStop = false;
+            this.PicMouton.Image = global::TP2.Properties.Resources.sheep;
+            this.PicMouton.Location = new System.Drawing.Point(1414, 180);
+            this.PicMouton.Name = "PicMouton";
+            this.PicMouton.Size = new System.Drawing.Size(90, 90);
+            this.PicMouton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicMouton.TabIndex = 19;
+            this.PicMouton.TabStop = false;
             // 
             // PicLion
             // 
@@ -370,8 +370,8 @@
             this.Controls.Add(this.PicLicorne);
             this.Controls.Add(this.PicRhino);
             this.Controls.Add(this.PicGrizzly);
-            this.Controls.Add(this.LblPrixMoutton);
-            this.Controls.Add(this.PicMoutton);
+            this.Controls.Add(this.LblPrixMouton);
+            this.Controls.Add(this.PicMouton);
             this.Controls.Add(this.LblPrixLion);
             this.Controls.Add(this.PicLion);
             this.Controls.Add(this.BtnAchatBuffle);
@@ -397,7 +397,7 @@
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP2";
-            ((System.ComponentModel.ISupportInitialize)(this.PicMoutton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicMouton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicAnimal)).EndInit();
@@ -434,8 +434,8 @@
         private System.Windows.Forms.Button BtnAchatBuffle;
         private System.Windows.Forms.PictureBox PicLion;
         private System.Windows.Forms.Label LblPrixLion;
-        private System.Windows.Forms.PictureBox PicMoutton;
-        private System.Windows.Forms.Label LblPrixMoutton;
+        private System.Windows.Forms.PictureBox PicMouton;
+        private System.Windows.Forms.Label LblPrixMouton;
         private System.Windows.Forms.PictureBox PicGrizzly;
         private System.Windows.Forms.PictureBox PicRhino;
         private System.Windows.Forms.PictureBox PicLicorne;
