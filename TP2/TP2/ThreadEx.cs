@@ -1,73 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TP2
 {
-    enum Date
+    public class ThreadEx
     {
-        Janvier = 1,
-        Fevrier,
-        Mars,
-        Avril,
-        Mai,
-        Juin,
-        Juillet,
-        Aout,
-        Septembre,
-        Octobre,
-        Novembre,
-        Decembre
-    };
-
-    public partial class FenetrePrincipale : Form
-    {
-        Map m;
-        int argent;
-        int tempsMax = 300000; // 5 minustes in milliseconds
         int comptDate;
         int moisDate;
         int anneeDate;
         string dates;
+        FenetrePrincipale fp = new FenetrePrincipale();
 
-        public FenetrePrincipale()
+        public ThreadEx()
         {
-            InitializeComponent();
-            m = MappeMonde;
             dates = Enum.GetName(typeof(Date), 1);
             comptDate = 1;
             moisDate = 1;
             anneeDate = 2019;
         }
 
-        protected override CreateParams CreateParams
+        public void ThreadDate()
         {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
-
-
-        private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
-        {
-            m.faireDeplacement(e);
-        }
-
-        private void TimerPrincipal_Tick(object sender, EventArgs e)
-        {
-            //argent = int.Parse(LblArgent.Text);
-            //argent += 1;
-            //LblArgent.Text = argent.ToString();
             if ((comptDate == 32 && dates.Equals(Date.Janvier.ToString()))
                 || (comptDate == 32 && dates.Equals(Date.Mars.ToString()))
                 || (comptDate == 32 && dates.Equals(Date.Mai.ToString()))
@@ -91,14 +48,9 @@ namespace TP2
                 anneeDate += 1;
                 dates = Enum.GetName(typeof(Date), moisDate);
             }
-            LblDate.Text = comptDate + " " + dates + " " + anneeDate;
+            fp.LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
+            Console.WriteLine("First Thread");
         }
-
-        private void Mouse_Click_Animal(object sender, EventArgs e)
-        {
-
-        }
-        
     }
 }
