@@ -1,9 +1,9 @@
 Interfaces Utilisateur -
--Info (day/$/nb animal/nb trash)
+-Info (day/$/nb animal/nb trash) - Done
 -Interaction(mouse click)
 
-Hero -
--Places he can move
+Hero - Done
+-Places he can move - Done
 
 Animal-
 -Create class 
@@ -11,7 +11,7 @@ Animal-
 -Left Click animal = feed + right sound
 
 Visiteur-
--Create class
+-Create classD
 -Create thread random mouvement
 -1:1 visitor:animal
 -Spawn entrance
@@ -30,11 +30,11 @@ Concierge-
 -Picks up trash
 -2$ per min(real time) per janitor
 
-Enclos-
--Put a door
+Enclos- Done
+-Put a door - Done
 
 Map-
--Limit zones for player mouvement
+-Limit zones for player mouvement - Done
 -Add deco
 
 Left Click-
