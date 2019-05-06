@@ -416,7 +416,7 @@
 
         private Map MappeMonde;
         private System.Windows.Forms.Label LblArgent;
-        private System.Windows.Forms.Label LblDate;
+        public System.Windows.Forms.Label LblDate;
         private System.Windows.Forms.Label LblDechets;
         private System.Windows.Forms.Label LblAnimal;
         private System.Windows.Forms.GroupBox GrpInfo;
