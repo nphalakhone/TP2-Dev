@@ -8,7 +8,7 @@ namespace TP2
 {
     abstract class Animal
     {
-        private int Prix;
+        private string TypeAnimal;
         private int TempsGestation;
         private int TempsAvantAdulte;
         private int TempsAvantNourrir;
@@ -17,9 +17,9 @@ namespace TP2
         private bool? Nourri; //true = nourri | false = faim
         private bool? AttendBebe; //doit être une femelle adulte, en présence d’un mâle adulte dans le même enclos
 
-        public Animal(int prix, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe)
+        public Animal(string type, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe)
         {
-            Prix = prix;
+            TypeAnimal = type;
             TempsGestation = gestation;
             TempsAvantAdulte = avAdulte;
             TempsAvantNourrir = avNourrir;

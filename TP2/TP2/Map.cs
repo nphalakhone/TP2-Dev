@@ -21,7 +21,6 @@ namespace TP2
         Bitmap[] bmBenchH = new Bitmap[3];
         Bitmap[] bmBenchV = new Bitmap[2];
         Bitmap[] bmApple = new Bitmap[2];
-        Bitmap[] bmHero = new Bitmap[1];
 
         bool[,] noMouvCoord = new bool[43, 25];               
 

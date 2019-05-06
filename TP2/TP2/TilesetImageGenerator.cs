@@ -28,6 +28,12 @@ namespace TestTilesetZoo
         public static int ROAD1 = 41;
         public static int TRASH = 42;
         public static int GATE = 43;
+        public static int LION = 44;
+        public static int SHEEP = 45;
+        public static int GRIZZLY = 46;
+        public static int RHINO = 47;
+        public static int UNICORN = 48;
+        public static int BUFFALO = 49;
 
 
 
@@ -110,6 +116,30 @@ namespace TestTilesetZoo
             listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 24 });
 
             listeBitmap.Add(LoadTile(GATE));
+
+            listeCoord.Add(new TileCoord() { Ligne = 16, Colonne = 24 });
+
+            listeBitmap.Add(LoadTile(LION));
+
+            listeCoord.Add(new TileCoord() { Ligne = 19, Colonne = 8 });
+
+            listeBitmap.Add(LoadTile(SHEEP));
+
+            listeCoord.Add(new TileCoord() { Ligne = 16, Colonne = 0 });
+
+            listeBitmap.Add(LoadTile(GRIZZLY));
+
+            listeCoord.Add(new TileCoord() { Ligne = 20, Colonne = 16 });
+
+            listeBitmap.Add(LoadTile(RHINO));
+
+            listeCoord.Add(new TileCoord() { Ligne = 16, Colonne = 16 });
+
+            listeBitmap.Add(LoadTile(UNICORN));
+
+            listeCoord.Add(new TileCoord() { Ligne = 19, Colonne = 0 });
+
+            listeBitmap.Add(LoadTile(BUFFALO));
         }
 
         private static Bitmap LoadTile(int posListe)

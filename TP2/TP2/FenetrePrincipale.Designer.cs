@@ -38,11 +38,11 @@
             this.TimerPrincipal = new System.Windows.Forms.Timer(this.components);
             this.LblDollarSign = new System.Windows.Forms.Label();
             this.BtnAchatLion = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.BtnAchatMouton = new System.Windows.Forms.Button();
+            this.BtnAchatGrizzly = new System.Windows.Forms.Button();
+            this.BtnAchatRhino = new System.Windows.Forms.Button();
+            this.BtnAchatLicorne = new System.Windows.Forms.Button();
+            this.BtnAchatBuffle = new System.Windows.Forms.Button();
             this.LblPrixLion = new System.Windows.Forms.Label();
             this.LblPrixMoutton = new System.Windows.Forms.Label();
             this.PicMoutton = new System.Windows.Forms.PictureBox();
@@ -54,11 +54,11 @@
             this.PicGrizzly = new System.Windows.Forms.PictureBox();
             this.PicRhino = new System.Windows.Forms.PictureBox();
             this.PicLicorne = new System.Windows.Forms.PictureBox();
-            this.PicBuffalo = new System.Windows.Forms.PictureBox();
+            this.PicBuffle = new System.Windows.Forms.PictureBox();
             this.LblPrixGrizzly = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblPrixRhino = new System.Windows.Forms.Label();
+            this.LblPrixLicorne = new System.Windows.Forms.Label();
+            this.LblPrixBuffle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PicMoutton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).BeginInit();
@@ -68,7 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicGrizzly)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRhino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLicorne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBuffalo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).BeginInit();
             this.SuspendLayout();
             // 
             // MappeMonde
@@ -153,50 +153,50 @@
             this.BtnAchatLion.Text = "Acheter un lion";
             this.BtnAchatLion.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BtnAchatMouton
             // 
-            this.button2.Location = new System.Drawing.Point(1414, 276);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Acheter un moutton";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnAchatMouton.Location = new System.Drawing.Point(1414, 276);
+            this.BtnAchatMouton.Name = "BtnAchatMouton";
+            this.BtnAchatMouton.Size = new System.Drawing.Size(136, 23);
+            this.BtnAchatMouton.TabIndex = 12;
+            this.BtnAchatMouton.Text = "Acheter un moutton";
+            this.BtnAchatMouton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // BtnAchatGrizzly
             // 
-            this.button3.Location = new System.Drawing.Point(1415, 406);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(136, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Acheter un grizzly";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnAchatGrizzly.Location = new System.Drawing.Point(1415, 406);
+            this.BtnAchatGrizzly.Name = "BtnAchatGrizzly";
+            this.BtnAchatGrizzly.Size = new System.Drawing.Size(136, 23);
+            this.BtnAchatGrizzly.TabIndex = 13;
+            this.BtnAchatGrizzly.Text = "Acheter un grizzly";
+            this.BtnAchatGrizzly.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // BtnAchatRhino
             // 
-            this.button4.Location = new System.Drawing.Point(1414, 536);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(136, 23);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Acheter un rhinocéros";
-            this.button4.UseVisualStyleBackColor = true;
+            this.BtnAchatRhino.Location = new System.Drawing.Point(1414, 536);
+            this.BtnAchatRhino.Name = "BtnAchatRhino";
+            this.BtnAchatRhino.Size = new System.Drawing.Size(136, 23);
+            this.BtnAchatRhino.TabIndex = 14;
+            this.BtnAchatRhino.Text = "Acheter un rhinocéros";
+            this.BtnAchatRhino.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // BtnAchatLicorne
             // 
-            this.button5.Location = new System.Drawing.Point(1414, 666);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(136, 23);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "Acheter une licorne";
-            this.button5.UseVisualStyleBackColor = true;
+            this.BtnAchatLicorne.Location = new System.Drawing.Point(1414, 666);
+            this.BtnAchatLicorne.Name = "BtnAchatLicorne";
+            this.BtnAchatLicorne.Size = new System.Drawing.Size(136, 23);
+            this.BtnAchatLicorne.TabIndex = 15;
+            this.BtnAchatLicorne.Text = "Acheter une licorne";
+            this.BtnAchatLicorne.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // BtnAchatBuffle
             // 
-            this.button6.Location = new System.Drawing.Point(1414, 796);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(136, 23);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Acheter un buffle";
-            this.button6.UseVisualStyleBackColor = true;
+            this.BtnAchatBuffle.Location = new System.Drawing.Point(1414, 796);
+            this.BtnAchatBuffle.Name = "BtnAchatBuffle";
+            this.BtnAchatBuffle.Size = new System.Drawing.Size(136, 23);
+            this.BtnAchatBuffle.TabIndex = 16;
+            this.BtnAchatBuffle.Text = "Acheter un buffle";
+            this.BtnAchatBuffle.UseVisualStyleBackColor = true;
             // 
             // LblPrixLion
             // 
@@ -308,15 +308,15 @@
             this.PicLicorne.TabIndex = 23;
             this.PicLicorne.TabStop = false;
             // 
-            // PicBuffalo
+            // PicBuffle
             // 
-            this.PicBuffalo.Image = global::TP2.Properties.Resources.buffalo;
-            this.PicBuffalo.Location = new System.Drawing.Point(1414, 700);
-            this.PicBuffalo.Name = "PicBuffalo";
-            this.PicBuffalo.Size = new System.Drawing.Size(90, 90);
-            this.PicBuffalo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicBuffalo.TabIndex = 24;
-            this.PicBuffalo.TabStop = false;
+            this.PicBuffle.Image = global::TP2.Properties.Resources.buffalo;
+            this.PicBuffle.Location = new System.Drawing.Point(1414, 700);
+            this.PicBuffle.Name = "PicBuffle";
+            this.PicBuffle.Size = new System.Drawing.Size(90, 90);
+            this.PicBuffle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicBuffle.TabIndex = 24;
+            this.PicBuffle.TabStop = false;
             // 
             // LblPrixGrizzly
             // 
@@ -327,46 +327,46 @@
             this.LblPrixGrizzly.TabIndex = 0;
             this.LblPrixGrizzly.Text = "30 $";
             // 
-            // label2
+            // LblPrixRhino
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1507, 486);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 20);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "40 $";
+            this.LblPrixRhino.AutoSize = true;
+            this.LblPrixRhino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPrixRhino.Location = new System.Drawing.Point(1507, 486);
+            this.LblPrixRhino.Name = "LblPrixRhino";
+            this.LblPrixRhino.Size = new System.Drawing.Size(44, 20);
+            this.LblPrixRhino.TabIndex = 25;
+            this.LblPrixRhino.Text = "40 $";
             // 
-            // label3
+            // LblPrixLicorne
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1506, 613);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 20);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "50 $";
+            this.LblPrixLicorne.AutoSize = true;
+            this.LblPrixLicorne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPrixLicorne.Location = new System.Drawing.Point(1506, 613);
+            this.LblPrixLicorne.Name = "LblPrixLicorne";
+            this.LblPrixLicorne.Size = new System.Drawing.Size(44, 20);
+            this.LblPrixLicorne.TabIndex = 26;
+            this.LblPrixLicorne.Text = "50 $";
             // 
-            // label4
+            // LblPrixBuffle
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1506, 737);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 20);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "40 $";
+            this.LblPrixBuffle.AutoSize = true;
+            this.LblPrixBuffle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPrixBuffle.Location = new System.Drawing.Point(1506, 737);
+            this.LblPrixBuffle.Name = "LblPrixBuffle";
+            this.LblPrixBuffle.Size = new System.Drawing.Size(44, 20);
+            this.LblPrixBuffle.TabIndex = 27;
+            this.LblPrixBuffle.Text = "40 $";
             // 
             // FenetrePrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 938);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblPrixBuffle);
+            this.Controls.Add(this.LblPrixLicorne);
+            this.Controls.Add(this.LblPrixRhino);
             this.Controls.Add(this.LblPrixGrizzly);
-            this.Controls.Add(this.PicBuffalo);
+            this.Controls.Add(this.PicBuffle);
             this.Controls.Add(this.PicLicorne);
             this.Controls.Add(this.PicRhino);
             this.Controls.Add(this.PicGrizzly);
@@ -374,11 +374,11 @@
             this.Controls.Add(this.PicMoutton);
             this.Controls.Add(this.LblPrixLion);
             this.Controls.Add(this.PicLion);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.BtnAchatBuffle);
+            this.Controls.Add(this.BtnAchatLicorne);
+            this.Controls.Add(this.BtnAchatRhino);
+            this.Controls.Add(this.BtnAchatGrizzly);
+            this.Controls.Add(this.BtnAchatMouton);
             this.Controls.Add(this.BtnAchatLion);
             this.Controls.Add(this.LblDollarSign);
             this.Controls.Add(this.PicDechets);
@@ -406,7 +406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicGrizzly)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRhino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLicorne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBuffalo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,11 +427,11 @@
         private System.Windows.Forms.Timer TimerPrincipal;
         private System.Windows.Forms.Label LblDollarSign;
         private System.Windows.Forms.Button BtnAchatLion;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button BtnAchatMouton;
+        private System.Windows.Forms.Button BtnAchatGrizzly;
+        private System.Windows.Forms.Button BtnAchatRhino;
+        private System.Windows.Forms.Button BtnAchatLicorne;
+        private System.Windows.Forms.Button BtnAchatBuffle;
         private System.Windows.Forms.PictureBox PicLion;
         private System.Windows.Forms.Label LblPrixLion;
         private System.Windows.Forms.PictureBox PicMoutton;
@@ -439,11 +439,11 @@
         private System.Windows.Forms.PictureBox PicGrizzly;
         private System.Windows.Forms.PictureBox PicRhino;
         private System.Windows.Forms.PictureBox PicLicorne;
-        private System.Windows.Forms.PictureBox PicBuffalo;
+        private System.Windows.Forms.PictureBox PicBuffle;
         private System.Windows.Forms.Label LblPrixGrizzly;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblPrixRhino;
+        private System.Windows.Forms.Label LblPrixLicorne;
+        private System.Windows.Forms.Label LblPrixBuffle;
     }
 }
 
