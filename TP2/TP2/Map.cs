@@ -26,6 +26,8 @@ namespace TP2
 
         Hero h = new Hero();
 
+        Visiteur v = new Visiteur();
+
         int up = 0;
         int down = 0;
         int left = 0;
@@ -190,7 +192,12 @@ namespace TP2
 
             dessinerHero(gr, h.x, h.y);
 
+            dessinerVisiteur(gr, v.x, v.y);
+        }
 
+        private void dessinerVisiteur(Graphics gr, int x, int y)
+        {
+            gr.DrawImage(v.currentDirFemme2, x * 32, y * 32, 32, 32);
         }
 
         private void dessinerHero(Graphics gr, int x, int y)

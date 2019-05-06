@@ -55,6 +55,7 @@
     <Compile Include="FenetrePrincipale.Designer.cs">
       <DependentUpon>FenetrePrincipale.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenereatorPersonnage.cs" />
     <Compile Include="Grizzly.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Lion.cs" />
