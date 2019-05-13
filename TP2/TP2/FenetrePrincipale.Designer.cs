@@ -1,4 +1,6 @@
-﻿namespace TP2
+﻿using System.Windows.Forms;
+
+namespace TP2
 {
     partial class FenetrePrincipale
     {
@@ -59,6 +61,8 @@
             this.LblPrixRhino = new System.Windows.Forms.Label();
             this.LblPrixLicorne = new System.Windows.Forms.Label();
             this.LblPrixBuffle = new System.Windows.Forms.Label();
+            this.TimerVisiteurEtConcierge = new System.Windows.Forms.Timer(this.components);
+            this.TimerAnimaux = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PicMouton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).BeginInit();
@@ -73,11 +77,13 @@
             // 
             // MappeMonde
             // 
+            this.MappeMonde.animalChoisi = null;
+            this.MappeMonde.enableBuyAnimals = false;
             this.MappeMonde.Location = new System.Drawing.Point(0, 50);
             this.MappeMonde.Name = "MappeMonde";
             this.MappeMonde.Size = new System.Drawing.Size(1376, 832);
             this.MappeMonde.TabIndex = 0;
-            this.MappeMonde.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyDown);
+            this.MappeMonde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyUp);
             // 
             // LblArgent
             // 
@@ -357,6 +363,16 @@
             this.LblPrixBuffle.TabIndex = 27;
             this.LblPrixBuffle.Text = "40 $";
             // 
+            // TimerVisiteurEtConcierge
+            // 
+            this.TimerVisiteurEtConcierge.Interval = 1000;
+            this.TimerVisiteurEtConcierge.Tick += new System.EventHandler(this.TimerVisiteurEtConcierge_Tick);
+            // 
+            // TimerAnimaux
+            // 
+            this.TimerAnimaux.Interval = 1000;
+            this.TimerAnimaux.Tick += new System.EventHandler(this.TimerAnimaux_Tick);
+            // 
             // FenetrePrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,35 +431,40 @@
         #endregion
 
         private Map MappeMonde;
-        private System.Windows.Forms.Label LblArgent;
-        public System.Windows.Forms.Label LblDate;
-        private System.Windows.Forms.Label LblDechets;
-        private System.Windows.Forms.Label LblAnimal;
-        private System.Windows.Forms.GroupBox GrpInfo;
-        private System.Windows.Forms.PictureBox PicDate;
-        private System.Windows.Forms.PictureBox PicArgent;
-        private System.Windows.Forms.PictureBox PicAnimal;
-        private System.Windows.Forms.PictureBox PicDechets;
-        private System.Windows.Forms.Timer TimerPrincipal;
-        private System.Windows.Forms.Label LblDollarSign;
-        private System.Windows.Forms.Button BtnAchatLion;
-        private System.Windows.Forms.Button BtnAchatMouton;
-        private System.Windows.Forms.Button BtnAchatGrizzly;
-        private System.Windows.Forms.Button BtnAchatRhino;
-        private System.Windows.Forms.Button BtnAchatLicorne;
-        private System.Windows.Forms.Button BtnAchatBuffle;
-        private System.Windows.Forms.PictureBox PicLion;
-        private System.Windows.Forms.Label LblPrixLion;
-        private System.Windows.Forms.PictureBox PicMouton;
-        private System.Windows.Forms.Label LblPrixMouton;
-        private System.Windows.Forms.PictureBox PicGrizzly;
-        private System.Windows.Forms.PictureBox PicRhino;
-        private System.Windows.Forms.PictureBox PicLicorne;
-        private System.Windows.Forms.PictureBox PicBuffle;
-        private System.Windows.Forms.Label LblPrixGrizzly;
-        private System.Windows.Forms.Label LblPrixRhino;
-        private System.Windows.Forms.Label LblPrixLicorne;
-        private System.Windows.Forms.Label LblPrixBuffle;
+        private Label LblArgent;
+        public Label LblDate;
+        private Label LblDechets;
+        private Label LblAnimal;
+        private GroupBox GrpInfo;
+        private PictureBox PicDate;
+        private PictureBox PicArgent;
+        private PictureBox PicAnimal;
+        private PictureBox PicDechets;
+        private Timer TimerPrincipal;
+        private Label LblDollarSign;
+        private Button BtnAchatLion;
+        private Button BtnAchatMouton;
+        private Button BtnAchatGrizzly;
+        private Button BtnAchatRhino;
+        private Button BtnAchatLicorne;
+        private Button BtnAchatBuffle;
+        private PictureBox PicLion;
+        private Label LblPrixLion;
+        private PictureBox PicMouton;
+        private Label LblPrixMouton;
+        private PictureBox PicGrizzly;
+        private PictureBox PicRhino;
+        private PictureBox PicLicorne;
+        private PictureBox PicBuffle;
+        private Label LblPrixGrizzly;
+        private Label LblPrixRhino;
+        private Label LblPrixLicorne;
+        private Label LblPrixBuffle;
+
+        public Button getBtnLion () { return BtnAchatLion; }
+
+        private Timer TimerVisiteurEtConcierge;
+        private Timer TimerAnimaux;
     }
 }
 

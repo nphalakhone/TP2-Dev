@@ -17,12 +17,25 @@ namespace TP2
         Bitmap[,] bmFence = new Bitmap[14, 7];
         Bitmap[,] bmHouse = new Bitmap[4, 5];
         Bitmap[,] bmWell = new Bitmap[3, 3];
+        Bitmap[,] bmAnimaux = new Bitmap[43, 25];
+        Bitmap[,] bmVisiteurEtConcierge = new Bitmap[43, 25];
         Bitmap[] bmFenceVert = new Bitmap[25];
         Bitmap[] bmBenchH = new Bitmap[3];
         Bitmap[] bmBenchV = new Bitmap[2];
         Bitmap[] bmApple = new Bitmap[2];
 
-        bool[,] noMouvCoord = new bool[43, 25];               
+        public static bool[,] bmInteraction = new bool[43, 25];
+
+        bool[,] interieurEnclos = new bool[43, 25];
+
+        bool[,] noMouvAnimal = new bool[43, 25];
+        bool[,] noMouvCoord = new bool[43, 25];
+        bool[,] noMouvCoordAI = new bool[38, 25];
+
+        List<Animal> listeAnimaux = new List<Animal>();
+
+        int xSortie = 19;
+        int ySortie = 0;
 
         Hero h = new Hero();
 
@@ -32,6 +45,8 @@ namespace TP2
         int down = 0;
         int left = 0;
         int right = 0;
+
+        public bool enableBuyAnimals { get; set; }
 
         public string animalChoisi { get; set; }
 
@@ -48,8 +63,8 @@ namespace TP2
             {
                 for (int j = 0; j < bmMap.GetLength(1); j++)
                 {
-                    if ((i == 2 && (j > 1 && j < 23)) || i == 19 || (i == 36 && (j > 1 && j < 23)) || 
-                        (i == 40 && (j > 4 && j < 13)) || (j == 2 && (i > 1 && i < 37)) || (j == 12  && (i > 1 && i < 41)) || (j == 22 && (i > 1 && i < 37)))
+                    if ((i == 2 && (j > 1 && j < 23)) || i == 19 || (i == 36 && (j > 1 && j < 23)) ||
+                        (i == 40 && (j > 4 && j < 13)) || (j == 2 && (i > 1 && i < 37)) || (j == 12 && (i > 1 && i < 41)) || (j == 22 && (i > 1 && i < 37)))
                     {
                         bmMap[i, j] = TilesetImageGenerator.GetTile(41);
                     }
@@ -111,7 +126,8 @@ namespace TP2
                 if (i == 19 || i == 20 || i == 21)
                 {
                     bmFenceVert[i] = TilesetImageGenerator.GetTile(0);
-                } else if (i == 12)
+                }
+                else if (i == 12)
                 {
                     bmFenceVert[i] = TilesetImageGenerator.GetTile(41);
                 }
@@ -150,6 +166,9 @@ namespace TP2
                 for (int j = 0; j < noMouvCoord.GetLength(1); j++)
                 {
                     noMouvCoord[i, j] = true;
+                    interieurEnclos[i, j] = false;
+                    bmInteraction[i, j] = false;
+                    noMouvAnimal[i, j] = true;
                 }
             }
         }
@@ -158,7 +177,7 @@ namespace TP2
         {
             base.OnPaint(e);
             Graphics gr = e.Graphics;
-            
+
 
             for (int i = 0; i < bmMap.GetLength(0); i++)
             {
@@ -193,6 +212,40 @@ namespace TP2
             dessinerHero(gr, h.x, h.y);
 
             dessinerVisiteur(gr, v.x, v.y);
+
+            dessinerAnimaux(gr);
+
+            remplirNoMouvAnimal();
+        }
+
+        private void remplirNoMouvAnimal()
+        {
+            for (int i = 0; i < noMouvCoord.GetLength(0); i++)
+            {
+                for (int j = 0; j < noMouvCoord.GetLength(1); j++)
+                {                    
+                    noMouvAnimal[i, j] = true;
+                }
+            }
+
+            foreach (Animal a in listeAnimaux)
+            {
+                noMouvAnimal[a.x, a.y] = false;
+            }
+        }
+
+        private void dessinerAnimaux(Graphics gr)
+        {
+            for (int i = 0; i < bmAnimaux.GetLength(0); i++)
+            {
+                for (int j = 0; j < bmAnimaux.GetLength(1); j++)
+                {
+                    if (bmAnimaux[i, j] != null)
+                    {
+                        gr.DrawImage(bmAnimaux[i, j], i * 32, j * 32, 32, 32);
+                    }
+                }
+            }
         }
 
         private void dessinerVisiteur(Graphics gr, int x, int y)
@@ -213,6 +266,7 @@ namespace TP2
             {
                 gr.DrawImage(bmApple[i2], x2 * 32, y2 * 32, 32, 32);
                 noMouvCoord[x2, y2] = false;
+                noMouvCoordAI[x2, y2] = false;
                 y2++;
 
                 x2++;
@@ -251,6 +305,7 @@ namespace TP2
             {
                 gr.DrawImage(bmFenceVert[i2], 38 * 32, i2 * 32, 32, 32);
                 noMouvCoord[38, i2] = false;
+                noMouvCoordAI[37, i2] = false;
             }
             noMouvCoord[38, 12] = true;
         }
@@ -263,7 +318,7 @@ namespace TP2
             {
                 for (int j2 = 0; j2 < bmFence.GetLength(1); j2++)
                 {
-                    gr.DrawImage(bmFence[i2, j2], x2 * 32, y2 * 32, 32, 32);                    
+                    gr.DrawImage(bmFence[i2, j2], x2 * 32, y2 * 32, 32, 32);
                     if (j2 == 6 && i2 == 10)
                     {
                         noMouvCoord[x2, y2] = true;
@@ -275,6 +330,10 @@ namespace TP2
                     else if ((i2 == 0 || i2 == 13) && (j2 != 0 || j2 != 6))
                     {
                         noMouvCoord[x2, y2] = false;
+                    }
+                    else
+                    {
+                        interieurEnclos[x2, y2] = true;
                     }
                     y2++;
                 }
@@ -339,12 +398,22 @@ namespace TP2
             noMouvCoord[20, 23] = false;
             noMouvCoord[20, 1] = false;
             noMouvCoord[20, 24] = false;
+
+            noMouvCoordAI[18, 0] = false;
+            noMouvCoordAI[18, 23] = false;
+            noMouvCoordAI[18, 1] = false;
+            noMouvCoordAI[18, 24] = false;
+            noMouvCoordAI[20, 0] = false;
+            noMouvCoordAI[20, 23] = false;
+            noMouvCoordAI[20, 1] = false;
+            noMouvCoordAI[20, 24] = false;
         }
 
-        public void faireDeplacement(KeyEventArgs key) { 
+        public void faireDeplacement(KeyEventArgs key)
+        {
             int x2 = h.x;
             int y2 = h.y;
-                        
+
             if (key.KeyCode == Keys.W)
             {
                 y2--;
@@ -358,7 +427,8 @@ namespace TP2
                             h.currentDir = h.haut2;
                             Refresh();
                             up++;
-                        } else if (up == 1)
+                        }
+                        else if (up == 1)
                         {
                             h.currentDir = h.haut3;
                             Refresh();
@@ -380,7 +450,8 @@ namespace TP2
                             h.currentDir = h.gauche2;
                             Refresh();
                             left++;
-                        } else if (left == 1)
+                        }
+                        else if (left == 1)
                         {
                             h.currentDir = h.gauche1;
                             Refresh();
@@ -391,7 +462,7 @@ namespace TP2
             }
             else if (key.KeyCode == Keys.S)
             {
-                y2++;                
+                y2++;
                 if (y2 <= 24)
                 {
                     if (noMouvCoord[x2, y2])
@@ -402,12 +473,13 @@ namespace TP2
                             h.currentDir = h.bas2;
                             Refresh();
                             down++;
-                        } else if (down == 1)
+                        }
+                        else if (down == 1)
                         {
                             h.currentDir = h.bas3;
                             Refresh();
                             down--;
-                        }                        
+                        }
                     }
                 }
             }
@@ -419,12 +491,13 @@ namespace TP2
                     if (noMouvCoord[x2, y2])
                     {
                         h.x++;
-                        if(right == 0)
+                        if (right == 0)
                         {
                             h.currentDir = h.droite2;
                             Refresh();
                             right++;
-                        } else if (right == 1)
+                        }
+                        else if (right == 1)
                         {
                             h.currentDir = h.droite1;
                             Refresh();
@@ -433,25 +506,73 @@ namespace TP2
                     }
                 }
             }
-        }        
+            x2 = h.x;
+            y2 = h.y;
+
+            enableBuyAnimals = interieurEnclos[x2, y2];
+
+            for (int i = 0; i < bmInteraction.GetLength(0); i++)
+            {
+                for (int j = 0; j < bmInteraction.GetLength(1); j++)
+                {
+                    bmInteraction[i, j] = false;
+                }
+            }
+            //fix this border bs
+            bmInteraction[x2 - 1, y2 - 1] = true;
+            bmInteraction[x2 - 1, y2] = true;
+            bmInteraction[x2 - 1, y2 + 1] = true;
+            bmInteraction[x2, y2 - 1] = true;
+            bmInteraction[x2, y2 + 1] = true;
+            bmInteraction[x2 + 1, y2 - 1] = true;
+            bmInteraction[x2 + 1, y2] = true;
+            bmInteraction[x2 + 1, y2 + 1] = true;
+        }
 
         private void Map_MouseClick(object sender, MouseEventArgs e)
-        {            
+        {
             switch (animalChoisi)
             {
-                case "Lion":                    
+                case "Lion":
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    {                        
+                        //listeAnimaux.Add();
+                        bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
+                    }
                     break;
                 case "Mouton":
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    {
+                        bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
+                    }
                     break;
                 case "Grizzly":
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    {
+                        bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
+                    }
                     break;
                 case "Rhino":
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    {
+                        bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
+                    }
                     break;
                 case "Licorne":
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    {
+                        bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
+                    }
                     break;
                 case "Buffle":
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    {
+                        bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
+                    }
                     break;
             }
+            Refresh();
+            animalChoisi = "";
         }
     }
 }

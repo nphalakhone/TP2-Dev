@@ -66,11 +66,19 @@ namespace TP2
             BtnAchatRhino.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixRhino.Text, "Rhino"); };
             BtnAchatLicorne.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixLicorne.Text, "Licorne"); };
             BtnAchatBuffle.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixBuffle.Text, "Buffle"); };
+
+            BtnAchatLion.Enabled = false;
+            BtnAchatMouton.Enabled = false;
+            BtnAchatGrizzly.Enabled = false;
+            BtnAchatRhino.Enabled = false;
+            BtnAchatLicorne.Enabled = false;
+            BtnAchatBuffle.Enabled = false;
         }
 
         private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
         {
             m.faireDeplacement(e);
+            Enable_Btn_Animal(m.enableBuyAnimals);
         }
 
         private void TimerPrincipal_Tick(object sender, EventArgs e)
@@ -105,20 +113,50 @@ namespace TP2
             comptDate++;
         }
 
+        private void TimerAnimaux_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
         private void Acheter_Animal_Click(object sender, EventArgs e, string prix, string nomAnimal)
         {
-            //int price = Int32.Parse(prix);
-
-            //if ((argent - price) >= 0)
+            //if ((argent - Int32.Parse(prix)) >= 0)
             //{
                 m.animalChoisi = nomAnimal;
-            //}
+            //        argent -= Int32.Parse(prix);
+            //    }
         }
 
-        private void Mouse_Click_Animal(object sender, EventArgs e)
+        private void Enable_Btn_Animal(bool b)
         {
-
+            if (b)
+            {
+                BtnAchatLion.Enabled = true;
+                BtnAchatMouton.Enabled = true;
+                BtnAchatGrizzly.Enabled = true;
+                BtnAchatRhino.Enabled = true;
+                BtnAchatLicorne.Enabled = true;
+                BtnAchatBuffle.Enabled = true;
+            } else
+            {
+                BtnAchatLion.Enabled = false;
+                BtnAchatMouton.Enabled = false;
+                BtnAchatGrizzly.Enabled = false;
+                BtnAchatRhino.Enabled = false;
+                BtnAchatLicorne.Enabled = false;
+                BtnAchatBuffle.Enabled = false;
+            }
         }
-        
+
+        private void MappeMonde_KeyUp(object sender, KeyEventArgs e)
+        {
+            m.faireDeplacement(e);
+            Enable_Btn_Animal(m.enableBuyAnimals);
+        }
     }
 }

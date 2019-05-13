@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
-    abstract class Animal
+    enum Animaux
     {
-        public int nbAnimaux { get; set; }
+        Lion,
+        Mouton,
+        Grizzly,
+        Rhinoceros,
+        Licorne,
+        Buffle
+    };
+    class Animal
+    {
+        public static int nbAnimaux { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
         private string TypeAnimal;
         private int TempsGestation;
         private int TempsAvantAdulte;
@@ -23,7 +34,7 @@ namespace TP2
             nbAnimaux = 0;
         }
 
-        public Animal(string type, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe)
+        public Animal(string type, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe, int x, int y)
         {
             TypeAnimal = type;
             TempsGestation = gestation;

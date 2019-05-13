@@ -34,21 +34,5 @@ namespace TP2
             this.y = 5;
             currentDir = bas1;
         }
-
-        public void paintDeplacement()
-        {
-
-        }
-
-        public void faireDeplacement()
-        {
-            //zone autour de l'hero dans laquelle il peut se déplacer
-        }
-
-        public void faireInterraction()
-        {
-            //zone d'interaction
-        }
-        
     }
 }
