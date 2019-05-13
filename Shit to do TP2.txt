@@ -1,12 +1,12 @@
 Interfaces Utilisateur -
 -Info (day/$/nb animal/nb trash) - Done
--Interaction(mouse click)
+-Interaction(mouse click) 
 
 Hero - Done
 -Places he can move - Done
 
 Animal-
--Create class 
+-Create class - Done
 -Create thread random mouvement
 -Left Click animal = feed + right sound
 
@@ -38,7 +38,7 @@ Map-
 -Add deco
 
 Left Click-
--Buy new animal(Adult + Random Gender)
+-Buy new animal(Adult + Random Gender) - Done
 -Feed
 -Pick up trash
 -Hire janitor
