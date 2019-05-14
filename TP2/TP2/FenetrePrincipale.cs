@@ -47,7 +47,7 @@ namespace TP2
             comptDate = 1;
             moisDate = 1;
             anneeDate = 2019;
-            argent = ConvertLabelToInt(LblArgent);
+            argent = 100000;/*ConvertLabelToInt(LblArgent);*/
             PicConcierge.Image = GeneratorPersonnage.GetTile(40);
             tempsPasser = 0;
         }
@@ -83,9 +83,6 @@ namespace TP2
 
         private void TimerPrincipal_Tick(object sender, EventArgs e)
         {
-            //argent = int.Parse(LblArgent.Text);
-            //argent += 1;
-            //LblArgent.Text = argent.ToString();
             if ((comptDate == 32 && dates.Equals(Date.Janvier.ToString()))
                 || (comptDate == 32 && dates.Equals(Date.Mars.ToString()))
                 || (comptDate == 32 && dates.Equals(Date.Mai.ToString()))
