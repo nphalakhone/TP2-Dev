@@ -31,7 +31,6 @@ namespace TP2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.MappeMonde = new TP2.Map();
             this.LblArgent = new System.Windows.Forms.Label();
             this.LblDate = new System.Windows.Forms.Label();
             this.LblDechets = new System.Windows.Forms.Label();
@@ -63,6 +62,10 @@ namespace TP2
             this.LblPrixBuffle = new System.Windows.Forms.Label();
             this.TimerVisiteurEtConcierge = new System.Windows.Forms.Timer(this.components);
             this.TimerAnimaux = new System.Windows.Forms.Timer(this.components);
+            this.BtnEngageConcierge = new System.Windows.Forms.Button();
+            this.PicConcierge = new System.Windows.Forms.PictureBox();
+            this.LblInfoConcierge = new System.Windows.Forms.Label();
+            this.MappeMonde = new TP2.Map();
             ((System.ComponentModel.ISupportInitialize)(this.PicMouton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).BeginInit();
@@ -73,17 +76,8 @@ namespace TP2
             ((System.ComponentModel.ISupportInitialize)(this.PicRhino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLicorne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConcierge)).BeginInit();
             this.SuspendLayout();
-            // 
-            // MappeMonde
-            // 
-            this.MappeMonde.animalChoisi = null;
-            this.MappeMonde.enableBuyAnimals = false;
-            this.MappeMonde.Location = new System.Drawing.Point(0, 50);
-            this.MappeMonde.Name = "MappeMonde";
-            this.MappeMonde.Size = new System.Drawing.Size(1376, 832);
-            this.MappeMonde.TabIndex = 0;
-            this.MappeMonde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyUp);
             // 
             // LblArgent
             // 
@@ -109,7 +103,7 @@ namespace TP2
             // 
             this.LblDechets.AutoSize = true;
             this.LblDechets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDechets.Location = new System.Drawing.Point(680, 15);
+            this.LblDechets.Location = new System.Drawing.Point(680, 18);
             this.LblDechets.Name = "LblDechets";
             this.LblDechets.Size = new System.Drawing.Size(101, 20);
             this.LblDechets.TabIndex = 3;
@@ -247,7 +241,7 @@ namespace TP2
             // PicDechets
             // 
             this.PicDechets.Image = global::TP2.Properties.Resources.trashcan;
-            this.PicDechets.Location = new System.Drawing.Point(633, 3);
+            this.PicDechets.Location = new System.Drawing.Point(633, 6);
             this.PicDechets.Name = "PicDechets";
             this.PicDechets.Size = new System.Drawing.Size(41, 41);
             this.PicDechets.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -373,11 +367,54 @@ namespace TP2
             this.TimerAnimaux.Interval = 1000;
             this.TimerAnimaux.Tick += new System.EventHandler(this.TimerAnimaux_Tick);
             // 
+            // BtnEngageConcierge
+            // 
+            this.BtnEngageConcierge.Location = new System.Drawing.Point(830, 18);
+            this.BtnEngageConcierge.Name = "BtnEngageConcierge";
+            this.BtnEngageConcierge.Size = new System.Drawing.Size(131, 23);
+            this.BtnEngageConcierge.TabIndex = 28;
+            this.BtnEngageConcierge.Text = "Engagez un conicerge";
+            this.BtnEngageConcierge.UseVisualStyleBackColor = true;
+            this.BtnEngageConcierge.Click += new System.EventHandler(this.Acheter_Concierge_Click);
+            // 
+            // PicConcierge
+            // 
+            this.PicConcierge.Location = new System.Drawing.Point(967, 6);
+            this.PicConcierge.Name = "PicConcierge";
+            this.PicConcierge.Size = new System.Drawing.Size(41, 41);
+            this.PicConcierge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicConcierge.TabIndex = 29;
+            this.PicConcierge.TabStop = false;
+            // 
+            // LblInfoConcierge
+            // 
+            this.LblInfoConcierge.AutoSize = true;
+            this.LblInfoConcierge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoConcierge.Location = new System.Drawing.Point(1014, 18);
+            this.LblInfoConcierge.Name = "LblInfoConcierge";
+            this.LblInfoConcierge.Size = new System.Drawing.Size(206, 20);
+            this.LblInfoConcierge.TabIndex = 30;
+            this.LblInfoConcierge.Text = "Frais de 2$ aux 60 jours.";
+            // 
+            // MappeMonde
+            // 
+            this.MappeMonde.animalChoisi = null;
+            this.MappeMonde.enableBuyAnimals = false;
+            this.MappeMonde.Location = new System.Drawing.Point(0, 50);
+            this.MappeMonde.Name = "MappeMonde";
+            this.MappeMonde.placedAnimal = false;
+            this.MappeMonde.Size = new System.Drawing.Size(1376, 832);
+            this.MappeMonde.TabIndex = 0;
+            this.MappeMonde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyUp);
+            // 
             // FenetrePrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 938);
+            this.Controls.Add(this.LblInfoConcierge);
+            this.Controls.Add(this.PicConcierge);
+            this.Controls.Add(this.BtnEngageConcierge);
             this.Controls.Add(this.LblPrixBuffle);
             this.Controls.Add(this.LblPrixLicorne);
             this.Controls.Add(this.LblPrixRhino);
@@ -423,6 +460,7 @@ namespace TP2
             ((System.ComponentModel.ISupportInitialize)(this.PicRhino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLicorne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConcierge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,6 +503,9 @@ namespace TP2
 
         private Timer TimerVisiteurEtConcierge;
         private Timer TimerAnimaux;
+        private Button BtnEngageConcierge;
+        private PictureBox PicConcierge;
+        private Label LblInfoConcierge;
     }
 }
 

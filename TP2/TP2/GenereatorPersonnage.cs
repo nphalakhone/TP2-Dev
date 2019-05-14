@@ -57,6 +57,17 @@ namespace TP2
         public static int femme21rr2 = 38;
         public static int femme21r = 39;
 
+        public static int conciergef = 40;
+        public static int conciergeb = 41;
+        public static int conciergel = 42;
+        public static int conciergedr = 43;
+        public static int conciergeur = 44;
+        public static int conciergelr1 = 45;
+        public static int conciergelr2 = 46;
+        public static int conciergerr1 = 47;
+        public static int conciergerr2 = 48;
+        public static int concierger = 49;
+
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
 
@@ -123,6 +134,18 @@ namespace TP2
             listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 8 });
             listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 9 });
 
+            // Concierge
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 1 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 3 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 4 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 5 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 6 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 7 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 8 });
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 9 });
+
             // Homme 1
             listeBitmap.Add(LoadTile(homme1f));
             listeBitmap.Add(LoadTile(homme1b));
@@ -147,7 +170,7 @@ namespace TP2
             listeBitmap.Add(LoadTile(homme21rr2));
             listeBitmap.Add(LoadTile(homme21r));
 
-            //Femme 1
+            // Femme 1
             listeBitmap.Add(LoadTile(femme1f));
             listeBitmap.Add(LoadTile(femme1b));
             listeBitmap.Add(LoadTile(femme1l));
@@ -159,7 +182,7 @@ namespace TP2
             listeBitmap.Add(LoadTile(femme1rr2));
             listeBitmap.Add(LoadTile(femme1r));
 
-            //Femme 2
+            // Femme 2
             listeBitmap.Add(LoadTile(femme21f));
             listeBitmap.Add(LoadTile(femme21b));
             listeBitmap.Add(LoadTile(femme21l));
@@ -170,6 +193,18 @@ namespace TP2
             listeBitmap.Add(LoadTile(femme21rr1));
             listeBitmap.Add(LoadTile(femme21rr2));
             listeBitmap.Add(LoadTile(femme21r));
+
+            // Conicerge
+            listeBitmap.Add(LoadTile(conciergef));
+            listeBitmap.Add(LoadTile(conciergeb));
+            listeBitmap.Add(LoadTile(conciergel));
+            listeBitmap.Add(LoadTile(conciergedr));
+            listeBitmap.Add(LoadTile(conciergeur));
+            listeBitmap.Add(LoadTile(conciergelr1));
+            listeBitmap.Add(LoadTile(conciergelr2));
+            listeBitmap.Add(LoadTile(conciergerr1));
+            listeBitmap.Add(LoadTile(conciergerr2));
+            listeBitmap.Add(LoadTile(concierger));
         }
 
         public static Bitmap GetTile(int posListe)

@@ -30,12 +30,14 @@ namespace TP2
     public partial class FenetrePrincipale : Form
     {
         Map m;
+        Concierge c = new Concierge();
         int argent;
         int tempsMax = 300000; // 5 minustes in milliseconds
         int comptDate;
         int moisDate;
         int anneeDate;
         string dates;
+        int tempsPasser;
 
         public FenetrePrincipale()
         {
@@ -47,6 +49,8 @@ namespace TP2
             moisDate = 1;
             anneeDate = 2019;
             argent = ConvertLabelToInt(LblArgent);
+            PicConcierge.Image = c.imgConc;
+            tempsPasser = 0;
         }
 
         protected override CreateParams CreateParams
@@ -112,6 +116,7 @@ namespace TP2
             }
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
+            tempsPasser++;
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
@@ -149,6 +154,8 @@ namespace TP2
                 BtnAchatRhino.Enabled = true;
                 BtnAchatLicorne.Enabled = true;
                 BtnAchatBuffle.Enabled = true;
+
+                BtnEngageConcierge.Enabled = false;
             } else
             {
                 BtnAchatLion.Enabled = false;
@@ -157,6 +164,8 @@ namespace TP2
                 BtnAchatRhino.Enabled = false;
                 BtnAchatLicorne.Enabled = false;
                 BtnAchatBuffle.Enabled = false;
+
+                BtnEngageConcierge.Enabled = true;
             }
         }
 
@@ -171,6 +180,11 @@ namespace TP2
             string resultatString = new String(l.Text.Where(Char.IsDigit).ToArray());
             int i = Convert.ToInt32(resultatString);
             return i;
+        }
+
+        private void Acheter_Concierge_Click(object sender, EventArgs e)
+        {
+            m.conciergeChoisi = true;
         }
     }
 }

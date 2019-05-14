@@ -50,6 +50,8 @@ namespace TP2
 
         public string animalChoisi { get; set; }
 
+        public bool conciergeChoisi { get; set; }
+
         public bool placedAnimal { get; set; }
 
         public Map()
@@ -652,6 +654,10 @@ namespace TP2
                         }
                         break;
                 }
+            }
+            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi)
+            {
+                bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GenereatorPersonnage.GetTile(40);
             }
             Refresh();
             animalChoisi = "";
