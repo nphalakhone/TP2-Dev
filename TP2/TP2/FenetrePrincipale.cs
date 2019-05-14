@@ -178,8 +178,8 @@ namespace TP2
         private void MappeMonde_KeyUp(object sender, KeyEventArgs e)
         {
             m.faireDeplacementHero(e);
-            Enable_Btn_Animal(m.enableBuyAnimals);
             Enable_Btn_Janitor(m.heroOnlyArea);
+            Enable_Btn_Animal(m.enableBuyAnimals);
         }
 
         private void Enable_Btn_Janitor(bool heroOnlyArea)
