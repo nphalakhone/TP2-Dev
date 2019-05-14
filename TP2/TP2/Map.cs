@@ -248,6 +248,22 @@ namespace TP2
             dessinerAnimaux(gr);
 
             remplirNoMouvAnimal();
+
+            dessinerConcierge(gr);
+        }
+
+        private void dessinerConcierge(Graphics gr)
+        {
+            for (int i = 0; i < bmVisiteurEtConcierge.GetLength(0); i++)
+            {
+                for (int j = 0; j < bmVisiteurEtConcierge.GetLength(1); j++)
+                {
+                    if (bmVisiteurEtConcierge[i, j] != null)
+                    {
+                        gr.DrawImage(bmVisiteurEtConcierge[i, j], i * 32, j * 32, 32, 32);
+                    }
+                }
+            }
         }
 
         private void dessinerMap(Graphics gr)
@@ -661,6 +677,7 @@ namespace TP2
             }
             Refresh();
             animalChoisi = "";
+            conciergeChoisi = false;
         }
     }
 }
