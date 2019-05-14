@@ -52,10 +52,10 @@ namespace TP2
 
         public Image directionDepart;
 
-        List<Image> listHomme1 = new List<Image>();
-        List<Image> listHomme2 = new List<Image>();
-        List<Image> listFemme1 = new List<Image>();
-        List<Image> listFemme2 = new List<Image>();
+        public List<Image> listHomme1 = new List<Image>();
+        public List<Image> listHomme2 = new List<Image>();
+        public List<Image> listFemme1 = new List<Image>();
+        public List<Image> listFemme2 = new List<Image>();
 
         //0 = currentDir
         //1 = Bas1
@@ -176,12 +176,12 @@ namespace TP2
                 randPrenom = r.Next(6, 10);
                 if (randPerso == 1)
                 {
-                    type = 1;
+                    type = 3;
                     directionDepart = listFemme1.ElementAt(0);
                 }
                 else
                 {
-                    type = 2;
+                    type = 4;
                     directionDepart = listFemme2.ElementAt(0);
                 }
             }

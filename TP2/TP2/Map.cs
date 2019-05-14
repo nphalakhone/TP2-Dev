@@ -442,7 +442,9 @@ namespace TP2
 
         private void dessinerVisiteur(Graphics gr, int x, int y)
         {
-            gr.DrawImage(v.currentDirFemme2, x * 32, y * 32, 32, 32);
+
+            gr.DrawImage(v.directionDepart, x * 32, y * 32, 32, 32);
+
         }
 
         private void dessinerAnimaux(Graphics gr)
@@ -590,8 +592,8 @@ namespace TP2
             }
             x2 = h.x;
             y2 = h.y;
-            
-            heroOnlyArea = h.x > 37;            
+
+            heroOnlyArea = h.x > 37;
 
             enableBuyAnimals = interieurEnclos[x2, y2];
 
