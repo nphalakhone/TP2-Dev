@@ -13,10 +13,9 @@ namespace TP2
         public int y { get; set; }
         public int prixConcierge { get; set; }
         public static int nbConcierge { get; set; }
+        public int tempsPasserC;
 
         public Image imgConc;
-
-
 
         public Concierge()
         {
@@ -25,7 +24,9 @@ namespace TP2
 
             prixConcierge = 2;
 
-            imgConc = GenereatorPersonnage.GetTile(40);
+            imgConc = GeneratorPersonnage.GetTile(40);
+
+            tempsPasserC = 0;
 
             nbConcierge++;
         }

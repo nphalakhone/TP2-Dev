@@ -436,7 +436,7 @@ namespace TP2
 
         private void dessinerVisiteur(Graphics gr, int x, int y)
         {
-            gr.DrawImage(v.currentDirFemme2, x * 32, y * 32, 32, 32);
+            gr.DrawImage(v.directionDepart, x * 32, y * 32, 32, 32);
         }
 
         private void dessinerAnimaux(Graphics gr)
@@ -692,11 +692,10 @@ namespace TP2
             }
             else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi)
             {
-                bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GenereatorPersonnage.GetTile(40);
+                bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
+                conciergeChoisi = false;
             }
             Refresh();
-            animalChoisi = "";
-            conciergeChoisi = false;
         }
     }
 }
