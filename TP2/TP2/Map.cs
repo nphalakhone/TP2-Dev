@@ -32,7 +32,7 @@ namespace TP2
         bool[,] noMouvJanitor = new bool[43, 25];
         bool[,] noMouvAnimal = new bool[43, 25];
         bool[,] noMouvCoord = new bool[43, 25];
-        bool[,] noMouvCoordAI = new bool[38, 25];
+        bool[,] noMouvCoordAI = new bool[43, 25];
         Animaux?[,] enclosAnimal = new Animaux?[43, 25];
 
         public int sizeListeAnimaux { get; set; }
@@ -97,6 +97,7 @@ namespace TP2
                 for (int j = 0; j < noMouvCoord.GetLength(1); j++)
                 {
                     noMouvCoord[i, j] = true;
+                    noMouvCoordAI[i, j] = true;
                     interieurEnclos[i, j] = false;
                     bmInteraction[i, j] = false;
                     noMouvAnimal[i, j] = true;
@@ -302,14 +303,17 @@ namespace TP2
                     if (j2 == 6 && i2 == 10)
                     {
                         noMouvCoord[x2, y2] = true;
+                        noMouvCoordAI[x2, y2] = false;
                     }
                     else if ((j2 == 0 && i2 != 13) || (j2 == 6 && i2 != 13))
                     {
                         noMouvCoord[x2, y2] = false;
+                        noMouvCoordAI[x2, y2] = false;
                     }
                     else if ((i2 == 0 || i2 == 13) && (j2 != 0 || j2 != 6))
                     {
                         noMouvCoord[x2, y2] = false;
+                        noMouvCoordAI[x2, y2] = false;
                     }
                     else
                     {
@@ -329,7 +333,7 @@ namespace TP2
             {
                 gr.DrawImage(bmFenceVert[i2], 38 * 32, i2 * 32, 32, 32);
                 noMouvCoord[38, i2] = false;
-                noMouvCoordAI[37, i2] = false;
+                noMouvCoordAI[38, i2] = false;
             }
             noMouvCoord[38, 12] = true;
         }
@@ -344,6 +348,7 @@ namespace TP2
                 {
                     gr.DrawImage(bmHouse[i2, j2], x2 * 32, y2 * 32, 32, 32);
                     noMouvCoord[x2, y2] = false;
+                    noMouvCoordAI[x2, y2] = false;
                     y2++;
                 }
                 x2++;
@@ -362,6 +367,7 @@ namespace TP2
                 {
                     gr.DrawImage(bmWell[i2, j2], x2 * 32, y2 * 32, 32, 32);
                     noMouvCoord[x2, y2] = false;
+                    noMouvCoordAI[x2, y2] = false;
                     y2++;
                 }
                 x2++;
@@ -435,6 +441,7 @@ namespace TP2
             {
                 gr.DrawImage(bmApple[i2], x2 * 32, y2 * 32, 32, 32);
                 noMouvCoord[x2, y2] = false;
+                noMouvCoordAI[x2, y2] = false;
                 y2++;
 
                 x2++;
@@ -892,7 +899,7 @@ namespace TP2
                 }
                 sizeListeAnimaux = listeAnimaux.Count();
             }
-            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38)
+            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38 && noMouvCoordAI[e.X / 32, e.Y /32])
             {
                 conciergeChoisi = false;
                 listeConcierge.Add(new Concierge(e.X / 32, e.Y / 32));

@@ -169,9 +169,7 @@ namespace TP2
                 BtnAchatGrizzly.Enabled = false;
                 BtnAchatRhino.Enabled = false;
                 BtnAchatLicorne.Enabled = false;
-                BtnAchatBuffle.Enabled = false;
-
-                BtnEngageConcierge.Enabled = true;
+                BtnAchatBuffle.Enabled = false;                
             }
         }
 
