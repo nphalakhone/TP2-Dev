@@ -28,10 +28,12 @@ namespace TP2
 
         bool[,] interieurEnclos = new bool[43, 25];
 
+        int[,] numEnclos = new int[43, 25];
         bool[,] noMouvJanitor = new bool[43, 25];
         bool[,] noMouvAnimal = new bool[43, 25];
         bool[,] noMouvCoord = new bool[43, 25];
         bool[,] noMouvCoordAI = new bool[38, 25];
+        Animaux?[,] enclosAnimal = new Animaux?[43, 25];
 
         List<Animal> listeAnimaux = new List<Animal>();
         List<Concierge> listeConcierge = new List<Concierge>();
@@ -75,10 +77,10 @@ namespace TP2
             peuplerBitmapBenchSide();
             peuplerBitmapApple();
 
-            setBoolTables();
+            setTables();
         }
 
-        private void setBoolTables()
+        private void setTables()
         {
             for (int i = 0; i < noMouvCoord.GetLength(0); i++)
             {
@@ -89,6 +91,8 @@ namespace TP2
                     bmInteraction[i, j] = false;
                     noMouvAnimal[i, j] = true;
                     noMouvJanitor[i, j] = true;
+                    enclosAnimal[i, j] = null;
+                    numEnclos[i, j] = 0;
                 }
             }
         }
@@ -226,10 +230,10 @@ namespace TP2
 
             dessinerMap(gr);
 
-            dessinerEnclos(gr, 4, 4);
-            dessinerEnclos(gr, 21, 4);
-            dessinerEnclos(gr, 4, 14);
-            dessinerEnclos(gr, 21, 14);
+            dessinerEnclos(gr, 4, 4, 1);
+            dessinerEnclos(gr, 21, 4, 2);
+            dessinerEnclos(gr, 4, 14, 3);
+            dessinerEnclos(gr, 21, 14, 4);
 
             dessinerEnclosVertical(gr);
 
@@ -258,19 +262,6 @@ namespace TP2
             dessinerConcierge(gr);
         }
 
-        private void dessinerConcierge(Graphics gr)
-        {
-            for (int i = 0; i < bmVisiteurEtConcierge.GetLength(0); i++)
-            {
-                for (int j = 0; j < bmVisiteurEtConcierge.GetLength(1); j++)
-                {
-                    if (bmVisiteurEtConcierge[i, j] != null)
-                    {
-                        gr.DrawImage(bmVisiteurEtConcierge[i, j], i * 32, j * 32, 32, 32);
-                    }
-                }
-            }
-        }
 
         private void dessinerMap(Graphics gr)
         {
@@ -283,7 +274,7 @@ namespace TP2
             }
         }
 
-        private void dessinerEnclos(Graphics gr, int x, int y)
+        private void dessinerEnclos(Graphics gr, int x, int y, int numeroEnclos)
         {
             int y2 = y;
             int x2 = x;
@@ -307,6 +298,7 @@ namespace TP2
                     else
                     {
                         interieurEnclos[x2, y2] = true;
+                        numEnclos[x2, y2] = numeroEnclos;
                     }
                     y2++;
                 }
@@ -456,6 +448,20 @@ namespace TP2
                     if (bmAnimaux[i, j] != null)
                     {
                         gr.DrawImage(bmAnimaux[i, j], i * 32, j * 32, 32, 32);
+                    }
+                }
+            }
+        }
+
+        private void dessinerConcierge(Graphics gr)
+        {
+            for (int i = 0; i < bmVisiteurEtConcierge.GetLength(0); i++)
+            {
+                for (int j = 0; j < bmVisiteurEtConcierge.GetLength(1); j++)
+                {
+                    if (bmVisiteurEtConcierge[i, j] != null)
+                    {
+                        gr.DrawImage(bmVisiteurEtConcierge[i, j], i * 32, j * 32, 32, 32);
                     }
                 }
             }
@@ -763,56 +769,68 @@ namespace TP2
                 switch (animalChoisi)
                 {
                     case "Lion":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32] 
+                            && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Lion))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                             placedAnimal = true;
+                            remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                         }
                         animalChoisi = "";
                         break;
                     case "Mouton":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
+                            && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Mouton))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                             placedAnimal = true;
+                            remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                         }
                         animalChoisi = "";
                         break;
                     case "Grizzly":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
+                            && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Grizzly))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                             placedAnimal = true;
+                            remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                         }
                         animalChoisi = "";
                         break;
                     case "Rhino":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
+                            && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Rhinoceros))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                             placedAnimal = true;
+                            remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                         }
                         animalChoisi = "";
                         break;
                     case "Licorne":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
+                            && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Licorne))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                             placedAnimal = true;
+                            remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                         }
                         animalChoisi = "";
                         break;
                     case "Buffle":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
+                            && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Buffle))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                             placedAnimal = true;
+                            remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                         }
                         animalChoisi = "";
                         break;
@@ -820,11 +838,25 @@ namespace TP2
             }
             else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38)
             {
+                conciergeChoisi = false;
                 listeConcierge.Add(new Concierge(e.X / 32, e.Y / 32));
                 bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
             }
             Refresh();
-            conciergeChoisi = false;
+        }
+
+        private void remplirEnclosAnimal(MouseEventArgs e, Animaux a)
+        {
+            for (int i = 0; i < numEnclos.GetLength(0); i++)
+            {
+                for (int j = 0; j < numEnclos.GetLength(1); j++)
+                {
+                    if(numEnclos[i, j] == numEnclos[e.X / 32, e.Y / 32])
+                    {
+                        enclosAnimal[i, j] = a;
+                    }
+                }
+            }
         }
     }
 }
