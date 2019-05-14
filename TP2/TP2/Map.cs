@@ -40,7 +40,7 @@ namespace TP2
 
         List<Animal> listeAnimaux { get; set; }
         List<Concierge> listeConcierge { get; set; }
-        public List<Visiteur> listeVisiteur { get; set; }
+        public List<Visiteur> listeVisiteur = new List<Visiteur>();
 
         int xSortie = 19;
         int ySortie = 0;
@@ -71,7 +71,6 @@ namespace TP2
 
             listeAnimaux = new List<Animal>();
             listeConcierge = new List<Concierge>();
-            listeVisiteur = new List<Visiteur>();
             
             heroOnlyArea = true;
         }
@@ -705,7 +704,7 @@ namespace TP2
                         {
                             v.currentDir = l.ElementAt(6);
                             Refresh();
-                            v.leftAI--;
+                            v.leftAI++;
                         }
                         else if (v.leftAI == 2)
                         {
@@ -757,7 +756,7 @@ namespace TP2
                         {
                             v.currentDir = l.ElementAt(3);
                             Refresh();
-                            v.rightAI--;
+                            v.rightAI++;
                         }
                         else if (v.rightAI == 2)
                         {
@@ -846,7 +845,6 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Mouton))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
-                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -858,7 +856,6 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Grizzly))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
-                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -870,7 +867,6 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Rhinoceros))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
-                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -882,7 +878,6 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Licorne))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
-                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -894,7 +889,6 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Buffle))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
-                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);

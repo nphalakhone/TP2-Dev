@@ -408,6 +408,8 @@ namespace TP2
             this.MappeMonde.Name = "MappeMonde";
             this.MappeMonde.placedAnimal = false;
             this.MappeMonde.Size = new System.Drawing.Size(1376, 832);
+            this.MappeMonde.sizeListeAnimaux = 0;
+            this.MappeMonde.sizeListeVisiteur = 0;
             this.MappeMonde.TabIndex = 0;
             this.MappeMonde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyUp);
             // 

@@ -114,7 +114,6 @@ namespace TP2
                 Visiteur vis = new Visiteur();
                 m.listeVisiteur.Add(vis);
                 m.sizeListeVisiteur++;
-                Refresh();
             }
         }
 
