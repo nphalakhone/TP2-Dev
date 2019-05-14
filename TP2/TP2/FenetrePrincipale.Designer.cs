@@ -359,11 +359,13 @@ namespace TP2
             // 
             // TimerVisiteurEtConcierge
             // 
+            this.TimerVisiteurEtConcierge.Enabled = true;
             this.TimerVisiteurEtConcierge.Interval = 1000;
             this.TimerVisiteurEtConcierge.Tick += new System.EventHandler(this.TimerVisiteurEtConcierge_Tick);
             // 
             // TimerAnimaux
             // 
+            this.TimerAnimaux.Enabled = true;
             this.TimerAnimaux.Interval = 1000;
             this.TimerAnimaux.Tick += new System.EventHandler(this.TimerAnimaux_Tick);
             // 
@@ -401,6 +403,7 @@ namespace TP2
             this.MappeMonde.animalChoisi = null;
             this.MappeMonde.conciergeChoisi = false;
             this.MappeMonde.enableBuyAnimals = false;
+            this.MappeMonde.heroOnlyArea = true;
             this.MappeMonde.Location = new System.Drawing.Point(0, 50);
             this.MappeMonde.Name = "MappeMonde";
             this.MappeMonde.placedAnimal = false;

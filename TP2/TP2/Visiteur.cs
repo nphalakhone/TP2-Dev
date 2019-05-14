@@ -36,7 +36,7 @@ namespace TP2
     };
 
 
-    class Visiteur
+    public class Visiteur
     {
         public int nbVisiteur { get; set; }
         public int dechets { get; set; }
@@ -50,24 +50,30 @@ namespace TP2
         public int x { get; set; }
         public int y { get; set; }
 
+        public int upAI { get; set; }
+        public int downAI { get; set; }
+        public int leftAI { get; set; }
+        public int rightAI { get; set; }
+
         public Image directionDepart;
+
+        public Image currentDir;
 
         public List<Image> listHomme1 = new List<Image>();
         public List<Image> listHomme2 = new List<Image>();
         public List<Image> listFemme1 = new List<Image>();
         public List<Image> listFemme2 = new List<Image>();
 
-        //0 = currentDir
-        //1 = Bas1
-        //2 = Bas2
-        //3 = Droite1
-        //4 = Droite2
-        //5 = Droite3
-        //6 = Gauche1
-        //7 = Gauche2
-        //8 = Gauche3
-        //9 = Haut1
-        //10 = Haut2
+        //0 = Bas1
+        //1 = Bas2
+        //2 = Droite1
+        //3 = Droite2
+        //4 = Droite3
+        //5 = Gauche1
+        //6 = Gauche2
+        //7 = Gauche3
+        //8 = Haut1
+        //9 = Haut2
 
         //public Image currentDirHomme1 = GeneratorPersonnage.GetTile(1);
         //public Image currentDirHomme2 = GeneratorPersonnage.GetTile(11);
@@ -139,6 +145,10 @@ namespace TP2
         public Visiteur(/*int x2, int y2*/)
         {
             peuplerListPersonnages();
+            upAI = 0;
+            downAI = 0;
+            leftAI = 0;
+            rightAI = 0;
 
             this.x = 19;
             this.y = 24;
@@ -192,7 +202,6 @@ namespace TP2
 
         private void peuplerListPersonnages()
         {
-            listHomme1.Add(GeneratorPersonnage.GetTile(1));
             listHomme1.Add(GeneratorPersonnage.GetTile(0));
             listHomme1.Add(GeneratorPersonnage.GetTile(3));
             listHomme1.Add(GeneratorPersonnage.GetTile(9));
@@ -204,7 +213,6 @@ namespace TP2
             listHomme1.Add(GeneratorPersonnage.GetTile(1));
             listHomme1.Add(GeneratorPersonnage.GetTile(4));
 
-            listHomme2.Add(GeneratorPersonnage.GetTile(11));
             listHomme2.Add(GeneratorPersonnage.GetTile(10));
             listHomme2.Add(GeneratorPersonnage.GetTile(13));
             listHomme2.Add(GeneratorPersonnage.GetTile(19));
@@ -216,7 +224,6 @@ namespace TP2
             listHomme2.Add(GeneratorPersonnage.GetTile(11));
             listHomme2.Add(GeneratorPersonnage.GetTile(14));
 
-            listFemme1.Add(GeneratorPersonnage.GetTile(21));
             listFemme1.Add(GeneratorPersonnage.GetTile(20));
             listFemme1.Add(GeneratorPersonnage.GetTile(23));
             listFemme1.Add(GeneratorPersonnage.GetTile(29));
@@ -228,7 +235,6 @@ namespace TP2
             listFemme1.Add(GeneratorPersonnage.GetTile(21));
             listFemme1.Add(GeneratorPersonnage.GetTile(24));
 
-            listFemme2.Add(GeneratorPersonnage.GetTile(31));
             listFemme2.Add(GeneratorPersonnage.GetTile(30));
             listFemme2.Add(GeneratorPersonnage.GetTile(33));
             listFemme2.Add(GeneratorPersonnage.GetTile(39));
