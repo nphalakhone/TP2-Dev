@@ -671,7 +671,7 @@ namespace TP2
                 {
                     if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
-                        h.y--;
+                        v.y--;
                         if (v.upAI == 0)
                         {
                             v.currentDir = l.ElementAt(9);
@@ -694,7 +694,7 @@ namespace TP2
                 {
                     if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
-                        h.x--;
+                        v.x--;
                         if (v.leftAI == 0)
                         {
                             v.currentDir = l.ElementAt(7);
@@ -723,7 +723,7 @@ namespace TP2
                 {
                     if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
-                        h.y++;
+                        v.y++;
                         if (v.downAI == 0)
                         {
                             v.currentDir = l.ElementAt(1);
@@ -746,7 +746,7 @@ namespace TP2
                 {
                     if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
-                        h.x++;
+                        v.x++;
                         if (v.rightAI == 0)
                         {
                             v.currentDir = l.ElementAt(4);
@@ -834,6 +834,7 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Lion))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -845,6 +846,7 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Mouton))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -856,6 +858,7 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Grizzly))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -867,6 +870,7 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Rhinoceros))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -878,6 +882,7 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Licorne))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -889,6 +894,7 @@ namespace TP2
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Buffle))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
