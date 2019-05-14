@@ -50,6 +50,7 @@ namespace TP2
         public int y { get; set; }
 
         public Image directionDepart = null;
+
         public Image currentDirHomme1 = GeneratorPersonnage.GetTile(1);
         public Image currentDirHomme2 = GeneratorPersonnage.GetTile(11);
         public Image currentDirFemme1 = GeneratorPersonnage.GetTile(21);

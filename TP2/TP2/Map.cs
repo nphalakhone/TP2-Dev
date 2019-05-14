@@ -28,11 +28,13 @@ namespace TP2
 
         bool[,] interieurEnclos = new bool[43, 25];
 
+        bool[,] noMouvJanitor = new bool[43, 25];
         bool[,] noMouvAnimal = new bool[43, 25];
         bool[,] noMouvCoord = new bool[43, 25];
         bool[,] noMouvCoordAI = new bool[38, 25];
 
         List<Animal> listeAnimaux = new List<Animal>();
+        List<Concierge> listeConcierge = new List<Concierge>();
 
         int xSortie = 19;
         int ySortie = 0;
@@ -84,6 +86,7 @@ namespace TP2
                     interieurEnclos[i, j] = false;
                     bmInteraction[i, j] = false;
                     noMouvAnimal[i, j] = true;
+                    noMouvJanitor[i, j] = true;
                 }
             }
         }
@@ -248,6 +251,7 @@ namespace TP2
             dessinerAnimaux(gr);
 
             remplirNoMouvAnimal();
+            remplirNoMouvJanitor();
 
             dessinerConcierge(gr);
         }
@@ -466,7 +470,22 @@ namespace TP2
             foreach (Animal a in listeAnimaux)
             {
                 noMouvAnimal[a.x, a.y] = false;
-                //Console.WriteLine(a.TypeAnimal.ToString() + " " + a.x + " " + a.y);
+            }
+        }
+
+        private void remplirNoMouvJanitor()
+        {
+            for (int i = 0; i < noMouvJanitor.GetLength(0); i++)
+            {
+                for (int j = 0; j < noMouvJanitor.GetLength(1); j++)
+                {
+                    noMouvJanitor[i, j] = true;
+                }
+            }
+
+            foreach (Concierge c in listeConcierge)
+            {
+                noMouvJanitor[c.x, c.y] = false;
             }
         }
 
@@ -480,7 +499,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
                         h.y--;
                         if (up == 0)
@@ -503,7 +522,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
                         h.x--;
                         if (left == 0)
@@ -526,7 +545,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
                         h.y++;
                         if (down == 0)
@@ -549,7 +568,7 @@ namespace TP2
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
                     {
                         h.x++;
                         if (right == 0)
@@ -692,6 +711,7 @@ namespace TP2
             }
             else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi)
             {
+                listeConcierge.Add(new Concierge(e.X / 32, e.Y / 32));
                 bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
                 conciergeChoisi = false;
             }

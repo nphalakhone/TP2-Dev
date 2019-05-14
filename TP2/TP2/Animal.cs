@@ -17,37 +17,78 @@ namespace TP2
     };
     class Animal
     {
-        public static int nbAnimaux { get; set; }
         public int x { get; set; }
         public int y { get; set; }
         public Animaux TypeAnimal { get; set; }
         private int TempsGestation;
         private int TempsAvantAdulte;
         private int TempsAvantNourrir;
-        private bool? Genre; //true = M | false = F
-        private bool? Adulte; //true = adulte | false = bebe
-        private bool? Nourri; //true = nourri | false = faim
+        private bool Genre; //true = M | false = F
+        private bool Adulte; //true = adulte | false = bebe
+        private bool Nourri; //true = nourri | false = faim
         private bool? AttendBebe; //doit être une femelle adulte, en présence d’un mâle adulte dans le même enclos
 
         public Animal(Animaux type, int x2, int y2)
         {
-            nbAnimaux++;
             TypeAnimal = type;
             x = x2;
             y = y2;
-        }
+            Adulte = true;
+            Nourri = true;
 
-        public Animal(Animaux type, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe, int x, int y)
-        {
-            TypeAnimal = type;
-            TempsGestation = gestation;
-            TempsAvantAdulte = avAdulte;
-            TempsAvantNourrir = avNourrir;
-            Genre = genre;
-            Adulte = adulte;
-            Nourri = nourri;
-            AttendBebe = attendBebe;
-            nbAnimaux++;
+            Random rng = new Random();
+            int randomGenre = rng.Next(0, 1);
+            if (randomGenre == 0)
+            {
+                Genre = true;
+            }
+            else
+            {
+                Genre = false;
+            }
+
+            switch (TypeAnimal)
+            {
+                case Animaux.Lion:
+                    TempsGestation = 110;
+                    TempsAvantAdulte = 110;
+                    TempsAvantNourrir = 60;
+                    break;
+                case Animaux.Mouton:
+                    TempsGestation = 150;
+                    TempsAvantAdulte = 150;
+                    TempsAvantNourrir = 60;
+                    break;
+                case Animaux.Grizzly:
+                    TempsGestation = 220;
+                    TempsAvantAdulte = 220;
+                    TempsAvantNourrir = 60;
+                    break;
+                case Animaux.Rhinoceros:
+                    TempsGestation = 480;
+                    TempsAvantAdulte = 480;
+                    TempsAvantNourrir = 90;
+                    break;
+                case Animaux.Licorne:
+                    TempsGestation = 360;
+                    TempsAvantAdulte = 360;
+                    TempsAvantNourrir = 90;
+                    break;
+                case Animaux.Buffle:
+                    TempsGestation = 340;
+                    TempsAvantAdulte = 340;
+                    TempsAvantNourrir = 90;
+                    break;
+            }
+
+            if (Genre)
+            {
+                AttendBebe = null;
+            }
+            else
+            {
+                AttendBebe = false;
+            }
         }
     }
 }

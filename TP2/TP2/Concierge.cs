@@ -17,16 +17,14 @@ namespace TP2
 
         public Image imgConc;
 
-        public Concierge()
+        public Concierge(int x2, int y2)
         {
-            x = 0;
-            y = 0;
+            x = x2;
+            y = y2;
 
             prixConcierge = 2;
 
             imgConc = GeneratorPersonnage.GetTile(40);
-
-            tempsPasserC = 0;
 
             nbConcierge++;
         }
