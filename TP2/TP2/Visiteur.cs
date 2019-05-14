@@ -57,87 +57,89 @@ namespace TP2
         List<Image> listFemme1 = new List<Image>();
         List<Image> listFemme2 = new List<Image>();
 
-        //currentDir
-        //Bas1
-        //Bas2
-        //Droite1
-        //Droite2
-        //Droite3
-        //Gauche1
-        //Gauche2
-        //Gauche3
-        //Haut1
-        //Haut2
+        //0 = currentDir
+        //1 = Bas1
+        //2 = Bas2
+        //3 = Droite1
+        //4 = Droite2
+        //5 = Droite3
+        //6 = Gauche1
+        //7 = Gauche2
+        //8 = Gauche3
+        //9 = Haut1
+        //10 = Haut2
 
-        public Image currentDirHomme1 = GeneratorPersonnage.GetTile(1);
-        public Image currentDirHomme2 = GeneratorPersonnage.GetTile(11);
-        public Image currentDirFemme1 = GeneratorPersonnage.GetTile(21);
-        public Image currentDirFemme2 = GeneratorPersonnage.GetTile(31);
+        //public Image currentDirHomme1 = GeneratorPersonnage.GetTile(1);
+        //public Image currentDirHomme2 = GeneratorPersonnage.GetTile(11);
+        //public Image currentDirFemme1 = GeneratorPersonnage.GetTile(21);
+        //public Image currentDirFemme2 = GeneratorPersonnage.GetTile(31);
 
         
-        // Images homme 1
+        //// Images homme 1
         
-        public Image premHommeBas1 = GeneratorPersonnage.GetTile(0);
-        public Image premHommeBas2 = GeneratorPersonnage.GetTile(3);
+        //public Image premHommeBas1 = GeneratorPersonnage.GetTile(0);
+        //public Image premHommeBas2 = GeneratorPersonnage.GetTile(3);
 
-        public Image premHommeDroite1 = GeneratorPersonnage.GetTile(9);
-        public Image premHommeDroite2 = GeneratorPersonnage.GetTile(7);
-        public Image premHommeDroite3 = GeneratorPersonnage.GetTile(8);
+        //public Image premHommeDroite1 = GeneratorPersonnage.GetTile(9);
+        //public Image premHommeDroite2 = GeneratorPersonnage.GetTile(7);
+        //public Image premHommeDroite3 = GeneratorPersonnage.GetTile(8);
 
-        public Image premHommeGauche1 = GeneratorPersonnage.GetTile(2);
-        public Image premHommeGauche2 = GeneratorPersonnage.GetTile(5);
-        public Image premHommeGauche3 = GeneratorPersonnage.GetTile(6);
+        //public Image premHommeGauche1 = GeneratorPersonnage.GetTile(2);
+        //public Image premHommeGauche2 = GeneratorPersonnage.GetTile(5);
+        //public Image premHommeGauche3 = GeneratorPersonnage.GetTile(6);
 
-        public Image premHommeHaut1 = GeneratorPersonnage.GetTile(1);
-        public Image premHommeHaut2 = GeneratorPersonnage.GetTile(4);
+        //public Image premHommeHaut1 = GeneratorPersonnage.GetTile(1);
+        //public Image premHommeHaut2 = GeneratorPersonnage.GetTile(4);
 
-        // Images homme 2
-        public Image deuxHommeBas1 = GeneratorPersonnage.GetTile(10);
-        public Image deuxHommeBas2 = GeneratorPersonnage.GetTile(13);
+        //// Images homme 2
+        //public Image deuxHommeBas1 = GeneratorPersonnage.GetTile(10);
+        //public Image deuxHommeBas2 = GeneratorPersonnage.GetTile(13);
 
-        public Image deuxHommeDroite1 = GeneratorPersonnage.GetTile(19);
-        public Image deuxHommeDroite2 = GeneratorPersonnage.GetTile(17);
-        public Image deuxHommeDroite3 = GeneratorPersonnage.GetTile(18);
+        //public Image deuxHommeDroite1 = GeneratorPersonnage.GetTile(19);
+        //public Image deuxHommeDroite2 = GeneratorPersonnage.GetTile(17);
+        //public Image deuxHommeDroite3 = GeneratorPersonnage.GetTile(18);
 
-        public Image deuxHommeGauche1 = GeneratorPersonnage.GetTile(12);
-        public Image deuxHommeGauche2 = GeneratorPersonnage.GetTile(15);
-        public Image deuxHommeGauche3 = GeneratorPersonnage.GetTile(16);
+        //public Image deuxHommeGauche1 = GeneratorPersonnage.GetTile(12);
+        //public Image deuxHommeGauche2 = GeneratorPersonnage.GetTile(15);
+        //public Image deuxHommeGauche3 = GeneratorPersonnage.GetTile(16);
 
-        public Image deuxHommeHaut1 = GeneratorPersonnage.GetTile(11);
-        public Image deuxHommeHaut2 = GeneratorPersonnage.GetTile(14);
+        //public Image deuxHommeHaut1 = GeneratorPersonnage.GetTile(11);
+        //public Image deuxHommeHaut2 = GeneratorPersonnage.GetTile(14);
 
-        // Images femme 1 
-        public Image premFemmeBas1 = GeneratorPersonnage.GetTile(20);
-        public Image premFemmeBas2 = GeneratorPersonnage.GetTile(23);
+        //// Images femme 1 
+        //public Image premFemmeBas1 = GeneratorPersonnage.GetTile(20);
+        //public Image premFemmeBas2 = GeneratorPersonnage.GetTile(23);
 
-        public Image premFemmeDroite1 = GeneratorPersonnage.GetTile(29);
-        public Image premFemmeDroite2 = GeneratorPersonnage.GetTile(27);
-        public Image premFemmeDroite3 = GeneratorPersonnage.GetTile(28);
+        //public Image premFemmeDroite1 = GeneratorPersonnage.GetTile(29);
+        //public Image premFemmeDroite2 = GeneratorPersonnage.GetTile(27);
+        //public Image premFemmeDroite3 = GeneratorPersonnage.GetTile(28);
 
-        public Image premFemmeGauche1 = GeneratorPersonnage.GetTile(22);
-        public Image premFemmeGauche2 = GeneratorPersonnage.GetTile(25);
-        public Image premFemmeGauche3 = GeneratorPersonnage.GetTile(26);
+        //public Image premFemmeGauche1 = GeneratorPersonnage.GetTile(22);
+        //public Image premFemmeGauche2 = GeneratorPersonnage.GetTile(25);
+        //public Image premFemmeGauche3 = GeneratorPersonnage.GetTile(26);
 
-        public Image premFemmeHaut1 = GeneratorPersonnage.GetTile(21);
-        public Image premFemmeHaut2 = GeneratorPersonnage.GetTile(24);
+        //public Image premFemmeHaut1 = GeneratorPersonnage.GetTile(21);
+        //public Image premFemmeHaut2 = GeneratorPersonnage.GetTile(24);
 
-        // Images femme 2
-        public Image deuxFemmeBas1 = GeneratorPersonnage.GetTile(30);
-        public Image deuxFemmeBas2 = GeneratorPersonnage.GetTile(33);
+        //// Images femme 2
+        //public Image deuxFemmeBas1 = GeneratorPersonnage.GetTile(30);
+        //public Image deuxFemmeBas2 = GeneratorPersonnage.GetTile(33);
 
-        public Image deuxFemmeDroite1 = GeneratorPersonnage.GetTile(39);
-        public Image deuxFemmeDroite2 = GeneratorPersonnage.GetTile(37);
-        public Image deuxFemmeDroite3 = GeneratorPersonnage.GetTile(38);
+        //public Image deuxFemmeDroite1 = GeneratorPersonnage.GetTile(39);
+        //public Image deuxFemmeDroite2 = GeneratorPersonnage.GetTile(37);
+        //public Image deuxFemmeDroite3 = GeneratorPersonnage.GetTile(38);
 
-        public Image deuxFemmeGauche1 = GeneratorPersonnage.GetTile(32);
-        public Image deuxFemmeGauche2 = GeneratorPersonnage.GetTile(35);
-        public Image deuxFemmeGauche3 = GeneratorPersonnage.GetTile(36);
+        //public Image deuxFemmeGauche1 = GeneratorPersonnage.GetTile(32);
+        //public Image deuxFemmeGauche2 = GeneratorPersonnage.GetTile(35);
+        //public Image deuxFemmeGauche3 = GeneratorPersonnage.GetTile(36);
 
-        public Image deuxFemmeHaut1 = GeneratorPersonnage.GetTile(31);
-        public Image deuxFemmeHaut2 = GeneratorPersonnage.GetTile(34);
+        //public Image deuxFemmeHaut1 = GeneratorPersonnage.GetTile(31);
+        //public Image deuxFemmeHaut2 = GeneratorPersonnage.GetTile(34);
 
         public Visiteur(/*int x2, int y2*/)
         {
+            peuplerListPersonnages();
+
             this.x = 19;
             this.y = 24;
 
@@ -161,12 +163,12 @@ namespace TP2
                 if (randPerso == 1)
                 {
                     type = 1;
-                    directionDepart = currentDirHomme1;
+                    directionDepart = listHomme1.ElementAt(0);
                 }
                 else
                 {
                     type = 2;
-                    directionDepart = currentDirHomme2;
+                    directionDepart = listHomme2.ElementAt(0);
                 }
             }
             else
@@ -175,18 +177,21 @@ namespace TP2
                 if (randPerso == 1)
                 {
                     type = 1;
-                    directionDepart = currentDirFemme1;
+                    directionDepart = listFemme1.ElementAt(0);
                 }
                 else
                 {
                     type = 2;
-                    directionDepart = currentDirFemme2;
+                    directionDepart = listFemme2.ElementAt(0);
                 }
             }
 
             prenom = Enum.GetName(typeof(Prenom), randPrenom);
-            nom = Enum.GetName(typeof(Nom), randNom);
+            nom = Enum.GetName(typeof(Nom), randNom);                                  
+        }
 
+        private void peuplerListPersonnages()
+        {
             listHomme1.Add(GeneratorPersonnage.GetTile(1));
             listHomme1.Add(GeneratorPersonnage.GetTile(0));
             listHomme1.Add(GeneratorPersonnage.GetTile(3));
