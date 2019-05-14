@@ -49,7 +49,12 @@ namespace TP2
         public int x { get; set; }
         public int y { get; set; }
 
-        public Image directionDepart = null;
+        public Image directionDepart;
+
+        List<Image> listHomme1 = new List<Image>();
+        List<Image> listHomme2 = new List<Image>();
+        List<Image> listFemme1 = new List<Image>();
+        List<Image> listFemme2 = new List<Image>();
 
         public Image currentDirHomme1 = GeneratorPersonnage.GetTile(1);
         public Image currentDirHomme2 = GeneratorPersonnage.GetTile(11);
@@ -57,6 +62,7 @@ namespace TP2
         public Image currentDirFemme2 = GeneratorPersonnage.GetTile(31);
 
         // Images homme 1
+        
         public Image premHommeBas1 = GeneratorPersonnage.GetTile(0);
         public Image premHommeBas2 = GeneratorPersonnage.GetTile(3);
 

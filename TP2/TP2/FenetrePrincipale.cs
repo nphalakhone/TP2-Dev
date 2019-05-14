@@ -139,6 +139,7 @@ namespace TP2
                 if (m.placedAnimal == true)
                 {
                     LblArgent.Text = "" + argent;
+                    m.placedAnimal = false;
                 }
             }
         }
@@ -170,7 +171,7 @@ namespace TP2
 
         private void MappeMonde_KeyUp(object sender, KeyEventArgs e)
         {
-            m.faireDeplacement(e);
+            m.faireDeplacementHero(e);
             Enable_Btn_Animal(m.enableBuyAnimals);
         }
 

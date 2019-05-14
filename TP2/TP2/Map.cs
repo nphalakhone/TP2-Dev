@@ -489,7 +489,7 @@ namespace TP2
             }
         }
 
-        public void faireDeplacement(KeyEventArgs key)
+        public void faireDeplacementHero(KeyEventArgs key)
         {
             int x2 = h.x;
             int y2 = h.y;
@@ -592,6 +592,109 @@ namespace TP2
             enableBuyAnimals = interieurEnclos[x2, y2];
 
             peuplerBitmapInteraction(x2, y2);
+        }
+
+        public void deplacementAI()
+        {
+            Random r = new Random();
+            int deplacement = r.Next(1, 4);
+            int x2 = v.x;
+            int y2 = v.y;
+
+            if (deplacement == 1)
+            {
+                y2--;
+                if (y2 >= 0)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
+                    {
+                        h.y--;
+                        if (up == 0)
+                        {
+                            h.currentDir = h.haut2;
+                            Refresh();
+                            up++;
+                        }
+                        else if (up == 1)
+                        {
+                            h.currentDir = h.haut3;
+                            Refresh();
+                            up--;
+                        }
+                    }
+                }
+            }
+            else if (deplacement == 2)
+            {
+                x2--;
+                if (x2 >= 0)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
+                    {
+                        h.x--;
+                        if (left == 0)
+                        {
+                            h.currentDir = h.gauche2;
+                            Refresh();
+                            left++;
+                        }
+                        else if (left == 1)
+                        {
+                            h.currentDir = h.gauche1;
+                            Refresh();
+                            left--;
+                        }
+                    }
+                }
+            }
+            else if (deplacement == 3)
+            {
+                y2++;
+                if (y2 <= 24)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
+                    {
+                        h.y++;
+                        if (down == 0)
+                        {
+                            h.currentDir = h.bas2;
+                            Refresh();
+                            down++;
+                        }
+                        else if (down == 1)
+                        {
+                            h.currentDir = h.bas3;
+                            Refresh();
+                            down--;
+                        }
+                    }
+                }
+            }
+            else if (deplacement == 4)
+            {
+                x2++;
+                if (x2 <= 42)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2])
+                    {
+                        h.x++;
+                        if (right == 0)
+                        {
+                            h.currentDir = h.droite2;
+                            Refresh();
+                            right++;
+                        }
+                        else if (right == 1)
+                        {
+                            h.currentDir = h.droite1;
+                            Refresh();
+                            right--;
+                        }
+                    }
+                }
+            }
+            x2 = h.x;
+            y2 = h.y;
         }
 
         private void peuplerBitmapInteraction(int x2, int y2)
