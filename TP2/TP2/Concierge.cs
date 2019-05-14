@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace TP2
 {
-    class Concierge
+    public class Concierge
     {
         public int x { get; set; }
         public int y { get; set; }

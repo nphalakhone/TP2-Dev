@@ -77,6 +77,8 @@ namespace TP2
             BtnAchatRhino.Enabled = false;
             BtnAchatLicorne.Enabled = false;
             BtnAchatBuffle.Enabled = false;
+
+            BtnEngageConcierge.Enabled = false;
         }
 
         private void TimerPrincipal_Tick(object sender, EventArgs e)
@@ -110,16 +112,26 @@ namespace TP2
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
             tempsPasser++;
+            if (m.sizeListeAnimaux != m.sizeListeVisiteur)
+            {
+                Visiteur vis = new Visiteur();
+                m.listeVisiteur.Add(vis);
+                m.sizeListeVisiteur++;
+                Refresh();
+            }
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
         {
-
+            
         }
 
         private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
         {
-            
+            foreach (Visiteur v in m.listeVisiteur)
+            {
+                m.DeplacementAI(v);
+            }
         }
 
         private void Acheter_Animal_Click(object sender, EventArgs e, string prix, string nomAnimal)
