@@ -44,6 +44,7 @@ namespace TP2
         public string nom;
         public string prenom;
         public bool genre;
+        public int type;
         bool dropDechet; // if drop dechets is true, get visiteur current position, drop dechet and make the visiteur move 1 bloc up, down, left or right.
 
         public int x { get; set; }
@@ -134,18 +135,11 @@ namespace TP2
 
             Random r = new Random();
             int randNom = r.Next(0, 10);
-            int randPerso = r.Next(1,2);
+            int randPerso = r.Next(1, 2);
             int randomGenre = r.Next(0, 1);
-
-            if (randomGenre == 0)
-            {
-                genre = true;
-            }
-            else
-            {
-                genre = false;
-            }
-
+            
+            genre = randomGenre == 0;
+            
             int randPrenom;
 
             if (genre)
@@ -153,10 +147,12 @@ namespace TP2
                 randPrenom = r.Next(0, 5);
                 if (randPerso == 1)
                 {
+                    type = 1;
                     directionDepart = currentDirHomme1;
                 }
                 else
                 {
+                    type = 2;
                     directionDepart = currentDirHomme2;
                 }
             }
@@ -165,10 +161,12 @@ namespace TP2
                 randPrenom = r.Next(6, 10);
                 if (randPerso == 1)
                 {
+                    type = 1;
                     directionDepart = currentDirFemme1;
                 }
                 else
                 {
+                    type = 2;
                     directionDepart = currentDirFemme2;
                 }
             }

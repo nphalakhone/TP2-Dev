@@ -56,6 +56,8 @@ namespace TP2
 
         public bool placedAnimal { get; set; }
 
+        public bool heroOnlyArea { get; set; }
+
         public Map()
         {
             InitializeComponent();
@@ -440,7 +442,7 @@ namespace TP2
 
         private void dessinerVisiteur(Graphics gr, int x, int y)
         {
-            gr.DrawImage(v.directionDepart, x * 32, y * 32, 32, 32);
+            gr.DrawImage(v.currentDirFemme2, x * 32, y * 32, 32, 32);
         }
 
         private void dessinerAnimaux(Graphics gr)
@@ -588,6 +590,8 @@ namespace TP2
             }
             x2 = h.x;
             y2 = h.y;
+            
+            heroOnlyArea = h.x > 37;            
 
             enableBuyAnimals = interieurEnclos[x2, y2];
 
@@ -812,13 +816,13 @@ namespace TP2
                         break;
                 }
             }
-            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi)
+            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38)
             {
                 listeConcierge.Add(new Concierge(e.X / 32, e.Y / 32));
                 bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
-                conciergeChoisi = false;
             }
             Refresh();
+            conciergeChoisi = false;
         }
     }
 }
