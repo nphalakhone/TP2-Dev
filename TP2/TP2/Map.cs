@@ -260,7 +260,11 @@ namespace TP2
 
             dessinerHero(gr, h.x, h.y);
 
-            dessinerVisiteur(gr, v.x, v.y);
+            if (sizeListeVisiteur > 0)
+            {
+                dessinerVisiteur(gr, v.x, v.y);
+            }
+            
 
             dessinerAnimaux(gr);
 
