@@ -30,7 +30,6 @@ namespace TP2
     public partial class FenetrePrincipale : Form
     {
         Map m;
-        Concierge c = new Concierge();
         int argent;
         int tempsMax = 300000; // 5 minustes in milliseconds
         int comptDate;
@@ -49,7 +48,7 @@ namespace TP2
             moisDate = 1;
             anneeDate = 2019;
             argent = ConvertLabelToInt(LblArgent);
-            PicConcierge.Image = c.imgConc;
+            PicConcierge.Image = GeneratorPersonnage.GetTile(40);
             tempsPasser = 0;
         }
 

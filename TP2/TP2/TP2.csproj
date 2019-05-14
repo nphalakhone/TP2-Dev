@@ -54,7 +54,7 @@
     <Compile Include="FenetrePrincipale.Designer.cs">
       <DependentUpon>FenetrePrincipale.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenereatorPersonnage.cs" />
+    <Compile Include="GeneratorPersonnage.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Map.cs">
       <SubType>UserControl</SubType>

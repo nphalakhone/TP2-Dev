@@ -7,7 +7,7 @@ using System.Text;
 
 namespace TP2
 {
-    class GenereatorPersonnage
+    class GeneratorPersonnage
     {
         public const int IMAGE_WIDTH = 32, IMAGE_HEIGHT = 32;
         private const int TILE_LEFT = 0, TILE_TOP = 0;
@@ -84,7 +84,7 @@ namespace TP2
             }
             return bmp;
         }
-        static GenereatorPersonnage()
+        static GeneratorPersonnage()
         {
             // Homme 1 
             listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 0 });
