@@ -269,7 +269,6 @@ namespace TP2
             {
                 dessinerVisiteur(gr, v.x, v.y);
             }
-            
 
             dessinerAnimaux(gr);
 
