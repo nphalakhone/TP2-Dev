@@ -450,6 +450,7 @@ namespace TP2
             foreach (Animal a in listeAnimaux)
             {
                 noMouvAnimal[a.x, a.y] = false;
+                //Console.WriteLine(a.TypeAnimal.ToString() + " " + a.x + " " + a.y);
             }
         }
 
@@ -463,7 +464,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoord[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
                     {
                         h.y--;
                         if (up == 0)
@@ -486,7 +487,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoord[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
                     {
                         h.x--;
                         if (left == 0)
@@ -509,7 +510,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoord[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
                     {
                         h.y++;
                         if (down == 0)
@@ -532,7 +533,7 @@ namespace TP2
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoord[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2])
                     {
                         h.x++;
                         if (right == 0)
@@ -613,45 +614,63 @@ namespace TP2
         {
             if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
             {
+                int xAnimal = e.X / 32;
+                int yAnimal = e.Y / 32;
                 switch (animalChoisi)
                 {
                     case "Lion":
                         if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
                         {
-                            //listeAnimaux.Add();
+                            listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                             placedAnimal = true;
                         }
+                        animalChoisi = "";
                         break;
                     case "Mouton":
                         if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
                         {
+                            listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
+                            placedAnimal = true;
                         }
+                        animalChoisi = "";
                         break;
                     case "Grizzly":
                         if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
                         {
+                            listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
+                            placedAnimal = true;
                         }
+                        animalChoisi = "";
                         break;
                     case "Rhino":
                         if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
                         {
+                            listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
+                            placedAnimal = true;
                         }
+                        animalChoisi = "";
                         break;
                     case "Licorne":
                         if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
                         {
+                            listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
+                            placedAnimal = true;
                         }
+                        animalChoisi = "";
                         break;
                     case "Buffle":
                         if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
                         {
+                            listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
+                            placedAnimal = true;
                         }
+                        animalChoisi = "";
                         break;
                 }
             }
@@ -660,7 +679,6 @@ namespace TP2
                 bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GenereatorPersonnage.GetTile(40);
             }
             Refresh();
-            animalChoisi = "";
         }
     }
 }

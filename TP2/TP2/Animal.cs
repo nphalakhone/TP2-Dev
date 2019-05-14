@@ -20,7 +20,7 @@ namespace TP2
         public static int nbAnimaux { get; set; }
         public int x { get; set; }
         public int y { get; set; }
-        private string TypeAnimal;
+        public Animaux TypeAnimal { get; set; }
         private int TempsGestation;
         private int TempsAvantAdulte;
         private int TempsAvantNourrir;
@@ -29,12 +29,15 @@ namespace TP2
         private bool? Nourri; //true = nourri | false = faim
         private bool? AttendBebe; //doit être une femelle adulte, en présence d’un mâle adulte dans le même enclos
 
-        public Animal()
+        public Animal(Animaux type, int x2, int y2)
         {
-            nbAnimaux = 0;
+            nbAnimaux++;
+            TypeAnimal = type;
+            x = x2;
+            y = y2;
         }
 
-        public Animal(string type, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe, int x, int y)
+        public Animal(Animaux type, int gestation, int avAdulte, int avNourrir, bool? genre, bool? adulte, bool? nourri, bool? attendBebe, int x, int y)
         {
             TypeAnimal = type;
             TempsGestation = gestation;
