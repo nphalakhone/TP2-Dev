@@ -392,13 +392,14 @@ namespace TP2
             this.LblInfoConcierge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblInfoConcierge.Location = new System.Drawing.Point(1014, 18);
             this.LblInfoConcierge.Name = "LblInfoConcierge";
-            this.LblInfoConcierge.Size = new System.Drawing.Size(206, 20);
+            this.LblInfoConcierge.Size = new System.Drawing.Size(218, 20);
             this.LblInfoConcierge.TabIndex = 30;
-            this.LblInfoConcierge.Text = "Frais de 2$ aux 60 jours.";
+            this.LblInfoConcierge.Text = "(Frais de 2$ aux 60 jours.)";
             // 
             // MappeMonde
             // 
             this.MappeMonde.animalChoisi = null;
+            this.MappeMonde.conciergeChoisi = false;
             this.MappeMonde.enableBuyAnimals = false;
             this.MappeMonde.Location = new System.Drawing.Point(0, 50);
             this.MappeMonde.Name = "MappeMonde";
