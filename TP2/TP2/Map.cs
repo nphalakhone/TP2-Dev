@@ -664,13 +664,13 @@ namespace TP2
                         {
                             v.currentDir = l.ElementAt(9);
                             Refresh();
-                            up++;
+                            v.upAI++;
                         }
                         else if (v.upAI == 1)
                         {
                             v.currentDir = l.ElementAt(8);
                             Refresh();
-                            up--;
+                            v.upAI--;
                         }
                     }
                 }
@@ -687,19 +687,19 @@ namespace TP2
                         {
                             v.currentDir = l.ElementAt(7);
                             Refresh();
-                            left++;
+                            v.leftAI++;
                         }
                         else if (v.leftAI == 1)
                         {
                             v.currentDir = l.ElementAt(6);
                             Refresh();
-                            left--;
+                            v.leftAI--;
                         }
                         else if (v.leftAI == 2)
                         {
                             v.currentDir = l.ElementAt(5);
                             Refresh();
-                            left = 0;
+                            v.leftAI = 0;
                         }
                     }
                 }
@@ -716,13 +716,13 @@ namespace TP2
                         {
                             v.currentDir = l.ElementAt(1);
                             Refresh();
-                            down++;
+                            v.downAI++;
                         }
                         else if (v.downAI == 1)
                         {
                             v.currentDir = l.ElementAt(0);
                             Refresh();
-                            down--;
+                            v.downAI--;
                         }
                     }
                 }
@@ -739,19 +739,19 @@ namespace TP2
                         {
                             v.currentDir = l.ElementAt(4);
                             Refresh();
-                            right++;
+                            v.rightAI++;
                         }
                         else if (v.rightAI == 1)
                         {
                             v.currentDir = l.ElementAt(3);
                             Refresh();
-                            right--;
+                            v.rightAI--;
                         }
                         else if (v.rightAI == 2)
                         {
                             v.currentDir = l.ElementAt(2);
                             Refresh();
-                            right = 0;
+                            v.rightAI = 0;
                         }
                     }
                 }
