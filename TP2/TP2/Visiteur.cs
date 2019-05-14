@@ -57,11 +57,24 @@ namespace TP2
         List<Image> listFemme1 = new List<Image>();
         List<Image> listFemme2 = new List<Image>();
 
+        //currentDir
+        //Bas1
+        //Bas2
+        //Droite1
+        //Droite2
+        //Droite3
+        //Gauche1
+        //Gauche2
+        //Gauche3
+        //Haut1
+        //Haut2
+
         public Image currentDirHomme1 = GeneratorPersonnage.GetTile(1);
         public Image currentDirHomme2 = GeneratorPersonnage.GetTile(11);
         public Image currentDirFemme1 = GeneratorPersonnage.GetTile(21);
         public Image currentDirFemme2 = GeneratorPersonnage.GetTile(31);
 
+        
         // Images homme 1
         
         public Image premHommeBas1 = GeneratorPersonnage.GetTile(0);
@@ -137,9 +150,9 @@ namespace TP2
             int randNom = r.Next(0, 10);
             int randPerso = r.Next(1, 2);
             int randomGenre = r.Next(0, 1);
-            
+
             genre = randomGenre == 0;
-            
+
             int randPrenom;
 
             if (genre)
@@ -173,6 +186,54 @@ namespace TP2
 
             prenom = Enum.GetName(typeof(Prenom), randPrenom);
             nom = Enum.GetName(typeof(Nom), randNom);
+
+            listHomme1.Add(GeneratorPersonnage.GetTile(1));
+            listHomme1.Add(GeneratorPersonnage.GetTile(0));
+            listHomme1.Add(GeneratorPersonnage.GetTile(3));
+            listHomme1.Add(GeneratorPersonnage.GetTile(9));
+            listHomme1.Add(GeneratorPersonnage.GetTile(7));
+            listHomme1.Add(GeneratorPersonnage.GetTile(8));
+            listHomme1.Add(GeneratorPersonnage.GetTile(2));
+            listHomme1.Add(GeneratorPersonnage.GetTile(5));
+            listHomme1.Add(GeneratorPersonnage.GetTile(6));
+            listHomme1.Add(GeneratorPersonnage.GetTile(1));
+            listHomme1.Add(GeneratorPersonnage.GetTile(4));
+
+            listHomme2.Add(GeneratorPersonnage.GetTile(11));
+            listHomme2.Add(GeneratorPersonnage.GetTile(10));
+            listHomme2.Add(GeneratorPersonnage.GetTile(13));
+            listHomme2.Add(GeneratorPersonnage.GetTile(19));
+            listHomme2.Add(GeneratorPersonnage.GetTile(17));
+            listHomme2.Add(GeneratorPersonnage.GetTile(18));
+            listHomme2.Add(GeneratorPersonnage.GetTile(12));
+            listHomme2.Add(GeneratorPersonnage.GetTile(15));
+            listHomme2.Add(GeneratorPersonnage.GetTile(16));
+            listHomme2.Add(GeneratorPersonnage.GetTile(11));
+            listHomme2.Add(GeneratorPersonnage.GetTile(14));
+
+            listFemme1.Add(GeneratorPersonnage.GetTile(21));
+            listFemme1.Add(GeneratorPersonnage.GetTile(20));
+            listFemme1.Add(GeneratorPersonnage.GetTile(23));
+            listFemme1.Add(GeneratorPersonnage.GetTile(29));
+            listFemme1.Add(GeneratorPersonnage.GetTile(27));
+            listFemme1.Add(GeneratorPersonnage.GetTile(28));
+            listFemme1.Add(GeneratorPersonnage.GetTile(22));
+            listFemme1.Add(GeneratorPersonnage.GetTile(25));
+            listFemme1.Add(GeneratorPersonnage.GetTile(26));
+            listFemme1.Add(GeneratorPersonnage.GetTile(21));
+            listFemme1.Add(GeneratorPersonnage.GetTile(24));
+
+            listFemme2.Add(GeneratorPersonnage.GetTile(31));
+            listFemme2.Add(GeneratorPersonnage.GetTile(30));
+            listFemme2.Add(GeneratorPersonnage.GetTile(33));
+            listFemme2.Add(GeneratorPersonnage.GetTile(39));
+            listFemme2.Add(GeneratorPersonnage.GetTile(37));
+            listFemme2.Add(GeneratorPersonnage.GetTile(38));
+            listFemme2.Add(GeneratorPersonnage.GetTile(32));
+            listFemme2.Add(GeneratorPersonnage.GetTile(35));
+            listFemme2.Add(GeneratorPersonnage.GetTile(36));
+            listFemme2.Add(GeneratorPersonnage.GetTile(31));
+            listFemme2.Add(GeneratorPersonnage.GetTile(34));
         }
     }
 }
