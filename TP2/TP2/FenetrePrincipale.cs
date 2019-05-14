@@ -46,6 +46,7 @@ namespace TP2
             comptDate = 1;
             moisDate = 1;
             anneeDate = 2019;
+            argent = ConvertLabelToInt(LblArgent);
         }
 
         protected override CreateParams CreateParams
@@ -125,11 +126,17 @@ namespace TP2
 
         private void Acheter_Animal_Click(object sender, EventArgs e, string prix, string nomAnimal)
         {
-            //if ((argent - Int32.Parse(prix)) >= 0)
-            //{
+            string resultatString = new String(prix.Where(Char.IsDigit).ToArray());
+            int price = Convert.ToInt32(resultatString);
+            if ((argent - price) >= 0)
+            {
                 m.animalChoisi = nomAnimal;
-            //        argent -= Int32.Parse(prix);
-            //    }
+                argent = argent - price;
+                //if (m.placedAnimal == true)
+                //{
+                    LblArgent.Text = "" + argent;
+                //}
+            }
         }
 
         private void Enable_Btn_Animal(bool b)
@@ -157,6 +164,13 @@ namespace TP2
         {
             m.faireDeplacement(e);
             Enable_Btn_Animal(m.enableBuyAnimals);
+        }
+
+        private int ConvertLabelToInt(Label l)
+        {
+            string resultatString = new String(l.Text.Where(Char.IsDigit).ToArray());
+            int i = Convert.ToInt32(resultatString);
+            return i;
         }
     }
 }

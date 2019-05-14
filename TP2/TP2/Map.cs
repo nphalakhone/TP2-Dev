@@ -50,6 +50,8 @@ namespace TP2
 
         public string animalChoisi { get; set; }
 
+        public bool placedAnimal { get; set; }
+
         public Map()
         {
             InitializeComponent();
@@ -538,6 +540,7 @@ namespace TP2
                     {                        
                         //listeAnimaux.Add();
                         bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
+                        placedAnimal = true;
                     }
                     break;
                 case "Mouton":
