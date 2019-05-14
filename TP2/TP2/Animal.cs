@@ -38,14 +38,8 @@ namespace TP2
 
             Random rng = new Random();
             int randomGenre = rng.Next(0, 1);
-            if (randomGenre == 0)
-            {
-                Genre = true;
-            }
-            else
-            {
-                Genre = false;
-            }
+
+            Genre = randomGenre == 0;
 
             switch (TypeAnimal)
             {

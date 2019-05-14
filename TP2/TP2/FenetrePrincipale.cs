@@ -79,12 +79,6 @@ namespace TP2
             BtnAchatBuffle.Enabled = false;
         }
 
-        private void MappeMonde_KeyDown(object sender, KeyEventArgs e)
-        {
-            m.faireDeplacement(e);
-            Enable_Btn_Animal(m.enableBuyAnimals);
-        }
-
         private void TimerPrincipal_Tick(object sender, EventArgs e)
         {
             //argent = int.Parse(LblArgent.Text);
@@ -172,6 +166,12 @@ namespace TP2
         {
             m.faireDeplacement(e);
             Enable_Btn_Animal(m.enableBuyAnimals);
+            Enable_Btn_Janitor(m.heroOnlyArea);
+        }
+
+        private void Enable_Btn_Janitor(bool heroOnlyArea)
+        {
+            BtnEngageConcierge.Enabled = !heroOnlyArea;
         }
 
         private int ConvertLabelToInt(Label l)
