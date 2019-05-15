@@ -250,20 +250,23 @@ namespace TP2
             int tempYV;
             int tempXC;
             int tempYC;
+            int c1 = 0;
+            int c2 = 0;
             foreach (Visiteur v in m.listeVisiteur)
             {
                 tempXV = v.x;
                 tempYV = v.y;
-                                
-                while (tempXV == v.x && tempYV == v.y)
+
+                while (tempXV == v.x && tempYV == v.y && c1 != 2)
                 {
                     m.DeplacementAI(v);
+                    c1++;
                 }                
 
                 v.tempsPasserV++;
 
                 Random r = new Random();
-                int dropT = r.Next(1, 11);
+                int dropT = r.Next(1, 51);
 
                 if (dropT == 1)
                 {
@@ -282,9 +285,10 @@ namespace TP2
                 tempXC = c.x;
                 tempYC = c.y;
 
-                while (tempXC == c.x && tempYC == c.y)
+                while (tempXC == c.x && tempYC == c.y && c2 != 2)
                 {
-                    m.deplacementConcierge(c); ;
+                    m.deplacementConcierge(c);
+                    c2++;
                 }
                 
             }

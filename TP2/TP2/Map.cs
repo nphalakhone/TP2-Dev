@@ -275,7 +275,7 @@ namespace TP2
             dessinerHero(gr, h.x, h.y);
 
             if (listeVisiteur.Count() > 0)
-            {
+            {                
                 foreach (Visiteur v in listeVisiteur)
                 {
                     dessinerVisiteur(gr, v);
@@ -725,7 +725,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         v.y--;
                         if (v.upAI == 0)
@@ -748,7 +748,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         v.x--;
                         if (v.leftAI == 0)
@@ -777,7 +777,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         v.y++;
                         if (v.downAI == 0)
@@ -800,7 +800,7 @@ namespace TP2
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         v.x++;
                         if (v.rightAI == 0)
@@ -854,7 +854,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         c.y--;
                         if (c.upAI == 0)
@@ -877,7 +877,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         c.x--;
                         if (c.leftAI == 0)
@@ -906,7 +906,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         c.y++;
                         if (c.downAI == 0)
@@ -929,7 +929,7 @@ namespace TP2
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
                     {
                         c.x++;
                         if (c.rightAI == 0)
