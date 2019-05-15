@@ -45,7 +45,7 @@ namespace TP2
         public string prenom;
         public bool genre;
         public int type;
-        bool dropDechet; // if drop dechets is true, get visiteur current position, drop dechet and make the visiteur move 1 bloc up, down, left or right.
+        public bool dropDechet; // if drop dechets is true, get visiteur current position, drop dechet and make the visiteur move 1 bloc up, down, left or right.
 
         public int x { get; set; }
         public int y { get; set; }

@@ -28,20 +28,22 @@ namespace TP2
             y = y2;
 
             currentDir = GeneratorPersonnage.GetTile(40);
+
+            peuplerListeImg();
         }
 
         public void peuplerListeImg()
         {
-            listeC.Add(GeneratorPersonnage.GetTile(40));
-            listeC.Add(GeneratorPersonnage.GetTile(43));
-            listeC.Add(GeneratorPersonnage.GetTile(49));
-            listeC.Add(GeneratorPersonnage.GetTile(47));
-            listeC.Add(GeneratorPersonnage.GetTile(48));
-            listeC.Add(GeneratorPersonnage.GetTile(42));
-            listeC.Add(GeneratorPersonnage.GetTile(45));
-            listeC.Add(GeneratorPersonnage.GetTile(46));
-            listeC.Add(GeneratorPersonnage.GetTile(41));
-            listeC.Add(GeneratorPersonnage.GetTile(44));
+            listeC.Add(GeneratorPersonnage.GetTile(40)); //0
+            listeC.Add(GeneratorPersonnage.GetTile(43)); //1
+            listeC.Add(GeneratorPersonnage.GetTile(49)); //2
+            listeC.Add(GeneratorPersonnage.GetTile(47)); //3
+            listeC.Add(GeneratorPersonnage.GetTile(48)); //4
+            listeC.Add(GeneratorPersonnage.GetTile(42)); //5
+            listeC.Add(GeneratorPersonnage.GetTile(45)); //6
+            listeC.Add(GeneratorPersonnage.GetTile(46)); //7
+            listeC.Add(GeneratorPersonnage.GetTile(41)); //8
+            listeC.Add(GeneratorPersonnage.GetTile(44)); //9
         }
     }
 }

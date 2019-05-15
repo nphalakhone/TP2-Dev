@@ -165,7 +165,7 @@ namespace TP2
                 else
                 {
                     LblInfoGenreA.Text = "Genre: Femelle";
-                    if(animal.AttendBebe == true)
+                    if (animal.AttendBebe == true)
                     {
                         LblInfoEnceinte.Text = "Enceinte : Oui";
                     }
@@ -226,10 +226,13 @@ namespace TP2
                 {
                     LblInfoGenreVis.Text = "Sexe: Femme";
                 }
-                LblInfoTempsPasserVis.Text = "Temps passé depuis arrivé : " + visiteur.tempsPasserV + " jours";
+                LblInfoTempsPasserVis.Text = "Temps passé depuis arrivé : " + (visiteur.tempsPasserV) + " jours";
 
                 PicInfoVis.Image = visiteur.currentDir;
             }
+
+            LblAnimal.Text = "Animaux : " + m.listeAnimaux.Count;
+            LblDechets.Text = "Dechets : " + m.listeTrash.Count;
 
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
@@ -243,15 +246,47 @@ namespace TP2
 
         private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
         {
+            int tempXV;
+            int tempYV;
+            int tempXC;
+            int tempYC;
             foreach (Visiteur v in m.listeVisiteur)
             {
-                m.DeplacementAI(v);
+                tempXV = v.x;
+                tempYV = v.y;
+                                
+                while (tempXV == v.x && tempYV == v.y)
+                {
+                    m.DeplacementAI(v);
+                }                
+
                 v.tempsPasserV++;
+
+                Random r = new Random();
+                int dropT = r.Next(1, 11);
+
+                if (dropT == 1)
+                {
+                    v.dropDechet = true;
+                }
+                else
+                {
+                    v.dropDechet = false;
+                }
+
+                m.dropTrash(v);
             }
 
             foreach (Concierge c in m.listeConcierge)
             {
-                m.deplacementConcierge(c);
+                tempXC = c.x;
+                tempYC = c.y;
+
+                while (tempXC == c.x && tempYC == c.y)
+                {
+                    m.deplacementConcierge(c); ;
+                }
+                
             }
         }
 

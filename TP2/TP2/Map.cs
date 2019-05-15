@@ -34,14 +34,16 @@ namespace TP2
         bool[,] noMouvCoord = new bool[43, 25];
         bool[,] noMouvCoordAI = new bool[43, 25];
         bool[,] noMouvAi = new bool[43, 25];
+        bool[,] noMouvTrash = new bool[43, 25];
         Animaux?[,] enclosAnimal = new Animaux?[43, 25];
 
         public int sizeListeAnimaux { get; set; }
         public int sizeListeVisiteur { get; set; }
 
         public List<Animal> listeAnimaux = new List<Animal>();
-        List<Concierge> listeConcierge = new List<Concierge>();
+        public List<Concierge> listeConcierge = new List<Concierge>();
         public List<Visiteur> listeVisiteur = new List<Visiteur>();
+        public List<Point> listeTrash = new List<Point>();
 
         int xSortie = 19;
         int ySortie = 0;
@@ -69,6 +71,7 @@ namespace TP2
 
         public Map()
         {
+            DoubleBuffered = true;
             InitializeComponent();
             creerInterface();
 
@@ -107,6 +110,7 @@ namespace TP2
                     enclosAnimal[i, j] = null;
                     noMouvAi[i, j] = true;
                     numEnclos[i, j] = 0;
+                    noMouvTrash[i, j] = true;
                 }
             }
         }
@@ -278,11 +282,20 @@ namespace TP2
                 }
             }
 
+            if (listeTrash.Count() > 0)
+            {
+                foreach (Point p in listeTrash)
+                {
+                    dessinerTrash(gr, p);
+                }
+            }
+
             dessinerAnimaux(gr);
 
             remplirNoMouvAnimal();
             remplirNoMouvJanitor();
             remplirNoMouvAI();
+            remplirNoMouvTrash();
 
             if (listeConcierge.Count() > 0)
             {
@@ -292,7 +305,6 @@ namespace TP2
                 }
             }
         }
-
 
         private void dessinerMap(Graphics gr)
         {
@@ -488,6 +500,11 @@ namespace TP2
             }
         }
 
+        private void dessinerTrash(Graphics gr, Point p)
+        {
+            gr.DrawImage(TilesetImageGenerator.GetTile(42), p.X * 32, p.Y * 32, 32, 32);
+        }
+
         private void dessinerAnimaux(Graphics gr)
         {
             for (int i = 0; i < bmAnimaux.GetLength(0); i++)
@@ -555,6 +572,22 @@ namespace TP2
             }
         }
 
+        private void remplirNoMouvTrash()
+        {
+            for (int i = 0; i < noMouvCoord.GetLength(0); i++)
+            {
+                for (int j = 0; j < noMouvCoord.GetLength(1); j++)
+                {
+                    noMouvTrash[i, j] = true;
+                }
+            }
+
+            foreach (Point p in listeTrash)
+            {
+                noMouvTrash[p.X, p.Y] = false;
+            }
+        }
+
         public void faireDeplacementHero(KeyEventArgs key)
         {
             int x2 = h.x;
@@ -565,7 +598,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2])
                     {
                         h.y--;
                         if (up == 0)
@@ -588,7 +621,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2])
                     {
                         h.x--;
                         if (left == 0)
@@ -611,7 +644,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2])
                     {
                         h.y++;
                         if (down == 0)
@@ -634,7 +667,7 @@ namespace TP2
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2])
+                    if (noMouvCoord[x2, y2] && noMouvAnimal[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2])
                     {
                         h.x++;
                         if (right == 0)
@@ -666,7 +699,6 @@ namespace TP2
         {
             Random r = new Random();
             int deplacement = r.Next(1, 5);
-            int deplacement2 = r.Next(1, 5);
 
             int x2 = v.x;
             int y2 = v.y;
@@ -688,12 +720,12 @@ namespace TP2
                     break;
             }
 
-            if (deplacement == 1 && deplacement2 == 2)
+            if (deplacement == 1)
             {
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         v.y--;
                         if (v.upAI == 0)
@@ -708,15 +740,15 @@ namespace TP2
                             Refresh();
                             v.upAI--;
                         }
-                    }
+                    } 
                 }
             }
-            else if (deplacement == 2 && deplacement2 == 4)
+            else if (deplacement == 2)
             {
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         v.x--;
                         if (v.leftAI == 0)
@@ -740,12 +772,12 @@ namespace TP2
                     }
                 }
             }
-            else if (deplacement == 3 && deplacement2 == 3)
+            else if (deplacement == 3)
             {
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         v.y++;
                         if (v.downAI == 0)
@@ -763,12 +795,12 @@ namespace TP2
                     }
                 }
             }
-            else if (deplacement == 4 && deplacement2 == 1)
+            else if (deplacement == 4)
             {
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         v.x++;
                         if (v.rightAI == 0)
@@ -794,115 +826,127 @@ namespace TP2
             }
         }
 
+        public void dropTrash(Visiteur v)
+        {           
+            if (v.dropDechet)
+            {
+                Point p = new Point();
+                p.X = v.x;
+                p.Y = v.y;
+                listeTrash.Add(p);
+                Refresh();
+                DeplacementAI(v);
+            }
+        }
+
         public void deplacementConcierge(Concierge c)
         {
             Random r = new Random();
             int deplacement = r.Next(1, 5);
-            int deplacement2 = r.Next(1, 5);
             int x2 = c.x;
             int y2 = c.y;
 
             List<Image> l = new List<Image>();
             l = c.listeC;
 
-            if (deplacement == 1 && deplacement2 == 2)
+            if (deplacement == 1)
             {
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         c.y--;
                         if (c.upAI == 0)
                         {
-                            c.currentDir = l.ElementAt(49);
+                            c.currentDir = l.ElementAt(9);
                             Refresh();
                             c.upAI++;
                         }
                         else if (c.upAI == 1)
                         {
-                            c.currentDir = l.ElementAt(48);
+                            c.currentDir = l.ElementAt(8);
                             Refresh();
                             c.upAI--;
                         }
                     }
                 }
             }
-            else if (deplacement == 2 && deplacement2 == 4)
+            else if (deplacement == 2)
             {
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         c.x--;
                         if (c.leftAI == 0)
                         {
-                            c.currentDir = l.ElementAt(47);
+                            c.currentDir = l.ElementAt(7);
                             Refresh();
                             c.leftAI++;
                         }
                         else if (c.leftAI == 1)
                         {
-                            c.currentDir = l.ElementAt(46);
+                            c.currentDir = l.ElementAt(6);
                             Refresh();
                             c.leftAI++;
                         }
                         else if (c.leftAI == 2)
                         {
-                            c.currentDir = l.ElementAt(45);
+                            c.currentDir = l.ElementAt(5);
                             Refresh();
                             c.leftAI = 0;
                         }
                     }
                 }
             }
-            else if (deplacement == 3 && deplacement2 == 3)
+            else if (deplacement == 3)
             {
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         c.y++;
                         if (c.downAI == 0)
                         {
-                            c.currentDir = l.ElementAt(41);
+                            c.currentDir = l.ElementAt(1);
                             Refresh();
                             c.downAI++;
                         }
                         else if (c.downAI == 1)
                         {
-                            c.currentDir = l.ElementAt(40);
+                            c.currentDir = l.ElementAt(0);
                             Refresh();
                             c.downAI--;
                         }
                     }
                 }
             }
-            else if (deplacement == 4 && deplacement2 == 1)
+            else if (deplacement == 4)
             {
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && h.x != x2 && h.y != y2)
                     {
                         c.x++;
                         if (c.rightAI == 0)
                         {
-                            c.currentDir = l.ElementAt(44);
+                            c.currentDir = l.ElementAt(4);
                             Refresh();
                             c.rightAI++;
                         }
                         else if (c.rightAI == 1)
                         {
-                            c.currentDir = l.ElementAt(43);
+                            c.currentDir = l.ElementAt(3);
                             Refresh();
                             c.rightAI++;
                         }
                         else if (c.rightAI == 2)
                         {
-                            c.currentDir = l.ElementAt(42);
+                            c.currentDir = l.ElementAt(2);
                             Refresh();
                             c.rightAI = 0;
                         }
@@ -1061,23 +1105,34 @@ namespace TP2
                                 break;
                         }
                     }
-                    else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38 && noMouvCoordAI[e.X / 32, e.Y / 32])
+                    else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38 && noMouvCoordAI[e.X / 32, e.Y / 32]/** && noMouvTrash[e.X / 32, e.X / 32]**/)
                     {
                         conciergeChoisi = false;
                         bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
                         ajouterConcierge(e.X / 32, e.Y / 32);
                         conciergeChoisi = false;
                     }
+                    else if (bmInteraction[e.X / 32, e.Y / 32] && !noMouvTrash[e.X / 32, e.Y / 32])
+                    {
+                        foreach (Point p in listeTrash)
+                        {
+                            if(p.X == e.X / 32 && p.Y == e.Y / 32)
+                            {
+                                listeTrash.Remove(p);
+                                break;
+                            }
+                        }
+                    }
                     Refresh();
                     break;
                 case MouseButtons.Right:
-                    
+
                     int comptA = 0;
                     int comptV = 0;
 
                     foreach (Animal a in listeAnimaux)
                     {
-                        if(a.x == e.X / 32 && a.y == e.Y / 32)
+                        if (a.x == e.X / 32 && a.y == e.Y / 32)
                         {
                             placeListeAnimal = comptA;
                             break;
@@ -1087,7 +1142,7 @@ namespace TP2
 
                     foreach (Visiteur v in listeVisiteur)
                     {
-                        if(v.x == e.X / 32 && v.y == e.Y / 32)
+                        if (v.x == e.X / 32 && v.y == e.Y / 32)
                         {
                             placeListeVisiteur = comptV;
                             break;
