@@ -47,8 +47,6 @@ namespace TP2
 
         Hero h = new Hero();
 
-        Visiteur v = new Visiteur();
-
         int up = 0;
         int down = 0;
         int left = 0;
@@ -71,7 +69,7 @@ namespace TP2
 
             listeAnimaux = new List<Animal>();
             listeConcierge = new List<Concierge>();
-            
+
             heroOnlyArea = true;
         }
 
@@ -264,9 +262,12 @@ namespace TP2
 
             dessinerHero(gr, h.x, h.y);
 
-            if (sizeListeVisiteur > 0)
+            if (listeVisiteur.Count() > 0)
             {
-                dessinerVisiteur(gr, v.x, v.y);
+                foreach (Visiteur v in listeVisiteur)
+                {
+                    dessinerVisiteur(gr,v);
+                }
             }
 
             dessinerAnimaux(gr);
@@ -452,23 +453,23 @@ namespace TP2
             gr.DrawImage(h.currentDir, x * 32, y * 32, 32, 32);
         }
 
-        private void dessinerVisiteur(Graphics gr, int x, int y)
+        private void dessinerVisiteur(Graphics gr, Visiteur v)
         {
             if (v.type == 1)
             {
-                gr.DrawImage(v.listHomme1.ElementAt(8), x * 32, y * 32, 32, 32);
+                gr.DrawImage(v.currentDir, v.x * 32, v.y * 32, 32, 32);
             }
             else if (v.type == 2)
             {
-                gr.DrawImage(v.listHomme2.ElementAt(18), x * 32, y * 32, 32, 32);
+                gr.DrawImage(v.currentDir, v.x * 32, v.y * 32, 32, 32);
             }
             else if (v.type == 3)
             {
-                gr.DrawImage(v.listFemme1.ElementAt(28), x * 32, y * 32, 32, 32);
+                gr.DrawImage(v.currentDir, v.x * 32, v.y * 32, 32, 32);
             }
             else
             {
-                gr.DrawImage(v.listFemme2.ElementAt(38), x * 32, y * 32, 32, 32);
+                gr.DrawImage(v.currentDir, v.x * 32, v.y * 32, 32, 32);
             }
         }
 
@@ -631,8 +632,8 @@ namespace TP2
             }
             x2 = h.x;
             y2 = h.y;
-            
-            heroOnlyArea = h.x > 37;            
+
+            heroOnlyArea = h.x > 37;
 
             enableBuyAnimals = interieurEnclos[x2, y2];
 
@@ -642,7 +643,7 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = r.Next(1, 4);
+            int deplacement = 1;
             int x2 = v.x;
             int y2 = v.y;
 
@@ -769,6 +770,12 @@ namespace TP2
             }
         }
 
+        public void ajouterVisiteur()
+        {
+            Visiteur v = new Visiteur();
+            listeVisiteur.Add(v);
+        }
+
         private void peuplerBitmapInteraction(int x2, int y2)
         {
             for (int i = 0; i < bmInteraction.GetLength(0); i++)
@@ -829,11 +836,10 @@ namespace TP2
                 switch (animalChoisi)
                 {
                     case "Lion":
-                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32] 
+                        if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                             && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Lion))
                         {
                             listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
-                            listeVisiteur.Add(new Visiteur());
                             bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                             placedAnimal = true;
                             remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -896,9 +902,9 @@ namespace TP2
                         animalChoisi = "";
                         break;
                 }
-                sizeListeAnimaux = listeAnimaux.Count();
+                ajouterVisiteur();
             }
-            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38 && noMouvCoordAI[e.X / 32, e.Y /32])
+            else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38 && noMouvCoordAI[e.X / 32, e.Y / 32])
             {
                 conciergeChoisi = false;
                 listeConcierge.Add(new Concierge(e.X / 32, e.Y / 32));
@@ -914,7 +920,7 @@ namespace TP2
             {
                 for (int j = 0; j < numEnclos.GetLength(1); j++)
                 {
-                    if(numEnclos[i, j] == numEnclos[e.X / 32, e.Y / 32])
+                    if (numEnclos[i, j] == numEnclos[e.X / 32, e.Y / 32])
                     {
                         enclosAnimal[i, j] = a;
                     }

@@ -35,7 +35,7 @@ namespace TP2
             this.LblDate = new System.Windows.Forms.Label();
             this.LblDechets = new System.Windows.Forms.Label();
             this.LblAnimal = new System.Windows.Forms.Label();
-            this.GrpInfo = new System.Windows.Forms.GroupBox();
+            this.GrpInfosVis = new System.Windows.Forms.GroupBox();
             this.TimerPrincipal = new System.Windows.Forms.Timer(this.components);
             this.LblDollarSign = new System.Windows.Forms.Label();
             this.BtnAchatLion = new System.Windows.Forms.Button();
@@ -66,6 +66,30 @@ namespace TP2
             this.PicConcierge = new System.Windows.Forms.PictureBox();
             this.LblInfoConcierge = new System.Windows.Forms.Label();
             this.MappeMonde = new TP2.Map();
+            this.GrpInfosAnimaux = new System.Windows.Forms.GroupBox();
+            this.PicInfoLion = new System.Windows.Forms.PictureBox();
+            this.PicInfoMouton = new System.Windows.Forms.PictureBox();
+            this.LblQtLion = new System.Windows.Forms.Label();
+            this.LblQtMouton = new System.Windows.Forms.Label();
+            this.PicInfoGrizzly = new System.Windows.Forms.PictureBox();
+            this.PicInfoRhino = new System.Windows.Forms.PictureBox();
+            this.PicInfoLicorne = new System.Windows.Forms.PictureBox();
+            this.PicInfoBuffle = new System.Windows.Forms.PictureBox();
+            this.LblQtGrizzly = new System.Windows.Forms.Label();
+            this.LblQtRhino = new System.Windows.Forms.Label();
+            this.LblQtLicorne = new System.Windows.Forms.Label();
+            this.LblQtBuffle = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LblInfoType = new System.Windows.Forms.Label();
+            this.LblInfoGenreA = new System.Windows.Forms.Label();
+            this.LblAgeA = new System.Windows.Forms.Label();
+            this.LblInfoFaim = new System.Windows.Forms.Label();
+            this.LblInfoEnceinte = new System.Windows.Forms.Label();
+            this.PicInfoVis = new System.Windows.Forms.PictureBox();
+            this.LblInfoNomVis = new System.Windows.Forms.Label();
+            this.LblInfoGenreVis = new System.Windows.Forms.Label();
+            this.LblInfoTempsPasserVis = new System.Windows.Forms.Label();
+            this.GrpInfosVis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicMouton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).BeginInit();
@@ -77,6 +101,15 @@ namespace TP2
             ((System.ComponentModel.ISupportInitialize)(this.PicLicorne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConcierge)).BeginInit();
+            this.GrpInfosAnimaux.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoLion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoMouton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoGrizzly)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoRhino)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoLicorne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoBuffle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoVis)).BeginInit();
             this.SuspendLayout();
             // 
             // LblArgent
@@ -119,14 +152,18 @@ namespace TP2
             this.LblAnimal.TabIndex = 4;
             this.LblAnimal.Text = "Animaux : 0";
             // 
-            // GrpInfo
+            // GrpInfosVis
             // 
-            this.GrpInfo.Location = new System.Drawing.Point(0, 847);
-            this.GrpInfo.Name = "GrpInfo";
-            this.GrpInfo.Size = new System.Drawing.Size(1582, 91);
-            this.GrpInfo.TabIndex = 5;
-            this.GrpInfo.TabStop = false;
-            this.GrpInfo.Text = "Informations";
+            this.GrpInfosVis.Controls.Add(this.LblInfoTempsPasserVis);
+            this.GrpInfosVis.Controls.Add(this.LblInfoGenreVis);
+            this.GrpInfosVis.Controls.Add(this.LblInfoNomVis);
+            this.GrpInfosVis.Controls.Add(this.PicInfoVis);
+            this.GrpInfosVis.Location = new System.Drawing.Point(0, 855);
+            this.GrpInfosVis.Name = "GrpInfosVis";
+            this.GrpInfosVis.Size = new System.Drawing.Size(577, 83);
+            this.GrpInfosVis.TabIndex = 5;
+            this.GrpInfosVis.TabStop = false;
+            this.GrpInfosVis.Text = "Informations du visiteur";
             // 
             // TimerPrincipal
             // 
@@ -146,7 +183,7 @@ namespace TP2
             // 
             // BtnAchatLion
             // 
-            this.BtnAchatLion.Location = new System.Drawing.Point(1414, 146);
+            this.BtnAchatLion.Location = new System.Drawing.Point(1382, 146);
             this.BtnAchatLion.Name = "BtnAchatLion";
             this.BtnAchatLion.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatLion.TabIndex = 11;
@@ -155,7 +192,7 @@ namespace TP2
             // 
             // BtnAchatMouton
             // 
-            this.BtnAchatMouton.Location = new System.Drawing.Point(1414, 276);
+            this.BtnAchatMouton.Location = new System.Drawing.Point(1382, 276);
             this.BtnAchatMouton.Name = "BtnAchatMouton";
             this.BtnAchatMouton.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatMouton.TabIndex = 12;
@@ -164,7 +201,7 @@ namespace TP2
             // 
             // BtnAchatGrizzly
             // 
-            this.BtnAchatGrizzly.Location = new System.Drawing.Point(1415, 406);
+            this.BtnAchatGrizzly.Location = new System.Drawing.Point(1383, 406);
             this.BtnAchatGrizzly.Name = "BtnAchatGrizzly";
             this.BtnAchatGrizzly.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatGrizzly.TabIndex = 13;
@@ -173,7 +210,7 @@ namespace TP2
             // 
             // BtnAchatRhino
             // 
-            this.BtnAchatRhino.Location = new System.Drawing.Point(1414, 536);
+            this.BtnAchatRhino.Location = new System.Drawing.Point(1382, 536);
             this.BtnAchatRhino.Name = "BtnAchatRhino";
             this.BtnAchatRhino.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatRhino.TabIndex = 14;
@@ -182,7 +219,7 @@ namespace TP2
             // 
             // BtnAchatLicorne
             // 
-            this.BtnAchatLicorne.Location = new System.Drawing.Point(1414, 666);
+            this.BtnAchatLicorne.Location = new System.Drawing.Point(1382, 666);
             this.BtnAchatLicorne.Name = "BtnAchatLicorne";
             this.BtnAchatLicorne.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatLicorne.TabIndex = 15;
@@ -191,7 +228,7 @@ namespace TP2
             // 
             // BtnAchatBuffle
             // 
-            this.BtnAchatBuffle.Location = new System.Drawing.Point(1414, 796);
+            this.BtnAchatBuffle.Location = new System.Drawing.Point(1382, 796);
             this.BtnAchatBuffle.Name = "BtnAchatBuffle";
             this.BtnAchatBuffle.Size = new System.Drawing.Size(136, 23);
             this.BtnAchatBuffle.TabIndex = 16;
@@ -202,7 +239,7 @@ namespace TP2
             // 
             this.LblPrixLion.AutoSize = true;
             this.LblPrixLion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixLion.Location = new System.Drawing.Point(1506, 92);
+            this.LblPrixLion.Location = new System.Drawing.Point(1474, 92);
             this.LblPrixLion.Name = "LblPrixLion";
             this.LblPrixLion.Size = new System.Drawing.Size(44, 20);
             this.LblPrixLion.TabIndex = 18;
@@ -212,7 +249,7 @@ namespace TP2
             // 
             this.LblPrixMouton.AutoSize = true;
             this.LblPrixMouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixMouton.Location = new System.Drawing.Point(1506, 221);
+            this.LblPrixMouton.Location = new System.Drawing.Point(1474, 221);
             this.LblPrixMouton.Name = "LblPrixMouton";
             this.LblPrixMouton.Size = new System.Drawing.Size(44, 20);
             this.LblPrixMouton.TabIndex = 20;
@@ -221,7 +258,7 @@ namespace TP2
             // PicMouton
             // 
             this.PicMouton.Image = global::TP2.Properties.Resources.sheep;
-            this.PicMouton.Location = new System.Drawing.Point(1414, 180);
+            this.PicMouton.Location = new System.Drawing.Point(1382, 180);
             this.PicMouton.Name = "PicMouton";
             this.PicMouton.Size = new System.Drawing.Size(90, 90);
             this.PicMouton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -231,7 +268,7 @@ namespace TP2
             // PicLion
             // 
             this.PicLion.Image = global::TP2.Properties.Resources.lion1;
-            this.PicLion.Location = new System.Drawing.Point(1414, 50);
+            this.PicLion.Location = new System.Drawing.Point(1382, 50);
             this.PicLion.Name = "PicLion";
             this.PicLion.Size = new System.Drawing.Size(90, 90);
             this.PicLion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -281,7 +318,7 @@ namespace TP2
             // PicGrizzly
             // 
             this.PicGrizzly.Image = global::TP2.Properties.Resources.grizzly;
-            this.PicGrizzly.Location = new System.Drawing.Point(1414, 310);
+            this.PicGrizzly.Location = new System.Drawing.Point(1382, 310);
             this.PicGrizzly.Name = "PicGrizzly";
             this.PicGrizzly.Size = new System.Drawing.Size(90, 90);
             this.PicGrizzly.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -291,7 +328,7 @@ namespace TP2
             // PicRhino
             // 
             this.PicRhino.Image = global::TP2.Properties.Resources.rhino;
-            this.PicRhino.Location = new System.Drawing.Point(1415, 440);
+            this.PicRhino.Location = new System.Drawing.Point(1383, 440);
             this.PicRhino.Name = "PicRhino";
             this.PicRhino.Size = new System.Drawing.Size(90, 90);
             this.PicRhino.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -301,7 +338,7 @@ namespace TP2
             // PicLicorne
             // 
             this.PicLicorne.Image = global::TP2.Properties.Resources.licorne;
-            this.PicLicorne.Location = new System.Drawing.Point(1414, 570);
+            this.PicLicorne.Location = new System.Drawing.Point(1382, 570);
             this.PicLicorne.Name = "PicLicorne";
             this.PicLicorne.Size = new System.Drawing.Size(90, 90);
             this.PicLicorne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -311,7 +348,7 @@ namespace TP2
             // PicBuffle
             // 
             this.PicBuffle.Image = global::TP2.Properties.Resources.buffalo;
-            this.PicBuffle.Location = new System.Drawing.Point(1414, 700);
+            this.PicBuffle.Location = new System.Drawing.Point(1382, 700);
             this.PicBuffle.Name = "PicBuffle";
             this.PicBuffle.Size = new System.Drawing.Size(90, 90);
             this.PicBuffle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -321,7 +358,7 @@ namespace TP2
             // LblPrixGrizzly
             // 
             this.LblPrixGrizzly.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixGrizzly.Location = new System.Drawing.Point(1506, 347);
+            this.LblPrixGrizzly.Location = new System.Drawing.Point(1474, 347);
             this.LblPrixGrizzly.Name = "LblPrixGrizzly";
             this.LblPrixGrizzly.Size = new System.Drawing.Size(44, 20);
             this.LblPrixGrizzly.TabIndex = 0;
@@ -331,7 +368,7 @@ namespace TP2
             // 
             this.LblPrixRhino.AutoSize = true;
             this.LblPrixRhino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixRhino.Location = new System.Drawing.Point(1507, 486);
+            this.LblPrixRhino.Location = new System.Drawing.Point(1475, 486);
             this.LblPrixRhino.Name = "LblPrixRhino";
             this.LblPrixRhino.Size = new System.Drawing.Size(44, 20);
             this.LblPrixRhino.TabIndex = 25;
@@ -341,7 +378,7 @@ namespace TP2
             // 
             this.LblPrixLicorne.AutoSize = true;
             this.LblPrixLicorne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixLicorne.Location = new System.Drawing.Point(1506, 613);
+            this.LblPrixLicorne.Location = new System.Drawing.Point(1474, 613);
             this.LblPrixLicorne.Name = "LblPrixLicorne";
             this.LblPrixLicorne.Size = new System.Drawing.Size(44, 20);
             this.LblPrixLicorne.TabIndex = 26;
@@ -351,7 +388,7 @@ namespace TP2
             // 
             this.LblPrixBuffle.AutoSize = true;
             this.LblPrixBuffle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixBuffle.Location = new System.Drawing.Point(1506, 737);
+            this.LblPrixBuffle.Location = new System.Drawing.Point(1474, 737);
             this.LblPrixBuffle.Name = "LblPrixBuffle";
             this.LblPrixBuffle.Size = new System.Drawing.Size(44, 20);
             this.LblPrixBuffle.TabIndex = 27;
@@ -407,17 +444,265 @@ namespace TP2
             this.MappeMonde.Location = new System.Drawing.Point(0, 50);
             this.MappeMonde.Name = "MappeMonde";
             this.MappeMonde.placedAnimal = false;
-            this.MappeMonde.Size = new System.Drawing.Size(1376, 832);
+            this.MappeMonde.Size = new System.Drawing.Size(1376, 799);
             this.MappeMonde.sizeListeAnimaux = 0;
             this.MappeMonde.sizeListeVisiteur = 0;
             this.MappeMonde.TabIndex = 0;
             this.MappeMonde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MappeMonde_KeyUp);
             // 
+            // GrpInfosAnimaux
+            // 
+            this.GrpInfosAnimaux.Controls.Add(this.LblInfoEnceinte);
+            this.GrpInfosAnimaux.Controls.Add(this.LblInfoFaim);
+            this.GrpInfosAnimaux.Controls.Add(this.LblAgeA);
+            this.GrpInfosAnimaux.Controls.Add(this.LblInfoGenreA);
+            this.GrpInfosAnimaux.Controls.Add(this.LblInfoType);
+            this.GrpInfosAnimaux.Controls.Add(this.pictureBox1);
+            this.GrpInfosAnimaux.Controls.Add(this.LblQtBuffle);
+            this.GrpInfosAnimaux.Controls.Add(this.LblQtLicorne);
+            this.GrpInfosAnimaux.Controls.Add(this.LblQtRhino);
+            this.GrpInfosAnimaux.Controls.Add(this.LblQtGrizzly);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoBuffle);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoLicorne);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoRhino);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoGrizzly);
+            this.GrpInfosAnimaux.Controls.Add(this.LblQtMouton);
+            this.GrpInfosAnimaux.Controls.Add(this.LblQtLion);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoMouton);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoLion);
+            this.GrpInfosAnimaux.Location = new System.Drawing.Point(577, 855);
+            this.GrpInfosAnimaux.Name = "GrpInfosAnimaux";
+            this.GrpInfosAnimaux.Size = new System.Drawing.Size(942, 83);
+            this.GrpInfosAnimaux.TabIndex = 0;
+            this.GrpInfosAnimaux.TabStop = false;
+            this.GrpInfosAnimaux.Text = "Informations des animaux";
+            // 
+            // PicInfoLion
+            // 
+            this.PicInfoLion.Image = global::TP2.Properties.Resources.lion1;
+            this.PicInfoLion.Location = new System.Drawing.Point(6, 19);
+            this.PicInfoLion.Name = "PicInfoLion";
+            this.PicInfoLion.Size = new System.Drawing.Size(25, 25);
+            this.PicInfoLion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInfoLion.TabIndex = 0;
+            this.PicInfoLion.TabStop = false;
+            // 
+            // PicInfoMouton
+            // 
+            this.PicInfoMouton.Image = global::TP2.Properties.Resources.sheep;
+            this.PicInfoMouton.Location = new System.Drawing.Point(6, 50);
+            this.PicInfoMouton.Name = "PicInfoMouton";
+            this.PicInfoMouton.Size = new System.Drawing.Size(25, 25);
+            this.PicInfoMouton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInfoMouton.TabIndex = 1;
+            this.PicInfoMouton.TabStop = false;
+            // 
+            // LblQtLion
+            // 
+            this.LblQtLion.AutoSize = true;
+            this.LblQtLion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblQtLion.Location = new System.Drawing.Point(37, 24);
+            this.LblQtLion.Name = "LblQtLion";
+            this.LblQtLion.Size = new System.Drawing.Size(19, 20);
+            this.LblQtLion.TabIndex = 2;
+            this.LblQtLion.Text = "0";
+            // 
+            // LblQtMouton
+            // 
+            this.LblQtMouton.AutoSize = true;
+            this.LblQtMouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblQtMouton.Location = new System.Drawing.Point(37, 55);
+            this.LblQtMouton.Name = "LblQtMouton";
+            this.LblQtMouton.Size = new System.Drawing.Size(19, 20);
+            this.LblQtMouton.TabIndex = 3;
+            this.LblQtMouton.Text = "0";
+            // 
+            // PicInfoGrizzly
+            // 
+            this.PicInfoGrizzly.Image = global::TP2.Properties.Resources.grizzly;
+            this.PicInfoGrizzly.Location = new System.Drawing.Point(93, 19);
+            this.PicInfoGrizzly.Name = "PicInfoGrizzly";
+            this.PicInfoGrizzly.Size = new System.Drawing.Size(25, 25);
+            this.PicInfoGrizzly.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInfoGrizzly.TabIndex = 4;
+            this.PicInfoGrizzly.TabStop = false;
+            // 
+            // PicInfoRhino
+            // 
+            this.PicInfoRhino.Image = global::TP2.Properties.Resources.rhino;
+            this.PicInfoRhino.Location = new System.Drawing.Point(93, 50);
+            this.PicInfoRhino.Name = "PicInfoRhino";
+            this.PicInfoRhino.Size = new System.Drawing.Size(25, 25);
+            this.PicInfoRhino.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInfoRhino.TabIndex = 5;
+            this.PicInfoRhino.TabStop = false;
+            // 
+            // PicInfoLicorne
+            // 
+            this.PicInfoLicorne.Image = global::TP2.Properties.Resources.licorne;
+            this.PicInfoLicorne.Location = new System.Drawing.Point(179, 19);
+            this.PicInfoLicorne.Name = "PicInfoLicorne";
+            this.PicInfoLicorne.Size = new System.Drawing.Size(25, 25);
+            this.PicInfoLicorne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInfoLicorne.TabIndex = 6;
+            this.PicInfoLicorne.TabStop = false;
+            // 
+            // PicInfoBuffle
+            // 
+            this.PicInfoBuffle.Image = global::TP2.Properties.Resources.buffalo;
+            this.PicInfoBuffle.Location = new System.Drawing.Point(179, 50);
+            this.PicInfoBuffle.Name = "PicInfoBuffle";
+            this.PicInfoBuffle.Size = new System.Drawing.Size(25, 25);
+            this.PicInfoBuffle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInfoBuffle.TabIndex = 7;
+            this.PicInfoBuffle.TabStop = false;
+            // 
+            // LblQtGrizzly
+            // 
+            this.LblQtGrizzly.AutoSize = true;
+            this.LblQtGrizzly.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblQtGrizzly.Location = new System.Drawing.Point(124, 24);
+            this.LblQtGrizzly.Name = "LblQtGrizzly";
+            this.LblQtGrizzly.Size = new System.Drawing.Size(19, 20);
+            this.LblQtGrizzly.TabIndex = 8;
+            this.LblQtGrizzly.Text = "0";
+            // 
+            // LblQtRhino
+            // 
+            this.LblQtRhino.AutoSize = true;
+            this.LblQtRhino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblQtRhino.Location = new System.Drawing.Point(124, 55);
+            this.LblQtRhino.Name = "LblQtRhino";
+            this.LblQtRhino.Size = new System.Drawing.Size(19, 20);
+            this.LblQtRhino.TabIndex = 9;
+            this.LblQtRhino.Text = "0";
+            // 
+            // LblQtLicorne
+            // 
+            this.LblQtLicorne.AutoSize = true;
+            this.LblQtLicorne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblQtLicorne.Location = new System.Drawing.Point(210, 24);
+            this.LblQtLicorne.Name = "LblQtLicorne";
+            this.LblQtLicorne.Size = new System.Drawing.Size(19, 20);
+            this.LblQtLicorne.TabIndex = 10;
+            this.LblQtLicorne.Text = "0";
+            // 
+            // LblQtBuffle
+            // 
+            this.LblQtBuffle.AutoSize = true;
+            this.LblQtBuffle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblQtBuffle.Location = new System.Drawing.Point(210, 55);
+            this.LblQtBuffle.Name = "LblQtBuffle";
+            this.LblQtBuffle.Size = new System.Drawing.Size(19, 20);
+            this.LblQtBuffle.TabIndex = 11;
+            this.LblQtBuffle.Text = "0";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TP2.Properties.Resources.animal_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(441, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LblInfoType
+            // 
+            this.LblInfoType.AutoSize = true;
+            this.LblInfoType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoType.Location = new System.Drawing.Point(517, 13);
+            this.LblInfoType.Name = "LblInfoType";
+            this.LblInfoType.Size = new System.Drawing.Size(59, 17);
+            this.LblInfoType.TabIndex = 13;
+            this.LblInfoType.Text = "Type : ";
+            // 
+            // LblInfoGenreA
+            // 
+            this.LblInfoGenreA.AutoSize = true;
+            this.LblInfoGenreA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoGenreA.Location = new System.Drawing.Point(517, 34);
+            this.LblInfoGenreA.Name = "LblInfoGenreA";
+            this.LblInfoGenreA.Size = new System.Drawing.Size(68, 17);
+            this.LblInfoGenreA.TabIndex = 14;
+            this.LblInfoGenreA.Text = "Genre : ";
+            // 
+            // LblAgeA
+            // 
+            this.LblAgeA.AutoSize = true;
+            this.LblAgeA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAgeA.Location = new System.Drawing.Point(517, 55);
+            this.LblAgeA.Name = "LblAgeA";
+            this.LblAgeA.Size = new System.Drawing.Size(51, 17);
+            this.LblAgeA.TabIndex = 15;
+            this.LblAgeA.Text = "Age : ";
+            // 
+            // LblInfoFaim
+            // 
+            this.LblInfoFaim.AutoSize = true;
+            this.LblInfoFaim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoFaim.Location = new System.Drawing.Point(658, 13);
+            this.LblInfoFaim.Name = "LblInfoFaim";
+            this.LblInfoFaim.Size = new System.Drawing.Size(167, 17);
+            this.LblInfoFaim.TabIndex = 16;
+            this.LblInfoFaim.Text = "Besoin d\'être nourri : ";
+            // 
+            // LblInfoEnceinte
+            // 
+            this.LblInfoEnceinte.AutoSize = true;
+            this.LblInfoEnceinte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoEnceinte.Location = new System.Drawing.Point(658, 55);
+            this.LblInfoEnceinte.Name = "LblInfoEnceinte";
+            this.LblInfoEnceinte.Size = new System.Drawing.Size(86, 17);
+            this.LblInfoEnceinte.TabIndex = 17;
+            this.LblInfoEnceinte.Text = "Enceinte : ";
+            // 
+            // PicInfoVis
+            // 
+            this.PicInfoVis.Image = global::TP2.Properties.Resources.personnages;
+            this.PicInfoVis.Location = new System.Drawing.Point(42, 13);
+            this.PicInfoVis.Name = "PicInfoVis";
+            this.PicInfoVis.Size = new System.Drawing.Size(70, 70);
+            this.PicInfoVis.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicInfoVis.TabIndex = 0;
+            this.PicInfoVis.TabStop = false;
+            // 
+            // LblInfoNomVis
+            // 
+            this.LblInfoNomVis.AutoSize = true;
+            this.LblInfoNomVis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoNomVis.Location = new System.Drawing.Point(118, 13);
+            this.LblInfoNomVis.Name = "LblInfoNomVis";
+            this.LblInfoNomVis.Size = new System.Drawing.Size(55, 17);
+            this.LblInfoNomVis.TabIndex = 1;
+            this.LblInfoNomVis.Text = "Nom : ";
+            // 
+            // LblInfoGenreVis
+            // 
+            this.LblInfoGenreVis.AutoSize = true;
+            this.LblInfoGenreVis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoGenreVis.Location = new System.Drawing.Point(118, 36);
+            this.LblInfoGenreVis.Name = "LblInfoGenreVis";
+            this.LblInfoGenreVis.Size = new System.Drawing.Size(58, 17);
+            this.LblInfoGenreVis.TabIndex = 2;
+            this.LblInfoGenreVis.Text = "Sexe : ";
+            // 
+            // LblInfoTempsPasserVis
+            // 
+            this.LblInfoTempsPasserVis.AutoSize = true;
+            this.LblInfoTempsPasserVis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoTempsPasserVis.Location = new System.Drawing.Point(118, 58);
+            this.LblInfoTempsPasserVis.Name = "LblInfoTempsPasserVis";
+            this.LblInfoTempsPasserVis.Size = new System.Drawing.Size(225, 17);
+            this.LblInfoTempsPasserVis.TabIndex = 3;
+            this.LblInfoTempsPasserVis.Text = "Temps passer depuis arrivé : ";
+            // 
             // FenetrePrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 938);
+            this.ClientSize = new System.Drawing.Size(1524, 938);
+            this.Controls.Add(this.GrpInfosAnimaux);
             this.Controls.Add(this.LblInfoConcierge);
             this.Controls.Add(this.PicConcierge);
             this.Controls.Add(this.BtnEngageConcierge);
@@ -444,7 +729,7 @@ namespace TP2
             this.Controls.Add(this.PicAnimal);
             this.Controls.Add(this.PicArgent);
             this.Controls.Add(this.PicDate);
-            this.Controls.Add(this.GrpInfo);
+            this.Controls.Add(this.GrpInfosVis);
             this.Controls.Add(this.LblAnimal);
             this.Controls.Add(this.LblDechets);
             this.Controls.Add(this.LblDate);
@@ -456,6 +741,8 @@ namespace TP2
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP2";
+            this.GrpInfosVis.ResumeLayout(false);
+            this.GrpInfosVis.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicMouton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicDechets)).EndInit();
@@ -467,6 +754,16 @@ namespace TP2
             ((System.ComponentModel.ISupportInitialize)(this.PicLicorne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConcierge)).EndInit();
+            this.GrpInfosAnimaux.ResumeLayout(false);
+            this.GrpInfosAnimaux.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoLion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoMouton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoGrizzly)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoRhino)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoLicorne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoBuffle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoVis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,7 +776,7 @@ namespace TP2
         public Label LblDate;
         private Label LblDechets;
         private Label LblAnimal;
-        private GroupBox GrpInfo;
+        private GroupBox GrpInfosVis;
         private PictureBox PicDate;
         private PictureBox PicArgent;
         private PictureBox PicAnimal;
@@ -512,6 +809,29 @@ namespace TP2
         private Button BtnEngageConcierge;
         private PictureBox PicConcierge;
         private Label LblInfoConcierge;
+        private GroupBox GrpInfosAnimaux;
+        private Label LblQtBuffle;
+        private Label LblQtLicorne;
+        private Label LblQtRhino;
+        private Label LblQtGrizzly;
+        private PictureBox PicInfoBuffle;
+        private PictureBox PicInfoLicorne;
+        private PictureBox PicInfoRhino;
+        private PictureBox PicInfoGrizzly;
+        private Label LblQtMouton;
+        private Label LblQtLion;
+        private PictureBox PicInfoMouton;
+        private PictureBox PicInfoLion;
+        private Label LblInfoEnceinte;
+        private Label LblInfoFaim;
+        private Label LblAgeA;
+        private Label LblInfoGenreA;
+        private Label LblInfoType;
+        private PictureBox pictureBox1;
+        private Label LblInfoTempsPasserVis;
+        private Label LblInfoGenreVis;
+        private Label LblInfoNomVis;
+        private PictureBox PicInfoVis;
     }
 }
 

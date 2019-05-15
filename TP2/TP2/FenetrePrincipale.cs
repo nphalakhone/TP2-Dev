@@ -109,12 +109,6 @@ namespace TP2
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
             tempsPasser++;
-            if (m.sizeListeAnimaux != m.sizeListeVisiteur)
-            {
-                Visiteur vis = new Visiteur();
-                m.listeVisiteur.Add(vis);
-                m.sizeListeVisiteur++;
-            }
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
