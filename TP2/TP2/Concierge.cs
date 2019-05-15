@@ -20,6 +20,8 @@ namespace TP2
         public int leftAI { get; set; }
         public int rightAI { get; set; }
 
+        public bool[,] bmInteractionC = new bool[43, 25];
+
         public List<Image> listeC = new List<Image>();
 
         public Concierge(int x2, int y2)

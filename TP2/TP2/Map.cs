@@ -275,7 +275,7 @@ namespace TP2
             dessinerHero(gr, h.x, h.y);
 
             if (listeVisiteur.Count() > 0)
-            {                
+            {
                 foreach (Visiteur v in listeVisiteur)
                 {
                     dessinerVisiteur(gr, v);
@@ -698,10 +698,16 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = r.Next(1, 5);
+            int deplacement = r.Next(1, 4);
 
             int x2 = v.x;
             int y2 = v.y;
+            Point pHero = new Point();
+            Point pVisiteur = new Point();
+            pHero.X = h.x;
+            pHero.Y = h.y;
+            pVisiteur.X = v.x;
+            pVisiteur.Y = v.y;
 
             List<Image> l = new List<Image>();
             switch (v.type)
@@ -725,7 +731,8 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    pVisiteur.Y = y2;
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pHero != pVisiteur)
                     {
                         v.y--;
                         if (v.upAI == 0)
@@ -740,7 +747,7 @@ namespace TP2
                             Refresh();
                             v.upAI--;
                         }
-                    } 
+                    }
                 }
             }
             else if (deplacement == 2)
@@ -748,7 +755,8 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    pVisiteur.X = x2;
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pHero != pVisiteur)
                     {
                         v.x--;
                         if (v.leftAI == 0)
@@ -774,33 +782,11 @@ namespace TP2
             }
             else if (deplacement == 3)
             {
-                y2++;
-                if (y2 <= 24)
-                {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
-                    {
-                        v.y++;
-                        if (v.downAI == 0)
-                        {
-                            v.currentDir = l.ElementAt(1);
-                            Refresh();
-                            v.downAI++;
-                        }
-                        else if (v.downAI == 1)
-                        {
-                            v.currentDir = l.ElementAt(0);
-                            Refresh();
-                            v.downAI--;
-                        }
-                    }
-                }
-            }
-            else if (deplacement == 4)
-            {
                 x2++;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    pVisiteur.X = x2;
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pHero != pVisiteur)
                     {
                         v.x++;
                         if (v.rightAI == 0)
@@ -826,8 +812,97 @@ namespace TP2
             }
         }
 
+        public void deplacementAnimal(Animal a)
+        {
+            Random r = new Random();
+            int deplacement = r.Next(1, 5);
+
+            int x2 = a.x;
+            int y2 = a.y;
+
+            Bitmap[] l = new Bitmap[1];
+            switch (a.TypeAnimal)
+            {
+                case Animaux.Lion:
+                    l[0] = TilesetImageGenerator.GetTile(44);
+                    break;
+                case Animaux.Mouton:
+                    l[0] = TilesetImageGenerator.GetTile(45);
+                    break;
+                case Animaux.Grizzly:
+                    l[0] = TilesetImageGenerator.GetTile(46);
+                    break;
+                case Animaux.Rhinoceros:
+                    l[0] = TilesetImageGenerator.GetTile(47);
+                    break;
+                case Animaux.Licorne:
+                    l[0] = TilesetImageGenerator.GetTile(48);
+                    break;
+                case Animaux.Buffle:
+                    l[0] = TilesetImageGenerator.GetTile(49);
+                    break;
+            }
+
+            if (deplacement == 1)
+            {
+                y2--;
+                if (y2 >= 0)
+                {
+                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    {
+                        bmAnimaux[a.x, a.y] = null;
+                        a.y--;
+                        bmAnimaux[a.x, a.y] = l[0];
+                        Refresh();
+                    }
+                }
+            }
+            else if (deplacement == 2)
+            {
+                x2--;
+                if (x2 >= 0)
+                {
+                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    {
+                        bmAnimaux[a.x, a.y] = null;
+                        a.x--;
+                        bmAnimaux[a.x, a.y] = l[0];
+                        Refresh();
+                    }
+                }
+            }
+            else if (deplacement == 3)
+            {
+                y2++;
+                if (y2 <= 24)
+                {
+                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    {
+                        bmAnimaux[a.x, a.y] = null;
+                        a.y++;
+                        bmAnimaux[a.x, a.y] = l[0];
+                        Refresh();
+                    }
+                }
+            }
+            else if (deplacement == 4)
+            {
+                x2++;
+                if (x2 <= 42)
+                {
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    {
+                        bmAnimaux[a.x, a.y] = null;
+                        a.x++;
+                        bmAnimaux[a.x, a.y] = l[0];
+                        Refresh();
+                    }
+                }
+            }
+        }
+
         public void dropTrash(Visiteur v)
-        {           
+        {
             if (v.dropDechet)
             {
                 Point p = new Point();
@@ -846,15 +921,23 @@ namespace TP2
             int x2 = c.x;
             int y2 = c.y;
 
+            Point pHero = new Point();
+            Point pConcierge = new Point();
+            pHero.X = h.x;
+            pHero.Y = h.y;
+            pConcierge.X = c.x;
+            pConcierge.Y = c.y;
+
             List<Image> l = new List<Image>();
             l = c.listeC;
 
             if (deplacement == 1)
             {
                 y2--;
+                pConcierge.Y = y2;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pConcierge != pHero)
                     {
                         c.y--;
                         if (c.upAI == 0)
@@ -875,9 +958,10 @@ namespace TP2
             else if (deplacement == 2)
             {
                 x2--;
+                pConcierge.X = x2;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pConcierge != pHero)
                     {
                         c.x--;
                         if (c.leftAI == 0)
@@ -904,9 +988,10 @@ namespace TP2
             else if (deplacement == 3)
             {
                 y2++;
+                pConcierge.Y = y2;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pConcierge != pHero)
                     {
                         c.y++;
                         if (c.downAI == 0)
@@ -927,9 +1012,10 @@ namespace TP2
             else if (deplacement == 4)
             {
                 x2++;
+                pConcierge.X = x2;
                 if (x2 <= 42)
                 {
-                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && (h.x != x2 && h.y != y2))
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && noMouvTrash[x2, y2] && pConcierge != pHero)
                     {
                         c.x++;
                         if (c.rightAI == 0)
@@ -953,6 +1039,35 @@ namespace TP2
                     }
                 }
             }
+
+            for (int i = 0; i < c.bmInteractionC.GetLength(0); i++)
+            {
+                for (int j = 0; j < c.bmInteractionC.GetLength(1); j++)
+                {
+                    c.bmInteractionC[i, j] = false;
+                }
+            }
+
+            c.bmInteractionC = peuplerBitmapInteractionConcierge(c.x, c.y, c);
+
+            for (int i = 0; i < c.bmInteractionC.GetLength(0); i++)
+            {
+                for (int j = 0; j < c.bmInteractionC.GetLength(1); j++)
+                {
+                    if (c.bmInteractionC[i, j])
+                    {
+                        foreach (Point p in listeTrash)
+                        {
+                            if (p.X == i && p.Y == j)
+                            {
+                                listeTrash.Remove(p);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
 
@@ -1018,6 +1133,62 @@ namespace TP2
                 bmInteraction[x2 + 1, y2 - 1] = true;
             }
         }
+
+        private bool[,] peuplerBitmapInteractionConcierge(int x2, int y2, Concierge c)
+        {
+            bool[,] bmInteractionC = new bool[43, 25];
+
+            for (int i = 0; i < bmInteractionC.GetLength(0); i++)
+            {
+                for (int j = 0; j < bmInteractionC.GetLength(1); j++)
+                {
+                    bmInteractionC[i, j] = false;
+                }
+            }
+
+            if (c.x != 0 && c.y != 0)
+            {
+                bmInteractionC[x2 - 1, y2 - 1] = true;
+            }
+
+            if (c.x != 0)
+            {
+                bmInteractionC[x2 - 1, y2] = true;
+            }
+
+            if (c.y != 0)
+            {
+                bmInteractionC[x2, y2 - 1] = true;
+            }
+
+            if (c.x != 0 && c.y != 24)
+            {
+                bmInteractionC[x2 - 1, y2 + 1] = true;
+            }
+
+            if (c.x != 42 && c.y != 24)
+            {
+                bmInteractionC[x2 + 1, y2 + 1] = true;
+            }
+
+            if (c.x != 42)
+            {
+                bmInteractionC[x2 + 1, y2] = true;
+            }
+
+            if (c.y != 24)
+            {
+                bmInteractionC[x2, y2 + 1] = true;
+            }
+
+            if (c.x != 42 && c.y != 0)
+            {
+                bmInteractionC[x2 + 1, y2 - 1] = true;
+            }
+
+            return bmInteractionC;
+        }
+
 
         private void Map_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1116,7 +1287,7 @@ namespace TP2
                     {
                         foreach (Point p in listeTrash)
                         {
-                            if(p.X == e.X / 32 && p.Y == e.Y / 32)
+                            if (p.X == e.X / 32 && p.Y == e.Y / 32)
                             {
                                 listeTrash.Remove(p);
                                 break;

@@ -241,7 +241,10 @@ namespace TP2
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
         {
-
+            foreach (Animal a in m.listeAnimaux)
+            {
+                m.deplacementAnimal(a);
+            }
         }
 
         private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
