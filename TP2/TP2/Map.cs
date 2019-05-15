@@ -39,7 +39,7 @@ namespace TP2
         public int sizeListeAnimaux { get; set; }
         public int sizeListeVisiteur { get; set; }
 
-        List<Animal> listeAnimaux { get; set; }
+        public List<Animal> listeAnimaux = new List<Animal>();
         List<Concierge> listeConcierge { get; set; }
         public List<Visiteur> listeVisiteur = new List<Visiteur>();
 
@@ -52,6 +52,10 @@ namespace TP2
         int down = 0;
         int left = 0;
         int right = 0;
+
+        public int placeListeAnimal { get; set; }
+
+        public int placeListeVisiteur { get; set; }
 
         public bool enableBuyAnimals { get; set; }
 
@@ -67,11 +71,13 @@ namespace TP2
         {
             InitializeComponent();
             creerInterface();
-
-            listeAnimaux = new List<Animal>();
+            
             listeConcierge = new List<Concierge>();
 
             heroOnlyArea = true;
+
+            placeListeAnimal = 999;
+            placeListeVisiteur = 999;
         }
 
         private void creerInterface()
@@ -662,7 +668,7 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = r.Next(1, 4);
+            int deplacement = r.Next(1, 5);
             int x2 = v.x;
             int y2 = v.y;
 
@@ -874,7 +880,7 @@ namespace TP2
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Mouton))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Mouton, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -886,7 +892,7 @@ namespace TP2
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Grizzly))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Grizzly, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -898,7 +904,7 @@ namespace TP2
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Rhinoceros))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Rhinoceros, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -910,7 +916,7 @@ namespace TP2
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Licorne))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Licorne, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -922,7 +928,7 @@ namespace TP2
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Buffle))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Buffle, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
@@ -942,6 +948,29 @@ namespace TP2
                     Refresh();
                     break;
                 case MouseButtons.Right:
+                    
+                    int comptA = 0;
+                    int comptV = 0;
+
+                    foreach (Animal a in listeAnimaux)
+                    {
+                        if(a.x == e.X / 32 && a.y == e.Y / 32)
+                        {
+                            placeListeAnimal = comptA;
+                            break;
+                        }
+                        comptA++;
+                    }
+
+                    foreach (Visiteur v in listeVisiteur)
+                    {
+                        if(v.x == e.X / 32 && v.y == e.Y / 32)
+                        {
+                            placeListeVisiteur = comptV;
+                            break;
+                        }
+                        comptV++;
+                    }
 
                     break;
             }
