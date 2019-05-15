@@ -37,7 +37,7 @@ namespace TP2
             Nourri = true;
 
             Random rng = new Random();
-            int randomGenre = rng.Next(0, 1);
+            int randomGenre = rng.Next(0, 2);
 
             Genre = randomGenre == 0;
 

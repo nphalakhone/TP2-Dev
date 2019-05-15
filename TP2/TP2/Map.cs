@@ -643,7 +643,7 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = 1;
+            int deplacement = r.Next(1, 4);
             int x2 = v.x;
             int y2 = v.y;
 
