@@ -113,7 +113,7 @@ namespace TP2
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
         {
-            
+
         }
 
         private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
@@ -121,6 +121,11 @@ namespace TP2
             foreach (Visiteur v in m.listeVisiteur)
             {
                 m.DeplacementAI(v);
+            }
+
+            foreach (Concierge c in m.listeConcierge)
+            {
+                m.deplacementConcierge(c);
             }
         }
 

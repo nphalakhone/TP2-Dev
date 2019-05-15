@@ -40,7 +40,7 @@ namespace TP2
         public int sizeListeVisiteur { get; set; }
 
         List<Animal> listeAnimaux { get; set; }
-        List<Concierge> listeConcierge { get; set; }
+        public List<Concierge> listeConcierge = new List<Concierge>();
         public List<Visiteur> listeVisiteur = new List<Visiteur>();
 
         int xSortie = 19;
@@ -69,7 +69,6 @@ namespace TP2
             creerInterface();
 
             listeAnimaux = new List<Animal>();
-            listeConcierge = new List<Concierge>();
 
             heroOnlyArea = true;
         }
@@ -114,7 +113,9 @@ namespace TP2
                 for (int j = 0; j < bmMap.GetLength(1); j++)
                 {
                     if ((i == 2 && (j > 1 && j < 23)) || i == 19 || (i == 36 && (j > 1 && j < 23)) ||
-                        (i == 40 && (j > 4 && j < 13)) || (j == 2 && (i > 1 && i < 37)) || (j == 12 && (i > 1 && i < 41)) || (j == 22 && (i > 1 && i < 37)))
+                        (i == 40 && (j > 4 && j < 13)) || (j == 2 && (i > 1 && i < 37)) || (j == 12 && (i > 1 && i < 41))
+                        || (j == 22 && (i > 1 && i < 37)) || (j == 23 && i == 18) || (j == 23 && i == 20) || (j == 24 && i == 18)
+                        || (j == 24 && i == 20) || (j == 0 && i == 18) || (j == 0 && i == 20) || (j == 1 && i == 18) || (j == 1 && i == 20))
                     {
                         bmMap[i, j] = TilesetImageGenerator.GetTile(41);
                     }
@@ -268,7 +269,7 @@ namespace TP2
             {
                 foreach (Visiteur v in listeVisiteur)
                 {
-                    dessinerVisiteur(gr,v);
+                    dessinerVisiteur(gr, v);
                 }
             }
 
@@ -278,7 +279,13 @@ namespace TP2
             remplirNoMouvJanitor();
             remplirNoMouvAI();
 
-            dessinerConcierge(gr);
+            if (listeConcierge.Count() > 0)
+            {
+                foreach (Concierge c in listeConcierge)
+                {
+                    dessinerConcierge(gr, c);
+                }
+            }
         }
 
 
@@ -490,18 +497,9 @@ namespace TP2
             }
         }
 
-        private void dessinerConcierge(Graphics gr)
+        private void dessinerConcierge(Graphics gr, Concierge c)
         {
-            for (int i = 0; i < bmVisiteurEtConcierge.GetLength(0); i++)
-            {
-                for (int j = 0; j < bmVisiteurEtConcierge.GetLength(1); j++)
-                {
-                    if (bmVisiteurEtConcierge[i, j] != null)
-                    {
-                        gr.DrawImage(bmVisiteurEtConcierge[i, j], i * 32, j * 32, 32, 32);
-                    }
-                }
-            }
+            gr.DrawImage(c.currentDir, c.x * 32, c.y * 32, 32, 32);
         }
 
         private void remplirNoMouvAnimal()
@@ -662,7 +660,8 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = r.Next(1, 4);
+            int deplacement = r.Next(1, 5);
+            int deplacement2 = r.Next(1, 5);
             int x2 = v.x;
             int y2 = v.y;
 
@@ -683,7 +682,7 @@ namespace TP2
                     break;
             }
 
-            if (deplacement == 1)
+            if (deplacement == 1 && deplacement2 == 2)
             {
                 y2--;
                 if (y2 >= 0)
@@ -706,7 +705,7 @@ namespace TP2
                     }
                 }
             }
-            else if (deplacement == 2)
+            else if (deplacement == 2 && deplacement2 == 4)
             {
                 x2--;
                 if (x2 >= 0)
@@ -735,7 +734,7 @@ namespace TP2
                     }
                 }
             }
-            else if (deplacement == 3)
+            else if (deplacement == 3 && deplacement2 == 3)
             {
                 y2++;
                 if (y2 <= 24)
@@ -758,7 +757,7 @@ namespace TP2
                     }
                 }
             }
-            else if (deplacement == 4)
+            else if (deplacement == 4 && deplacement2 == 1)
             {
                 x2++;
                 if (x2 <= 42)
@@ -789,10 +788,134 @@ namespace TP2
             }
         }
 
+        public void deplacementConcierge(Concierge c)
+        {
+            Random r = new Random();
+            int deplacement = r.Next(1, 5);
+            int deplacement2 = r.Next(1, 5);
+            int x2 = c.x;
+            int y2 = c.y;
+
+            List<Image> l = new List<Image>();
+            l = c.listeC;
+
+            if (deplacement == 1 && deplacement2 == 2)
+            {
+                y2--;
+                if (y2 >= 0)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    {
+                        c.y--;
+                        if (c.upAI == 0)
+                        {
+                            c.currentDir = l.ElementAt(49);
+                            Refresh();
+                            c.upAI++;
+                        }
+                        else if (c.upAI == 1)
+                        {
+                            c.currentDir = l.ElementAt(48);
+                            Refresh();
+                            c.upAI--;
+                        }
+                    }
+                }
+            }
+            else if (deplacement == 2 && deplacement2 == 4)
+            {
+                x2--;
+                if (x2 >= 0)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    {
+                        c.x--;
+                        if (c.leftAI == 0)
+                        {
+                            c.currentDir = l.ElementAt(47);
+                            Refresh();
+                            c.leftAI++;
+                        }
+                        else if (c.leftAI == 1)
+                        {
+                            c.currentDir = l.ElementAt(46);
+                            Refresh();
+                            c.leftAI++;
+                        }
+                        else if (c.leftAI == 2)
+                        {
+                            c.currentDir = l.ElementAt(45);
+                            Refresh();
+                            c.leftAI = 0;
+                        }
+                    }
+                }
+            }
+            else if (deplacement == 3 && deplacement2 == 3)
+            {
+                y2++;
+                if (y2 <= 24)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    {
+                        c.y++;
+                        if (c.downAI == 0)
+                        {
+                            c.currentDir = l.ElementAt(41);
+                            Refresh();
+                            c.downAI++;
+                        }
+                        else if (c.downAI == 1)
+                        {
+                            c.currentDir = l.ElementAt(40);
+                            Refresh();
+                            c.downAI--;
+                        }
+                    }
+                }
+            }
+            else if (deplacement == 4 && deplacement2 == 1)
+            {
+                x2++;
+                if (x2 <= 42)
+                {
+                    if (noMouvCoordAI[x2, y2] && noMouvJanitor[x2, y2] && noMouvAi[x2, y2] && h.x != x2 && h.y != y2)
+                    {
+                        c.x++;
+                        if (c.rightAI == 0)
+                        {
+                            c.currentDir = l.ElementAt(44);
+                            Refresh();
+                            c.rightAI++;
+                        }
+                        else if (c.rightAI == 1)
+                        {
+                            c.currentDir = l.ElementAt(43);
+                            Refresh();
+                            c.rightAI++;
+                        }
+                        else if (c.rightAI == 2)
+                        {
+                            c.currentDir = l.ElementAt(42);
+                            Refresh();
+                            c.rightAI = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+
         public void ajouterVisiteur()
         {
             Visiteur v = new Visiteur();
             listeVisiteur.Add(v);
+        }
+
+        public void ajouterConcierge(int x, int y)
+        {
+            Concierge c = new Concierge(x, y);
+            listeConcierge.Add(c);
         }
 
         private void peuplerBitmapInteraction(int x2, int y2)
@@ -866,77 +989,77 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    ajouterVisiteur();
                                 }
                                 animalChoisi = "";
-                                ajouterVisiteur();
                                 break;
                             case "Mouton":
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Mouton))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Mouton, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    ajouterVisiteur();
                                 }
                                 animalChoisi = "";
-                                ajouterVisiteur();
                                 break;
                             case "Grizzly":
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Grizzly))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Grizzly, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    ajouterVisiteur();
                                 }
                                 animalChoisi = "";
-                                ajouterVisiteur();
                                 break;
                             case "Rhino":
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Rhinoceros))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Rhinoceros, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    ajouterVisiteur();
                                 }
                                 animalChoisi = "";
-                                ajouterVisiteur();
                                 break;
                             case "Licorne":
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Licorne))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Licorne, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    ajouterVisiteur();
                                 }
                                 animalChoisi = "";
-                                ajouterVisiteur();
                                 break;
                             case "Buffle":
                                 if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32]
                                     && (enclosAnimal[e.X / 32, e.Y / 32] == null || enclosAnimal[e.X / 32, e.Y / 32] == Animaux.Buffle))
                                 {
-                                    listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
+                                    listeAnimaux.Add(new Animal(Animaux.Buffle, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                                     placedAnimal = true;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    ajouterVisiteur();
                                 }
                                 animalChoisi = "";
-                                ajouterVisiteur();
                                 break;
-                        }                        
+                        }
                     }
                     else if (bmInteraction[e.X / 32, e.Y / 32] && conciergeChoisi && (e.X / 32) < 38 && noMouvCoordAI[e.X / 32, e.Y / 32])
                     {
                         conciergeChoisi = false;
-                        listeConcierge.Add(new Concierge(e.X / 32, e.Y / 32));
                         bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
+                        ajouterConcierge(e.X / 32, e.Y / 32);
                         conciergeChoisi = false;
                     }
                     Refresh();
