@@ -37,6 +37,14 @@ namespace TP2
         int anneeDate;
         string dates;
         int tempsPasser;
+        int lion = 0;
+        int mouton = 0;
+        int grizzly = 0;
+        int rhino = 0;
+        int licorne = 0;
+        int buffle = 0;
+        Animal animal;
+        Visiteur visiteur;
 
         public FenetrePrincipale()
         {
@@ -106,6 +114,123 @@ namespace TP2
                 anneeDate += 1;
                 dates = Enum.GetName(typeof(Date), moisDate);
             }
+
+            lion = 0;
+            mouton = 0;
+            grizzly = 0;
+            rhino = 0;
+            licorne = 0;
+            buffle = 0;
+
+            foreach (Animal a in m.listeAnimaux)
+            {
+                switch (a.TypeAnimal)
+                {
+                    case Animaux.Lion:
+                        lion++;
+                        LblQtLion.Text = lion.ToString();
+                        break;
+                    case Animaux.Mouton:
+                        mouton++;
+                        LblQtMouton.Text = mouton.ToString();
+                        break;
+                    case Animaux.Grizzly:
+                        grizzly++;
+                        LblQtGrizzly.Text = grizzly.ToString();
+                        break;
+                    case Animaux.Rhinoceros:
+                        rhino++;
+                        LblQtRhino.Text = rhino.ToString();
+                        break;
+                    case Animaux.Licorne:
+                        licorne++;
+                        LblQtLicorne.Text = licorne.ToString();
+                        break;
+                    case Animaux.Buffle:
+                        buffle++;
+                        LblQtBuffle.Text = buffle.ToString();
+                        break;
+                }
+            }
+
+            if (m.placeListeAnimal != 999)
+            {
+                animal = m.listeAnimaux.ElementAt(m.placeListeAnimal);
+                LblInfoType.Text = "Type: " + animal.TypeAnimal.ToString();
+                if (animal.Genre)
+                {
+                    LblInfoGenreA.Text = "Genre: Male";
+                    LblInfoEnceinte.Text = "Enceinte : Null";
+                }
+                else
+                {
+                    LblInfoGenreA.Text = "Genre: Femelle";
+                    if(animal.AttendBebe == true)
+                    {
+                        LblInfoEnceinte.Text = "Enceinte : Oui";
+                    }
+                    else
+                    {
+                        LblInfoEnceinte.Text = "Enceinte : Non";
+                    }
+                }
+                if (animal.Adulte)
+                {
+                    LblInfoAgeA.Text = "Age: Adulte";
+                }
+                else
+                {
+                    LblInfoAgeA.Text = "Age: Bebe";
+                }
+                if (animal.Nourri)
+                {
+                    LblInfoFaim.Text = "Besoin d'être nourri : Non";
+                }
+                else
+                {
+                    LblInfoFaim.Text = "Besoin d'être nourri : Oui";
+                }
+
+                switch (animal.TypeAnimal)
+                {
+                    case Animaux.Lion:
+                        PicInfoAnimal.Image = Properties.Resources.lion1;
+                        break;
+                    case Animaux.Mouton:
+                        PicInfoAnimal.Image = Properties.Resources.sheep;
+                        break;
+                    case Animaux.Grizzly:
+                        PicInfoAnimal.Image = Properties.Resources.grizzly;
+                        break;
+                    case Animaux.Rhinoceros:
+                        PicInfoAnimal.Image = Properties.Resources.rhino;
+                        break;
+                    case Animaux.Licorne:
+                        PicInfoAnimal.Image = Properties.Resources.licorne;
+                        break;
+                    case Animaux.Buffle:
+                        PicInfoAnimal.Image = Properties.Resources.buffalo;
+                        break;
+                }
+            }
+
+            if (m.placeListeVisiteur != 999)
+            {
+                visiteur = m.listeVisiteur.ElementAt(m.placeListeVisiteur);
+                LblInfoNomVis.Text = "Nom: " + visiteur.prenom + " " + visiteur.nom;
+                if (visiteur.genre)
+                {
+                    LblInfoGenreVis.Text = "Sexe: Homme";
+                }
+                else
+                {
+                    LblInfoGenreVis.Text = "Sexe: Femme";
+                }
+                LblInfoTempsPasserVis.Text = "Temps passé depuis arrivé : " + visiteur.tempsPasserV + " jours";
+
+                PicInfoVis.Image = visiteur.currentDir;
+            }
+
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
             tempsPasser++;
@@ -121,6 +246,7 @@ namespace TP2
             foreach (Visiteur v in m.listeVisiteur)
             {
                 m.DeplacementAI(v);
+                v.tempsPasserV++;
             }
 
             foreach (Concierge c in m.listeConcierge)
@@ -157,14 +283,15 @@ namespace TP2
                 BtnAchatBuffle.Enabled = true;
 
                 BtnEngageConcierge.Enabled = false;
-            } else
+            }
+            else
             {
                 BtnAchatLion.Enabled = false;
                 BtnAchatMouton.Enabled = false;
                 BtnAchatGrizzly.Enabled = false;
                 BtnAchatRhino.Enabled = false;
                 BtnAchatLicorne.Enabled = false;
-                BtnAchatBuffle.Enabled = false;                
+                BtnAchatBuffle.Enabled = false;
             }
         }
 

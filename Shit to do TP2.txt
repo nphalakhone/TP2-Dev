@@ -1,6 +1,6 @@
 Interfaces Utilisateur -
 -Info (day/$/nb animal/nb trash) - Done
--Interaction(mouse click) 
+-Interaction(mouse click) - Nearly Done
 
 Hero - Done
 -Places he can move - Done
@@ -11,10 +11,10 @@ Animal-
 -Left Click animal = feed + right sound
 
 Visiteur-
--Create classD
--Create thread random mouvement
--1:1 visitor:animal
--Spawn entrance
+-Create classD - Done
+-Create thread random mouvement - Done
+-1:1 visitor:animal - Done
+-Spawn entrance - Done
 -Can't leave if there for < 1 min
 -Walks on exit + > 1 min = leaves
 -Replace visitor few seconds later
@@ -25,8 +25,8 @@ Renum-
 -Every min(real time) : 1$ more per animal - .10$ per trash
 
 Concierge-
--Hire 1 or more Janitors
--Randomly moves where the visitors can move
+-Hire 1 or more Janitors - Done
+-Randomly moves where the visitors can move - Almost Done
 -Picks up trash
 -2$ per min(real time) per janitor
 
@@ -41,10 +41,14 @@ Left Click-
 -Buy new animal(Adult + Random Gender) - Done
 -Feed
 -Pick up trash
--Hire janitor
+-Hire janitor - Done
 
-Right Click-
+Right Click-Done
 -Animal
 --Info
 -Visitor
 --Info
+
+Jeux Essais
+
+Auto-Eval

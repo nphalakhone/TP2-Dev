@@ -72,10 +72,10 @@ namespace TP2
             this.GrpInfosAnimaux = new System.Windows.Forms.GroupBox();
             this.LblInfoEnceinte = new System.Windows.Forms.Label();
             this.LblInfoFaim = new System.Windows.Forms.Label();
-            this.LblAgeA = new System.Windows.Forms.Label();
+            this.LblInfoAgeA = new System.Windows.Forms.Label();
             this.LblInfoGenreA = new System.Windows.Forms.Label();
             this.LblInfoType = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PicInfoAnimal = new System.Windows.Forms.PictureBox();
             this.LblQtBuffle = new System.Windows.Forms.Label();
             this.LblQtLicorne = new System.Windows.Forms.Label();
             this.LblQtRhino = new System.Windows.Forms.Label();
@@ -103,7 +103,7 @@ namespace TP2
             ((System.ComponentModel.ISupportInitialize)(this.PicBuffle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConcierge)).BeginInit();
             this.GrpInfosAnimaux.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoAnimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoBuffle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoLicorne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoRhino)).BeginInit();
@@ -171,9 +171,9 @@ namespace TP2
             this.LblInfoTempsPasserVis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblInfoTempsPasserVis.Location = new System.Drawing.Point(118, 58);
             this.LblInfoTempsPasserVis.Name = "LblInfoTempsPasserVis";
-            this.LblInfoTempsPasserVis.Size = new System.Drawing.Size(225, 17);
+            this.LblInfoTempsPasserVis.Size = new System.Drawing.Size(219, 17);
             this.LblInfoTempsPasserVis.TabIndex = 3;
-            this.LblInfoTempsPasserVis.Text = "Temps passer depuis arrivé : ";
+            this.LblInfoTempsPasserVis.Text = "Temps passé depuis arrivé : ";
             // 
             // LblInfoGenreVis
             // 
@@ -479,10 +479,10 @@ namespace TP2
             // 
             this.GrpInfosAnimaux.Controls.Add(this.LblInfoEnceinte);
             this.GrpInfosAnimaux.Controls.Add(this.LblInfoFaim);
-            this.GrpInfosAnimaux.Controls.Add(this.LblAgeA);
+            this.GrpInfosAnimaux.Controls.Add(this.LblInfoAgeA);
             this.GrpInfosAnimaux.Controls.Add(this.LblInfoGenreA);
             this.GrpInfosAnimaux.Controls.Add(this.LblInfoType);
-            this.GrpInfosAnimaux.Controls.Add(this.pictureBox1);
+            this.GrpInfosAnimaux.Controls.Add(this.PicInfoAnimal);
             this.GrpInfosAnimaux.Controls.Add(this.LblQtBuffle);
             this.GrpInfosAnimaux.Controls.Add(this.LblQtLicorne);
             this.GrpInfosAnimaux.Controls.Add(this.LblQtRhino);
@@ -522,15 +522,15 @@ namespace TP2
             this.LblInfoFaim.TabIndex = 16;
             this.LblInfoFaim.Text = "Besoin d\'être nourri : ";
             // 
-            // LblAgeA
+            // LblInfoAgeA
             // 
-            this.LblAgeA.AutoSize = true;
-            this.LblAgeA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAgeA.Location = new System.Drawing.Point(517, 55);
-            this.LblAgeA.Name = "LblAgeA";
-            this.LblAgeA.Size = new System.Drawing.Size(51, 17);
-            this.LblAgeA.TabIndex = 15;
-            this.LblAgeA.Text = "Age : ";
+            this.LblInfoAgeA.AutoSize = true;
+            this.LblInfoAgeA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoAgeA.Location = new System.Drawing.Point(517, 55);
+            this.LblInfoAgeA.Name = "LblInfoAgeA";
+            this.LblInfoAgeA.Size = new System.Drawing.Size(51, 17);
+            this.LblInfoAgeA.TabIndex = 15;
+            this.LblInfoAgeA.Text = "Age : ";
             // 
             // LblInfoGenreA
             // 
@@ -552,15 +552,15 @@ namespace TP2
             this.LblInfoType.TabIndex = 13;
             this.LblInfoType.Text = "Type : ";
             // 
-            // pictureBox1
+            // PicInfoAnimal
             // 
-            this.pictureBox1.Image = global::TP2.Properties.Resources.animal_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(441, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.PicInfoAnimal.Image = global::TP2.Properties.Resources.animal_logo;
+            this.PicInfoAnimal.Location = new System.Drawing.Point(441, 13);
+            this.PicInfoAnimal.Name = "PicInfoAnimal";
+            this.PicInfoAnimal.Size = new System.Drawing.Size(70, 70);
+            this.PicInfoAnimal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicInfoAnimal.TabIndex = 12;
+            this.PicInfoAnimal.TabStop = false;
             // 
             // LblQtBuffle
             // 
@@ -691,6 +691,8 @@ namespace TP2
             this.MappeMonde.Location = new System.Drawing.Point(0, 50);
             this.MappeMonde.Name = "MappeMonde";
             this.MappeMonde.placedAnimal = false;
+            this.MappeMonde.placeListeAnimal = 999;
+            this.MappeMonde.placeListeVisiteur = 999;
             this.MappeMonde.Size = new System.Drawing.Size(1376, 799);
             this.MappeMonde.sizeListeAnimaux = 0;
             this.MappeMonde.sizeListeVisiteur = 0;
@@ -757,7 +759,7 @@ namespace TP2
             ((System.ComponentModel.ISupportInitialize)(this.PicConcierge)).EndInit();
             this.GrpInfosAnimaux.ResumeLayout(false);
             this.GrpInfosAnimaux.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInfoAnimal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoBuffle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoLicorne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoRhino)).EndInit();
@@ -824,10 +826,10 @@ namespace TP2
         private PictureBox PicInfoLion;
         private Label LblInfoEnceinte;
         private Label LblInfoFaim;
-        private Label LblAgeA;
+        private Label LblInfoAgeA;
         private Label LblInfoGenreA;
         private Label LblInfoType;
-        private PictureBox pictureBox1;
+        private PictureBox PicInfoAnimal;
         private Label LblInfoTempsPasserVis;
         private Label LblInfoGenreVis;
         private Label LblInfoNomVis;

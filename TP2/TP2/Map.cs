@@ -39,8 +39,8 @@ namespace TP2
         public int sizeListeAnimaux { get; set; }
         public int sizeListeVisiteur { get; set; }
 
-        List<Animal> listeAnimaux { get; set; }
-        public List<Concierge> listeConcierge = new List<Concierge>();
+        public List<Animal> listeAnimaux = new List<Animal>();
+        List<Concierge> listeConcierge = new List<Concierge>();
         public List<Visiteur> listeVisiteur = new List<Visiteur>();
 
         int xSortie = 19;
@@ -52,6 +52,10 @@ namespace TP2
         int down = 0;
         int left = 0;
         int right = 0;
+
+        public int placeListeAnimal { get; set; }
+
+        public int placeListeVisiteur { get; set; }
 
         public bool enableBuyAnimals { get; set; }
 
@@ -68,9 +72,10 @@ namespace TP2
             InitializeComponent();
             creerInterface();
 
-            listeAnimaux = new List<Animal>();
-
             heroOnlyArea = true;
+
+            placeListeAnimal = 999;
+            placeListeVisiteur = 999;
         }
 
         private void creerInterface()
@@ -662,6 +667,7 @@ namespace TP2
             Random r = new Random();
             int deplacement = r.Next(1, 5);
             int deplacement2 = r.Next(1, 5);
+
             int x2 = v.x;
             int y2 = v.y;
 
@@ -1065,6 +1071,29 @@ namespace TP2
                     Refresh();
                     break;
                 case MouseButtons.Right:
+                    
+                    int comptA = 0;
+                    int comptV = 0;
+
+                    foreach (Animal a in listeAnimaux)
+                    {
+                        if(a.x == e.X / 32 && a.y == e.Y / 32)
+                        {
+                            placeListeAnimal = comptA;
+                            break;
+                        }
+                        comptA++;
+                    }
+
+                    foreach (Visiteur v in listeVisiteur)
+                    {
+                        if(v.x == e.X / 32 && v.y == e.Y / 32)
+                        {
+                            placeListeVisiteur = comptV;
+                            break;
+                        }
+                        comptV++;
+                    }
 
                     break;
             }

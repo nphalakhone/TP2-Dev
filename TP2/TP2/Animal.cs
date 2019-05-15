@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
-    enum Animaux
+    public enum Animaux
     {
         Lion,
         Mouton,
@@ -15,18 +15,18 @@ namespace TP2
         Licorne,
         Buffle
     };
-    class Animal
+    public class Animal
     {
         public int x { get; set; }
         public int y { get; set; }
         public Animaux TypeAnimal { get; set; }
         private int TempsGestation;
         private int TempsAvantAdulte;
-        private int TempsAvantNourrir;
-        private bool Genre; //true = M | false = F
-        private bool Adulte; //true = adulte | false = bebe
-        private bool Nourri; //true = nourri | false = faim
-        private bool? AttendBebe; //doit être une femelle adulte, en présence d’un mâle adulte dans le même enclos
+        public int TempsAvantNourrir;
+        public bool Genre; //true = M | false = F
+        public bool Adulte; //true = adulte | false = bebe
+        public bool Nourri; //true = nourri | false = faim
+        public bool? AttendBebe; //doit être une femelle adulte, en présence d’un mâle adulte dans le même enclos
 
         public Animal(Animaux type, int x2, int y2)
         {
