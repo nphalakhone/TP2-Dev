@@ -378,33 +378,33 @@ namespace TP2
         {
             Image pillarTop = TilesetImageGenerator.GetTile(3);
             Image pillarBot = TilesetImageGenerator.GetTile(4);
-            gr.DrawImage(pillarTop, 18 * 32, 0 * 32, 32, 32);
-            gr.DrawImage(pillarTop, 20 * 32, 0 * 32, 32, 32);
-            gr.DrawImage(pillarTop, 18 * 32, 23 * 32, 32, 32);
-            gr.DrawImage(pillarTop, 20 * 32, 23 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 17 * 32, 0 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 21 * 32, 0 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 17 * 32, 23 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 21 * 32, 23 * 32, 32, 32);
 
-            gr.DrawImage(pillarBot, 18 * 32, 1 * 32, 32, 32);
-            gr.DrawImage(pillarBot, 20 * 32, 1 * 32, 32, 32);
-            gr.DrawImage(pillarBot, 18 * 32, 24 * 32, 32, 32);
-            gr.DrawImage(pillarBot, 20 * 32, 24 * 32, 32, 32);
+            gr.DrawImage(pillarBot, 17 * 32, 1 * 32, 32, 32);
+            gr.DrawImage(pillarBot, 21 * 32, 1 * 32, 32, 32);
+            gr.DrawImage(pillarBot, 17 * 32, 24 * 32, 32, 32);
+            gr.DrawImage(pillarBot, 21 * 32, 24 * 32, 32, 32);
 
-            noMouvCoord[18, 0] = false;
-            noMouvCoord[18, 23] = false;
-            noMouvCoord[18, 1] = false;
-            noMouvCoord[18, 24] = false;
-            noMouvCoord[20, 0] = false;
-            noMouvCoord[20, 23] = false;
-            noMouvCoord[20, 1] = false;
-            noMouvCoord[20, 24] = false;
+            noMouvCoord[17, 0] = false;
+            noMouvCoord[17, 23] = false;
+            noMouvCoord[17, 1] = false;
+            noMouvCoord[17, 24] = false;
+            noMouvCoord[21, 0] = false;
+            noMouvCoord[21, 23] = false;
+            noMouvCoord[21, 1] = false;
+            noMouvCoord[21, 24] = false;
 
-            noMouvCoordAI[18, 0] = false;
-            noMouvCoordAI[18, 23] = false;
-            noMouvCoordAI[18, 1] = false;
-            noMouvCoordAI[18, 24] = false;
-            noMouvCoordAI[20, 0] = false;
-            noMouvCoordAI[20, 23] = false;
-            noMouvCoordAI[20, 1] = false;
-            noMouvCoordAI[20, 24] = false;
+            noMouvCoordAI[17, 0] = false;
+            noMouvCoordAI[17, 23] = false;
+            noMouvCoordAI[17, 1] = false;
+            noMouvCoordAI[17, 24] = false;
+            noMouvCoordAI[21, 0] = false;
+            noMouvCoordAI[21, 23] = false;
+            noMouvCoordAI[21, 1] = false;
+            noMouvCoordAI[21, 24] = false;
         }
 
         private void dessinerBenchH(Graphics gr, int x, int y)
