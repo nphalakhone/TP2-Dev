@@ -67,7 +67,7 @@ namespace TP2
 
         public bool placedAnimal { get; set; }
 
-        public int prixAnimal { get; set; }
+        public double prixAnimal { get; set; }
 
         public bool heroOnlyArea { get; set; }
 

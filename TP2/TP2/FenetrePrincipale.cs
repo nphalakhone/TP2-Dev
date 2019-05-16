@@ -239,7 +239,13 @@ namespace TP2
             comptDate++;
             tempsPasser++;
 
-
+            if (m.placedAnimal && (argent - m.prixAnimal) >= 0)
+            {
+                argent = argent - m.prixAnimal;
+                LblArgent.Text = "" + argent;
+                m.placedAnimal = false;
+                m.prixAnimal = 0;
+            }
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
@@ -259,14 +265,15 @@ namespace TP2
                     argent -= 2;
                     LblArgent.Text = "" + argent;
                     a.TimePassedLastFed = 1;
-                } else if (a.TimePassedLastFed >= a.TempsAvantNourrir / 2)
+                }
+                else if (a.TimePassedLastFed >= a.TempsAvantNourrir / 2)
                 {
                     a.Nourri = false;
                 }
 
                 a.TimePassedLastFed++;
-                
-                
+
+
             }
         }
 
@@ -292,14 +299,6 @@ namespace TP2
                     LblArgent.Text = "" + argent;
                 }
 
-                if (m.placedAnimal && (argent - m.prixAnimal) >= 0)
-                {
-                    argent = argent - m.prixAnimal;
-                    LblArgent.Text = "" + argent;
-                    m.placedAnimal = false;
-                    m.prixAnimal = 0;
-                }
-
                 Random r = new Random();
                 int dropT = r.Next(1, 51);
 
@@ -318,6 +317,16 @@ namespace TP2
             foreach (Concierge c in m.listeConcierge)
             {
                 m.deplacementConcierge(c);
+
+                c.tempsPasserC++;
+
+                m.deplacementConcierge(c);
+
+                if ((c.tempsPasserC % 60) == 0)
+                {
+                    argent = argent - 2;
+                    LblArgent.Text = "" + argent;
+                }
             }
         }
 
@@ -372,6 +381,11 @@ namespace TP2
         private void Acheter_Concierge_Click(object sender, EventArgs e)
         {
             m.conciergeChoisi = true;
+        }
+
+        private void FenetrePrincipale_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Félicitation!\nVous avez fait un profit de : " + (argent - 100) + "$!");
         }
     }
 }
