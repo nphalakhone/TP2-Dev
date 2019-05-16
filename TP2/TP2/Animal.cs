@@ -7,6 +7,9 @@ using System.Drawing;
 
 namespace TP2
 {
+    /// <summary>
+    /// Enum de type d'animaux
+    /// </summary>
     public enum Animaux
     {
         Lion,
@@ -32,6 +35,12 @@ namespace TP2
 
         public Image currentDir;
 
+        /// <summary>
+        /// Constructeur Animal
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
         public Animal(Animaux type, int x2, int y2)
         {
             TypeAnimal = type;

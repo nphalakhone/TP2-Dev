@@ -9,8 +9,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+/// <summary>
+/// Fait par Motoki Shintani && Nick Phalakhone
+/// </summary>
 namespace TP2
 {
+    /// <summary>
+    /// Enum des dates
+    /// </summary>
     enum Date
     {
         Janvier = 1,
@@ -47,6 +54,9 @@ namespace TP2
         Animal animal;
         Visiteur visiteur;
 
+        /// <summary>
+        /// Constructeur FenetrePrincipale
+        /// </summary>
         public FenetrePrincipale()
         {
             InitializeComponent();
@@ -71,6 +81,9 @@ namespace TP2
             }
         }
 
+        /// <summary>
+        /// Initialize les actions des bouton d'achat et les disable
+        /// </summary>
         private void InitializeBtnAchat()
         {
             BtnAchatLion.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Lion"); };
@@ -90,8 +103,14 @@ namespace TP2
             BtnEngageConcierge.Enabled = false;
         }
 
+        /// <summary>
+        /// Le timer principal du code
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerPrincipal_Tick(object sender, EventArgs e)
         {
+            //Change la date et le mois
             if ((comptDate == 32 && dates.Equals(Date.Janvier.ToString()))
                 || (comptDate == 32 && dates.Equals(Date.Mars.ToString()))
                 || (comptDate == 32 && dates.Equals(Date.Mai.ToString()))
@@ -123,6 +142,7 @@ namespace TP2
             licorne = 0;
             buffle = 0;
 
+            //Change le nombre d'animaux dans les infos
             foreach (Animal a in m.listeAnimaux)
             {
                 switch (a.TypeAnimal)
@@ -154,6 +174,7 @@ namespace TP2
                 }
             }
 
+            //Affiche les informations de l'animal qu'on a right click
             if (m.placeListeAnimal != 999)
             {
                 animal = m.listeAnimaux.ElementAt(m.placeListeAnimal);
@@ -215,6 +236,7 @@ namespace TP2
                 }
             }
 
+            //Affiche les informations du visiteur qu'on a right click
             if (m.placeListeVisiteur != 999)
             {
                 visiteur = m.listeVisiteur.ElementAt(m.placeListeVisiteur);
@@ -248,6 +270,11 @@ namespace TP2
             }
         }
 
+        /// <summary>
+        /// Timer pour les animaux
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerAnimaux_Tick(object sender, EventArgs e)
         {
             foreach (Animal a in m.listeAnimaux)
@@ -277,8 +304,14 @@ namespace TP2
             }
         }
 
+        /// <summary>
+        /// Timer pour les visiteurs et concierges
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
         {
+            //deplacement et drop dechet des visiteurs
             foreach (Visiteur v in m.listeVisiteur)
             {
 
@@ -314,6 +347,7 @@ namespace TP2
                 m.dropTrash(v);
             }
 
+            //enleve et ajoute les visiteurs a la sortie, s'il est rester durant 1 minute
             if (m.visiteurGone && m.listeVisiteur.ElementAt(m.comptNumVis).tempsPasserV == 60)
             {
                 m.AjouterVisiteur();
@@ -321,6 +355,7 @@ namespace TP2
                 m.listeVisiteur.Remove(m.listeVisiteur.ElementAt(m.comptNumVis));
             }
 
+            //deplacement des concierges
             foreach (Concierge c in m.listeConcierge)
             {
                 m.DeplacementConcierge(c);
@@ -337,11 +372,21 @@ namespace TP2
             }
         }
 
+        /// <summary>
+        /// choisi un animal lorsqu'on appuie sur le bouton achat d'animal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="nomAnimal"></param>
         private void Acheter_Animal_Click(object sender, EventArgs e, string nomAnimal)
         {
             m.animalChoisi = nomAnimal;
         }
 
+        /// <summary>
+        /// enable/disable l'achat d'un animal a l'interieur/exterieur de l'enclos
+        /// </summary>
+        /// <param name="b"></param>
         private void Enable_Btn_Animal(bool b)
         {
             if (b)
@@ -366,6 +411,11 @@ namespace TP2
             }
         }
 
+        /// <summary>
+        /// KeyUp pour les mouvements Hero
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MappeMonde_KeyUp(object sender, KeyEventArgs e)
         {
             m.FaireDeplacementHero(e);
@@ -373,23 +423,30 @@ namespace TP2
             Enable_Btn_Animal(m.enableBuyAnimals);
         }
 
+        /// <summary>
+        /// Enable/Disable l'achat de concierges
+        /// </summary>
+        /// <param name="heroOnlyArea"></param>
         private void Enable_Btn_Janitor(bool heroOnlyArea)
         {
             BtnEngageConcierge.Enabled = !heroOnlyArea;
         }
 
-        private int ConvertLabelToInt(Label l)
-        {
-            string resultatString = new String(l.Text.Where(Char.IsDigit).ToArray());
-            int i = Convert.ToInt32(resultatString);
-            return i;
-        }
-
+        /// <summary>
+        /// Choisi d'acheter un concierge au click du bouton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Acheter_Concierge_Click(object sender, EventArgs e)
         {
             m.conciergeChoisi = true;
         }
 
+        /// <summary>
+        /// Message de profit lorsqu'on ferme le programme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FenetrePrincipale_FormClosing(object sender, FormClosingEventArgs e)
         {
             if ((argent - 100) > 0)

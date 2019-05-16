@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestTilesetZoo;
+using System.Media;
 
 namespace TP2
 {
@@ -742,7 +743,7 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = 1/*r.Next(1, 4)*/;
+            int deplacement = r.Next(1, 4);
 
             int x2 = v.x;
             int y2 = v.y;
@@ -1392,9 +1393,38 @@ namespace TP2
                     {
                         foreach (Animal a in listeAnimaux)
                         {
-                            if(a.x == e.X / 32 && a.y == e.Y / 32){
+                            if (a.x == e.X / 32 && a.y == e.Y / 32)
+                            {
                                 a.Nourri = true;
                                 a.TimePassedLastFed = 0;
+                                SoundPlayer soundPlayer;
+                                switch (a.TypeAnimal)
+                                {
+                                    case Animaux.Lion:
+                                        soundPlayer = new SoundPlayer("lion.wav");
+                                        soundPlayer.PlaySync();
+                                        break;
+                                    case Animaux.Mouton:
+                                        soundPlayer = new SoundPlayer("mouton.wav");
+                                        soundPlayer.PlaySync();
+                                        break;
+                                    case Animaux.Grizzly:
+                                        soundPlayer = new SoundPlayer("ours.wav");
+                                        soundPlayer.PlaySync();
+                                        break;
+                                    case Animaux.Rhinoceros:
+                                        soundPlayer = new SoundPlayer("hippopotame.wav");
+                                        soundPlayer.PlaySync();
+                                        break;
+                                    case Animaux.Licorne:
+                                        soundPlayer = new SoundPlayer("licorne.wav");
+                                        soundPlayer.PlaySync();
+                                        break;
+                                    case Animaux.Buffle:
+                                        soundPlayer = new SoundPlayer("buffalo.wav");
+                                        soundPlayer.PlaySync();
+                                        break;
+                                }
                             }
                         }
                     }
