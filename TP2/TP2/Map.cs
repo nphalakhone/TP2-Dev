@@ -13,6 +13,9 @@ namespace TP2
 {
     public partial class Map : UserControl
     {
+        /// <summary>
+        /// Creation des bitmaps
+        /// </summary>
         Bitmap[,] bmMap = new Bitmap[43, 25];
         Bitmap[,] bmFence = new Bitmap[14, 7];
         Bitmap[,] bmHouse = new Bitmap[4, 5];
@@ -24,6 +27,10 @@ namespace TP2
         Bitmap[] bmBenchV = new Bitmap[2];
         Bitmap[] bmApple = new Bitmap[2];
 
+
+        /// <summary>
+        /// Creation de tableaux pour confirmer les endroit que chaques elements peuvent traverser 
+        /// </summary>
         public static bool[,] bmInteraction = new bool[43, 25];
 
         bool[,] interieurEnclos = new bool[43, 25];
@@ -40,13 +47,13 @@ namespace TP2
         public int sizeListeAnimaux { get; set; }
         public int sizeListeVisiteur { get; set; }
 
+        /// <summary>
+        /// Creation des listes de elements
+        /// </summary>
         public List<Animal> listeAnimaux = new List<Animal>();
         public List<Concierge> listeConcierge = new List<Concierge>();
         public List<Visiteur> listeVisiteur = new List<Visiteur>();
         public List<Point> listeTrash = new List<Point>();
-
-        int xSortie = 19;
-        int ySortie = 0;
 
         Hero h = new Hero();
 
@@ -75,11 +82,14 @@ namespace TP2
 
         public int comptNumVis { get; set; }
 
+        /// <summary>
+        /// Initialisation de map
+        /// </summary>
         public Map()
         {
             DoubleBuffered = true;
             InitializeComponent();
-            creerInterface();
+            CreerInterface();
 
             heroOnlyArea = true;
 
@@ -87,21 +97,27 @@ namespace TP2
             placeListeVisiteur = 999;
         }
 
-        private void creerInterface()
+        /// <summary>
+        /// Creation de l'interface
+        /// </summary>
+        private void CreerInterface()
         {
-            peuplerBitmapMap();
-            peuplerBitmapFence();
-            peuplerBitmapHouse();
-            peuplerBitmapWell();
-            peuplerBitmapFenceUp();
-            peuplerBitmapBenchUp();
-            peuplerBitmapBenchSide();
-            peuplerBitmapApple();
+            PeuplerBitmapMap();
+            PeuplerBitmapFence();
+            PeuplerBitmapHouse();
+            PeuplerBitmapWell();
+            PeuplerBitmapFenceUp();
+            PeuplerBitmapBenchUp();
+            PeuplerBitmapBenchSide();
+            PeuplerBitmapApple();
 
-            setTables();
+            SetTables();
         }
 
-        private void setTables()
+        /// <summary>
+        /// Peuple les tables où les personnages peuvent se déplacer
+        /// </summary>
+        private void SetTables()
         {
             for (int i = 0; i < noMouvCoord.GetLength(0); i++)
             {
@@ -121,7 +137,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapMap()
+        /// <summary>
+        /// Construction de la rue et du gazon
+        /// </summary>
+        private void PeuplerBitmapMap()
         {
             for (int i = 0; i < bmMap.GetLength(0); i++)
             {
@@ -142,7 +161,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapFence()
+        /// <summary>
+        /// Creation des enclos
+        /// </summary>
+        private void PeuplerBitmapFence()
         {
             for (int i = 0; i < bmFence.GetLength(0); i++)
             {
@@ -168,7 +190,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapHouse()
+        /// <summary>
+        /// Creation de la maison
+        /// </summary>
+        private void PeuplerBitmapHouse()
         {
             int countHouse = 5;
 
@@ -182,7 +207,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapWell()
+        /// <summary>
+        /// Creation du puits
+        /// </summary>
+        private void PeuplerBitmapWell()
         {
             int countWell = 25;
 
@@ -196,7 +224,7 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapFenceUp()
+        private void PeuplerBitmapFenceUp()
         {
             for (int i = 0; i < bmFenceVert.GetLength(0); i++)
             {
@@ -215,7 +243,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapBenchUp()
+        /// <summary>
+        /// Creation des bancs verticals
+        /// </summary>
+        private void PeuplerBitmapBenchUp()
         {
             int countBenchV = 37;
 
@@ -226,7 +257,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapBenchSide()
+        /// <summary>
+        /// Creation des bancs horizontals
+        /// </summary>
+        private void PeuplerBitmapBenchSide()
         {
             int countBenchH = 34;
 
@@ -237,7 +271,10 @@ namespace TP2
             }
         }
 
-        private void peuplerBitmapApple()
+        /// <summary>
+        /// Creation des boites de fruits
+        /// </summary>
+        private void PeuplerBitmapApple()
         {
             int countApple = 39;
 
@@ -248,43 +285,46 @@ namespace TP2
             }
         }
 
-
+        /// <summary>
+        /// Methode OnPaint qui dessine tout les elements 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Graphics gr = e.Graphics;
 
-            dessinerMap(gr);
+            DessinerMap(gr);
 
-            dessinerEnclos(gr, 4, 4, 1);
-            dessinerEnclos(gr, 21, 4, 2);
-            dessinerEnclos(gr, 4, 14, 3);
-            dessinerEnclos(gr, 21, 14, 4);
+            DessinerEnclos(gr, 4, 4, 1);
+            DessinerEnclos(gr, 21, 4, 2);
+            DessinerEnclos(gr, 4, 14, 3);
+            DessinerEnclos(gr, 21, 14, 4);
 
-            dessinerEnclosVertical(gr);
+            DessinerEnclosVertical(gr);
 
-            dessinerHouse(gr, 39, 0);
+            DessinerHouse(gr, 39, 0);
 
-            dessinerWell(gr, 38, 19);
+            DessinerWell(gr, 38, 19);
 
-            dessinerPillar(gr);
+            DessinerPillar(gr);
 
-            dessinerBenchH(gr, 23, 13);
-            dessinerBenchH(gr, 30, 13);
+            DessinerBenchH(gr, 23, 13);
+            DessinerBenchH(gr, 30, 13);
 
-            dessinerBenchV(gr, 3, 15);
-            dessinerBenchV(gr, 18, 18);
+            DessinerBenchV(gr, 3, 15);
+            DessinerBenchV(gr, 18, 18);
 
-            dessinerApple(gr, 10, 11);
-            dessinerApple(gr, 28, 3);
+            DessinerApple(gr, 10, 11);
+            DessinerApple(gr, 28, 3);
 
-            dessinerHero(gr, h.x, h.y);
+            DessinerHero(gr, h.x, h.y);
 
             if (listeVisiteur.Count() > 0)
             {
                 foreach (Visiteur v in listeVisiteur)
                 {
-                    dessinerVisiteur(gr, v);
+                    DessinerVisiteur(gr, v);
                 }
             }
 
@@ -292,27 +332,27 @@ namespace TP2
             {
                 foreach (Point p in listeTrash)
                 {
-                    dessinerTrash(gr, p);
+                    DessinerTrash(gr, p);
                 }
             }
 
-            dessinerAnimaux(gr);
+            DessinerAnimaux(gr);
 
-            remplirNoMouvAnimal();
-            remplirNoMouvJanitor();
-            remplirNoMouvAI();
-            remplirNoMouvTrash();
+            RemplirNoMouvAnimal();
+            RemplirNoMouvJanitor();
+            RemplirNoMouvAI();
+            RemplirNoMouvTrash();
 
             if (listeConcierge.Count() > 0)
             {
                 foreach (Concierge c in listeConcierge)
                 {
-                    dessinerConcierge(gr, c);
+                    DessinerConcierge(gr, c);
                 }
             }
         }
 
-        private void dessinerMap(Graphics gr)
+        private void DessinerMap(Graphics gr)
         {
             for (int i = 0; i < bmMap.GetLength(0); i++)
             {
@@ -323,7 +363,7 @@ namespace TP2
             }
         }
 
-        private void dessinerEnclos(Graphics gr, int x, int y, int numeroEnclos)
+        private void DessinerEnclos(Graphics gr, int x, int y, int numeroEnclos)
         {
             int y2 = y;
             int x2 = x;
@@ -359,7 +399,7 @@ namespace TP2
             }
         }
 
-        private void dessinerEnclosVertical(Graphics gr)
+        private void DessinerEnclosVertical(Graphics gr)
         {
             for (int i2 = 0; i2 < bmFenceVert.GetLength(0); i2++)
             {
@@ -370,7 +410,7 @@ namespace TP2
             noMouvCoord[38, 12] = true;
         }
 
-        private void dessinerHouse(Graphics gr, int x, int y)
+        private void DessinerHouse(Graphics gr, int x, int y)
         {
             int y2 = y;
             int x2 = x;
@@ -389,7 +429,7 @@ namespace TP2
 
         }
 
-        private void dessinerWell(Graphics gr, int x, int y)
+        private void DessinerWell(Graphics gr, int x, int y)
         {
             int y2 = y;
             int x2 = x;
@@ -407,7 +447,7 @@ namespace TP2
             }
         }
 
-        private void dessinerPillar(Graphics gr)
+        private void DessinerPillar(Graphics gr)
         {
             Image pillarTop = TilesetImageGenerator.GetTile(3);
             gr.DrawImage(pillarTop, 17 * 32, 0 * 32, 32, 32);
@@ -421,7 +461,7 @@ namespace TP2
             gr.DrawImage(pillarTop, 21 * 32, 24 * 32, 32, 32);
         }
 
-        private void dessinerBenchH(Graphics gr, int x, int y)
+        private void DessinerBenchH(Graphics gr, int x, int y)
         {
             int y2 = y;
             int x2 = x;
@@ -435,7 +475,7 @@ namespace TP2
             }
         }
 
-        private void dessinerBenchV(Graphics gr, int x, int y)
+        private void DessinerBenchV(Graphics gr, int x, int y)
         {
             int y2 = y;
             int x2 = x;
@@ -446,7 +486,7 @@ namespace TP2
             }
         }
 
-        private void dessinerApple(Graphics gr, int x, int y)
+        private void DessinerApple(Graphics gr, int x, int y)
         {
             int y2 = y;
             int x2 = x;
@@ -462,12 +502,12 @@ namespace TP2
             }
         }
 
-        private void dessinerHero(Graphics gr, int x, int y)
+        private void DessinerHero(Graphics gr, int x, int y)
         {
             gr.DrawImage(h.currentDir, x * 32, y * 32, 32, 32);
         }
 
-        private void dessinerVisiteur(Graphics gr, Visiteur v)
+        private void DessinerVisiteur(Graphics gr, Visiteur v)
         {
             if (v.type == 1)
             {
@@ -487,12 +527,12 @@ namespace TP2
             }
         }
 
-        private void dessinerTrash(Graphics gr, Point p)
+        private void DessinerTrash(Graphics gr, Point p)
         {
             gr.DrawImage(TilesetImageGenerator.GetTile(42), p.X * 32, p.Y * 32, 32, 32);
         }
 
-        private void dessinerAnimaux(Graphics gr)
+        private void DessinerAnimaux(Graphics gr)
         {
             for (int i = 0; i < bmAnimaux.GetLength(0); i++)
             {
@@ -506,12 +546,12 @@ namespace TP2
             }
         }
 
-        private void dessinerConcierge(Graphics gr, Concierge c)
+        private void DessinerConcierge(Graphics gr, Concierge c)
         {
             gr.DrawImage(c.currentDir, c.x * 32, c.y * 32, 32, 32);
         }
 
-        private void remplirNoMouvAnimal()
+        private void RemplirNoMouvAnimal()
         {
             for (int i = 0; i < noMouvCoord.GetLength(0); i++)
             {
@@ -527,7 +567,10 @@ namespace TP2
             }
         }
 
-        private void remplirNoMouvJanitor()
+        /// <summary>
+        /// Permet de ne pas rentrer dans le concierge
+        /// </summary>
+        private void RemplirNoMouvJanitor()
         {
             for (int i = 0; i < noMouvJanitor.GetLength(0); i++)
             {
@@ -543,7 +586,10 @@ namespace TP2
             }
         }
 
-        private void remplirNoMouvAI()
+        /// <summary>
+        /// Permet de ne rentrer dans l'AI
+        /// </summary>
+        private void RemplirNoMouvAI()
         {
             for (int i = 0; i < noMouvCoord.GetLength(0); i++)
             {
@@ -559,7 +605,10 @@ namespace TP2
             }
         }
 
-        private void remplirNoMouvTrash()
+        /// <summary>
+        /// Permet de ne pas rentrer dans les dechets
+        /// </summary>
+        private void RemplirNoMouvTrash()
         {
             for (int i = 0; i < noMouvCoord.GetLength(0); i++)
             {
@@ -575,7 +624,11 @@ namespace TP2
             }
         }
 
-        public void faireDeplacementHero(KeyEventArgs key)
+        /// <summary>
+        /// Methode qui permet a l'hero de ce deplacer
+        /// </summary>
+        /// <param name="key"></param>
+        public void FaireDeplacementHero(KeyEventArgs key)
         {
             int x2 = h.x;
             int y2 = h.y;
@@ -679,9 +732,13 @@ namespace TP2
 
             enableBuyAnimals = interieurEnclos[x2, y2];
 
-            peuplerBitmapInteraction(x2, y2);
+            PeuplerBitmapInteraction(x2, y2);
         }
 
+        /// <summary>
+        /// Methode qui permet aux visiteurs de ce deplacer
+        /// </summary>
+        /// <param name="v"></param>
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
@@ -813,7 +870,11 @@ namespace TP2
             }
         }
 
-        public void deplacementAnimal(Animal a)
+        /// <summary>
+        /// Methode qui permet les animaux a se deplacer
+        /// </summary>
+        /// <param name="a"></param>
+        public void DeplacementAnimal(Animal a)
         {
             Random r = new Random();
             int deplacement = r.Next(1, 5);
@@ -915,7 +976,11 @@ namespace TP2
             }
         }
 
-        public void deplacementConcierge(Concierge c)
+        /// <summary>
+        /// Methode qui permet au concierge de ce deplacer
+        /// </summary>
+        /// <param name="c"></param>
+        public void DeplacementConcierge(Concierge c)
         {
             Random r = new Random();
             int deplacement = r.Next(1, 5);
@@ -1049,7 +1114,7 @@ namespace TP2
                 }
             }
 
-            c.bmInteractionC = peuplerBitmapInteractionConcierge(c.x, c.y, c);
+            c.bmInteractionC = PeuplerBitmapInteractionConcierge(c.x, c.y, c);
 
             for (int i = 0; i < c.bmInteractionC.GetLength(0); i++)
             {
@@ -1071,20 +1136,30 @@ namespace TP2
 
         }
 
-
-        public void ajouterVisiteur()
+        /// <summary>
+        /// Methode qui ajoute un visiteur a la listeVisiteur
+        /// </summary>
+        public void AjouterVisiteur()
         {
             Visiteur v = new Visiteur();
             listeVisiteur.Add(v);
         }
 
-        public void ajouterConcierge(int x, int y)
+        /// <summary>
+        /// Methode qui ajoute un concierge a la listeConcierge
+        /// </summary>
+        public void AjouterConcierge(int x, int y)
         {
             Concierge c = new Concierge(x, y);
             listeConcierge.Add(c);
         }
 
-        private void peuplerBitmapInteraction(int x2, int y2)
+        /// <summary>
+        /// Methode qui permet de donner a l'hero sa zone d'interaction
+        /// </summary>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        private void PeuplerBitmapInteraction(int x2, int y2)
         {
             for (int i = 0; i < bmInteraction.GetLength(0); i++)
             {
@@ -1135,7 +1210,14 @@ namespace TP2
             }
         }
 
-        private bool[,] peuplerBitmapInteractionConcierge(int x2, int y2, Concierge c)
+        /// <summary>
+        /// Methode qui permet de donner au concierge sa zone d'interaction
+        /// </summary>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        private bool[,] PeuplerBitmapInteractionConcierge(int x2, int y2, Concierge c)
         {
             bool[,] bmInteractionC = new bool[43, 25];
 
@@ -1190,9 +1272,14 @@ namespace TP2
             return bmInteractionC;
         }
 
-
+        /// <summary>
+        /// Methode qui permet de cliquer sur la map
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Map_MouseClick(object sender, MouseEventArgs e)
         {
+            //Permet de creer un animal dans l'enclos et ajoute un visiteur (1:1), permet de nourrir l'animal et d'enlever les dechets 
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -1211,8 +1298,8 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                                     placedAnimal = true;
                                     prixAnimal = 35;
-                                    remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
-                                    ajouterVisiteur();
+                                    RemplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    AjouterVisiteur();
                                 }
                                 animalChoisi = "";
                                 break;
@@ -1224,8 +1311,8 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                                     placedAnimal = true;
                                     prixAnimal = 20;
-                                    remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
-                                    ajouterVisiteur();
+                                    RemplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    AjouterVisiteur();
                                 }
                                 animalChoisi = "";
                                 break;
@@ -1237,8 +1324,8 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                                     placedAnimal = true;
                                     prixAnimal = 30;
-                                    remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
-                                    ajouterVisiteur();
+                                    RemplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    AjouterVisiteur();
                                 }
                                 animalChoisi = "";
                                 break;
@@ -1250,8 +1337,8 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                                     placedAnimal = true;
                                     prixAnimal = 40;
-                                    remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
-                                    ajouterVisiteur();
+                                    RemplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    AjouterVisiteur();
                                 }
                                 animalChoisi = "";
                                 break;
@@ -1263,8 +1350,8 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                                     placedAnimal = true;
                                     prixAnimal = 50;
-                                    remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
-                                    ajouterVisiteur();
+                                    RemplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    AjouterVisiteur();
                                 }
                                 animalChoisi = "";
                                 break;
@@ -1276,8 +1363,8 @@ namespace TP2
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                                     placedAnimal = true;
                                     prixAnimal = 40;
-                                    remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
-                                    ajouterVisiteur();
+                                    RemplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
+                                    AjouterVisiteur();
                                 }
                                 animalChoisi = "";
                                 break;
@@ -1287,7 +1374,7 @@ namespace TP2
                     {
                         conciergeChoisi = false;
                         bmVisiteurEtConcierge[e.X / 32, e.Y / 32] = GeneratorPersonnage.GetTile(40);
-                        ajouterConcierge(e.X / 32, e.Y / 32);
+                        AjouterConcierge(e.X / 32, e.Y / 32);
                         conciergeChoisi = false;
                     }
                     else if (bmInteraction[e.X / 32, e.Y / 32] && !noMouvTrash[e.X / 32, e.Y / 32])
@@ -1313,6 +1400,7 @@ namespace TP2
                     }
                     Refresh();
                     break;
+                    //Permet de get les informations de soi un animal ou un visiteur
                 case MouseButtons.Right:
 
                     int comptA = 0;
@@ -1342,7 +1430,7 @@ namespace TP2
             }
         }
 
-        private void remplirEnclosAnimal(MouseEventArgs e, Animaux a)
+        private void RemplirEnclosAnimal(MouseEventArgs e, Animaux a)
         {
             for (int i = 0; i < numEnclos.GetLength(0); i++)
             {

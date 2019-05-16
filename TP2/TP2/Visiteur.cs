@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
+    /// <summary>
+    /// Enum de prenom
+    /// </summary>
     enum Prenom
     {
         Motoki,
@@ -21,6 +24,9 @@ namespace TP2
         Charlotte
     };
 
+    /// <summary>
+    /// Enum de nom
+    /// </summary>
     enum Nom
     {
         Smith,
@@ -75,7 +81,7 @@ namespace TP2
 
         public Visiteur()
         {
-            peuplerListPersonnages();
+            PeuplerListPersonnages();
             upAI = 0;
             downAI = 0;
             leftAI = 0;
@@ -132,7 +138,10 @@ namespace TP2
             nom = Enum.GetName(typeof(Nom), randNom);                                  
         }
 
-        private void peuplerListPersonnages()
+        /// <summary>
+        /// Peuple la liste d'image pour chaque type de sprite
+        /// </summary>
+        private void PeuplerListPersonnages()
         {
             listHomme1.Add(GeneratorPersonnage.GetTile(0));
             listHomme1.Add(GeneratorPersonnage.GetTile(3));

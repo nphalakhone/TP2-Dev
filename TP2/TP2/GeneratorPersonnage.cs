@@ -7,6 +7,9 @@ using System.Text;
 
 namespace TP2
 {
+    /// <summary>
+    /// Classe qui permet de get les images des deplacements de l'AI
+    /// </summary>
     class GeneratorPersonnage
     {
         public const int IMAGE_WIDTH = 32, IMAGE_HEIGHT = 32;
@@ -84,6 +87,10 @@ namespace TP2
             }
             return bmp;
         }
+
+        /// <summary>
+        /// Constructeur statique
+        /// </summary>
         static GeneratorPersonnage()
         {
             // Homme 1 

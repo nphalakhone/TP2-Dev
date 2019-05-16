@@ -252,7 +252,7 @@ namespace TP2
         {
             foreach (Animal a in m.listeAnimaux)
             {
-                m.deplacementAnimal(a);
+                m.DeplacementAnimal(a);
                 if (a.TimePassedLastFed == 0)
                 {
                     argent--;
@@ -316,18 +316,18 @@ namespace TP2
 
             if (m.visiteurGone && m.listeVisiteur.ElementAt(m.comptNumVis).tempsPasserV == 60)
             {
-                m.ajouterVisiteur();
+                m.AjouterVisiteur();
                 m.visiteurGone = false;
                 m.listeVisiteur.Remove(m.listeVisiteur.ElementAt(m.comptNumVis));
             }
 
             foreach (Concierge c in m.listeConcierge)
             {
-                m.deplacementConcierge(c);
+                m.DeplacementConcierge(c);
 
                 c.tempsPasserC++;
 
-                m.deplacementConcierge(c);
+                m.DeplacementConcierge(c);
 
                 if ((c.tempsPasserC % 60) == 0)
                 {
@@ -368,7 +368,7 @@ namespace TP2
 
         private void MappeMonde_KeyUp(object sender, KeyEventArgs e)
         {
-            m.faireDeplacementHero(e);
+            m.FaireDeplacementHero(e);
             Enable_Btn_Janitor(m.heroOnlyArea);
             Enable_Btn_Animal(m.enableBuyAnimals);
         }
