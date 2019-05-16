@@ -314,6 +314,13 @@ namespace TP2
                 m.dropTrash(v);
             }
 
+            if (m.visiteurGone && m.listeVisiteur.ElementAt(m.comptNumVis).tempsPasserV == 60)
+            {
+                m.ajouterVisiteur();
+                m.visiteurGone = false;
+                m.listeVisiteur.Remove(m.listeVisiteur.ElementAt(m.comptNumVis));
+            }
+
             foreach (Concierge c in m.listeConcierge)
             {
                 m.deplacementConcierge(c);

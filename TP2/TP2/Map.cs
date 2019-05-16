@@ -71,6 +71,10 @@ namespace TP2
 
         public bool heroOnlyArea { get; set; }
 
+        public bool visiteurGone { get; set; }
+
+        public int comptNumVis { get; set; }
+
         public Map()
         {
             DoubleBuffered = true;
@@ -681,7 +685,7 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = r.Next(1, 4);
+            int deplacement = 1/*r.Next(1, 4)*/;
 
             int x2 = v.x;
             int y2 = v.y;
@@ -791,6 +795,20 @@ namespace TP2
                             v.rightAI = 0;
                         }
                     }
+                }
+            }
+
+            if ((v.x == 18 || v.x == 19 || v.x == 20) && v.y == 0)
+            {
+                comptNumVis = 0;
+                foreach (Visiteur vis in listeVisiteur)
+                {
+                    if (vis == v)
+                    {
+                        visiteurGone = true;
+                        break;
+                    }
+                    comptNumVis++;
                 }
             }
         }
