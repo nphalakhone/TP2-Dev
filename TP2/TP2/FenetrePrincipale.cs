@@ -239,7 +239,7 @@ namespace TP2
             comptDate++;
             tempsPasser++;
 
-            
+
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
@@ -247,27 +247,35 @@ namespace TP2
             foreach (Animal a in m.listeAnimaux)
             {
                 m.deplacementAnimal(a);
+                if (a.TimePassedLastFed == 0)
+                {
+                    argent--;
+                    LblArgent.Text = "" + argent;
+                }
+
+                if (a.TimePassedLastFed > a.TempsAvantNourrir)
+                {
+                    a.Nourri = true;
+                    argent -= 2;
+                    LblArgent.Text = "" + argent;
+                    a.TimePassedLastFed = 1;
+                } else if (a.TimePassedLastFed >= a.TempsAvantNourrir / 2)
+                {
+                    a.Nourri = false;
+                }
+
+                a.TimePassedLastFed++;
+                
+                
             }
         }
 
         private void TimerVisiteurEtConcierge_Tick(object sender, EventArgs e)
         {
-            int tempXV;
-            int tempYV;
-            int tempXC;
-            int tempYC;
-            int c1 = 0;
-            int c2 = 0;
             foreach (Visiteur v in m.listeVisiteur)
             {
-                tempXV = v.x;
-                tempYV = v.y;
 
-                while (tempXV == v.x && tempYV == v.y && c1 != 2)
-                {
-                    m.DeplacementAI(v);
-                    c1++;
-                }
+                m.DeplacementAI(v);
 
                 v.tempsPasserV++;
 
@@ -278,7 +286,7 @@ namespace TP2
                 }
                 else if ((v.tempsPasserV % 60) == 0)
                 {
-                    argent = argent + (m.listeVisiteur.Count() * m.listeAnimaux.Count());
+                    argent = argent + (1 * m.listeAnimaux.Count());
                     coutTrash = coutTrash + (m.listeTrash.Count() * 0.10);
                     argent -= coutTrash;
                     LblArgent.Text = "" + argent;
@@ -309,15 +317,7 @@ namespace TP2
 
             foreach (Concierge c in m.listeConcierge)
             {
-                tempXC = c.x;
-                tempYC = c.y;
-
-                while (tempXC == c.x && tempYC == c.y && c2 != 2)
-                {
-                    m.deplacementConcierge(c);
-                    c2++;
-                }
-
+                m.deplacementConcierge(c);
             }
         }
 

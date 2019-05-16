@@ -850,7 +850,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
                     {
                         bmAnimaux[a.x, a.y] = null;
                         a.y--;
@@ -864,7 +864,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
                     {
                         bmAnimaux[a.x, a.y] = null;
                         a.x--;
@@ -878,7 +878,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
                     {
                         bmAnimaux[a.x, a.y] = null;
                         a.y++;
@@ -1198,7 +1198,7 @@ namespace TP2
             {
                 case MouseButtons.Left:
 
-                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32] && noMouvAnimal[e.X / 32, e.Y / 32])
                     {
                         int xAnimal = e.X / 32;
                         int yAnimal = e.Y / 32;
@@ -1299,6 +1299,16 @@ namespace TP2
                             {
                                 listeTrash.Remove(p);
                                 break;
+                            }
+                        }
+                    }
+                    else if (bmInteraction[e.X / 32, e.Y / 32] && !noMouvAnimal[e.X / 32, e.Y / 32])
+                    {
+                        foreach (Animal a in listeAnimaux)
+                        {
+                            if(a.x == e.X / 32 && a.y == e.Y / 32){
+                                a.Nourri = true;
+                                a.TimePassedLastFed = 0;
                             }
                         }
                     }
