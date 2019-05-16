@@ -134,10 +134,6 @@ namespace TP2
                     {
                         bmMap[i, j] = TilesetImageGenerator.GetTile(41);
                     }
-                    else if (true)
-                    {
-                        bmFence[i, j] = TilesetImageGenerator.GetTile(50);
-                    }
                     else
                     {
                         bmMap[i, j] = TilesetImageGenerator.GetTile(0);
