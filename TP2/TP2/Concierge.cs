@@ -36,10 +36,10 @@ namespace TP2
 
             currentDir = GeneratorPersonnage.GetTile(40);
 
-            peuplerListeImg();
+            PeuplerListeImg();
         }
 
-        public void peuplerListeImg()
+        public void PeuplerListeImg()
         {
             listeC.Add(GeneratorPersonnage.GetTile(40)); //0
             listeC.Add(GeneratorPersonnage.GetTile(43)); //1
