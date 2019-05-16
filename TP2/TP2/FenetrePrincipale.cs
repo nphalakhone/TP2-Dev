@@ -9,6 +9,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+/// <summary>
+/// Fait par Motoki Shintani && Nick Phalakhone
+/// </summary>
 namespace TP2
 {
     /// <summary>
