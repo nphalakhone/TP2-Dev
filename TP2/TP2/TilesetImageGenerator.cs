@@ -34,6 +34,7 @@ namespace TestTilesetZoo
         public static int RHINO = 47;
         public static int UNICORN = 48;
         public static int BUFFALO = 49;
+        public static int GROUND = 50;
 
 
 
@@ -140,6 +141,10 @@ namespace TestTilesetZoo
             listeCoord.Add(new TileCoord() { Ligne = 19, Colonne = 0 });
 
             listeBitmap.Add(LoadTile(BUFFALO));
+
+            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 });
+
+            listeBitmap.Add(LoadTile(GROUND));
         }
 
         private static Bitmap LoadTile(int posListe)

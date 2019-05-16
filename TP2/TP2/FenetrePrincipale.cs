@@ -381,7 +381,14 @@ namespace TP2
 
         private void FenetrePrincipale_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Félicitation!\nVous avez fait un profit de : " + (argent  - 100) + "$!");
+            if ((argent - 100) > 0)
+            {
+                MessageBox.Show("Félicitation!\nVous avez fait un profit de : " + (argent - 100) + "$!\nMerci d'avoir joué!");
+            }
+            else
+            {
+                MessageBox.Show("Awww désolé!\nVous n'avez pas fait de profit.\nMeilleure chance la prochaine fois!");
+            }
         }
     }
 }
