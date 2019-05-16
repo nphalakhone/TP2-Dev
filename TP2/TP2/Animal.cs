@@ -24,6 +24,7 @@ namespace TP2
         private int TempsGestation;
         private int TempsAvantAdulte;
         public int TempsAvantNourrir;
+        public int TimePassedLastFed;
         public bool Genre; //true = M | false = F
         public bool Adulte; //true = adulte | false = bebe
         public bool Nourri; //true = nourri | false = faim
@@ -92,6 +93,8 @@ namespace TP2
             {
                 AttendBebe = false;
             }
+
+            TimePassedLastFed = 1;
         }
     }
 }

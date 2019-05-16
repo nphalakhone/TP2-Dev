@@ -71,6 +71,10 @@ namespace TP2
 
         public bool heroOnlyArea { get; set; }
 
+        public bool visiteurGone { get; set; }
+
+        public int comptNumVis { get; set; }
+
         public Map()
         {
             DoubleBuffered = true;
@@ -410,34 +414,15 @@ namespace TP2
         private void dessinerPillar(Graphics gr)
         {
             Image pillarTop = TilesetImageGenerator.GetTile(3);
-            Image pillarBot = TilesetImageGenerator.GetTile(4);
             gr.DrawImage(pillarTop, 17 * 32, 0 * 32, 32, 32);
             gr.DrawImage(pillarTop, 21 * 32, 0 * 32, 32, 32);
             gr.DrawImage(pillarTop, 17 * 32, 23 * 32, 32, 32);
             gr.DrawImage(pillarTop, 21 * 32, 23 * 32, 32, 32);
 
-            gr.DrawImage(pillarBot, 17 * 32, 1 * 32, 32, 32);
-            gr.DrawImage(pillarBot, 21 * 32, 1 * 32, 32, 32);
-            gr.DrawImage(pillarBot, 17 * 32, 24 * 32, 32, 32);
-            gr.DrawImage(pillarBot, 21 * 32, 24 * 32, 32, 32);
-
-            noMouvCoord[17, 0] = false;
-            noMouvCoord[17, 23] = false;
-            noMouvCoord[17, 1] = false;
-            noMouvCoord[17, 24] = false;
-            noMouvCoord[21, 0] = false;
-            noMouvCoord[21, 23] = false;
-            noMouvCoord[21, 1] = false;
-            noMouvCoord[21, 24] = false;
-
-            noMouvCoordAI[17, 0] = false;
-            noMouvCoordAI[17, 23] = false;
-            noMouvCoordAI[17, 1] = false;
-            noMouvCoordAI[17, 24] = false;
-            noMouvCoordAI[21, 0] = false;
-            noMouvCoordAI[21, 23] = false;
-            noMouvCoordAI[21, 1] = false;
-            noMouvCoordAI[21, 24] = false;
+            gr.DrawImage(pillarTop, 17 * 32, 1 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 21 * 32, 1 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 17 * 32, 24 * 32, 32, 32);
+            gr.DrawImage(pillarTop, 21 * 32, 24 * 32, 32, 32);
         }
 
         private void dessinerBenchH(Graphics gr, int x, int y)
@@ -704,7 +689,7 @@ namespace TP2
         public void DeplacementAI(Visiteur v)
         {
             Random r = new Random();
-            int deplacement = r.Next(1, 4);
+            int deplacement = 1/*r.Next(1, 4)*/;
 
             int x2 = v.x;
             int y2 = v.y;
@@ -816,6 +801,20 @@ namespace TP2
                     }
                 }
             }
+
+            if ((v.x == 18 || v.x == 19 || v.x == 20) && v.y == 0)
+            {
+                comptNumVis = 0;
+                foreach (Visiteur vis in listeVisiteur)
+                {
+                    if (vis == v)
+                    {
+                        visiteurGone = true;
+                        break;
+                    }
+                    comptNumVis++;
+                }
+            }
         }
 
         public void deplacementAnimal(Animal a)
@@ -854,7 +853,7 @@ namespace TP2
                 y2--;
                 if (y2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
                     {
                         bmAnimaux[a.x, a.y] = null;
                         a.y--;
@@ -868,7 +867,7 @@ namespace TP2
                 x2--;
                 if (x2 >= 0)
                 {
-                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
                     {
                         bmAnimaux[a.x, a.y] = null;
                         a.x--;
@@ -882,7 +881,7 @@ namespace TP2
                 y2++;
                 if (y2 <= 24)
                 {
-                    if (noMouvCoordAI[x2, y2] &&  (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
+                    if (noMouvCoordAI[x2, y2] && (h.x != x2 && h.y != y2) && noMouvAnimal[x2, y2])
                     {
                         bmAnimaux[a.x, a.y] = null;
                         a.y++;
@@ -1202,7 +1201,7 @@ namespace TP2
             {
                 case MouseButtons.Left:
 
-                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32])
+                    if (bmInteraction[e.X / 32, e.Y / 32] && interieurEnclos[e.X / 32, e.Y / 32] && noMouvAnimal[e.X / 32, e.Y / 32])
                     {
                         int xAnimal = e.X / 32;
                         int yAnimal = e.Y / 32;
@@ -1303,6 +1302,16 @@ namespace TP2
                             {
                                 listeTrash.Remove(p);
                                 break;
+                            }
+                        }
+                    }
+                    else if (bmInteraction[e.X / 32, e.Y / 32] && !noMouvAnimal[e.X / 32, e.Y / 32])
+                    {
+                        foreach (Animal a in listeAnimaux)
+                        {
+                            if(a.x == e.X / 32 && a.y == e.Y / 32){
+                                a.Nourri = true;
+                                a.TimePassedLastFed = 0;
                             }
                         }
                     }

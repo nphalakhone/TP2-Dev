@@ -55,7 +55,7 @@ namespace TestTilesetZoo
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 });
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 });
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 23 });
-            listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 27 });
+            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 21 });
             listeCoord.Add(new TileCoord() { Ligne = 9, Colonne = 27 });
 
             listeBitmap.Add(LoadTile(GRASS));
