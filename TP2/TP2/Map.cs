@@ -67,6 +67,8 @@ namespace TP2
 
         public bool placedAnimal { get; set; }
 
+        public int prixAnimal { get; set; }
+
         public bool heroOnlyArea { get; set; }
 
         public Map()
@@ -1209,6 +1211,7 @@ namespace TP2
                                     listeAnimaux.Add(new Animal(Animaux.Lion, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(44);
                                     placedAnimal = true;
+                                    prixAnimal = 35;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                                     ajouterVisiteur();
                                 }
@@ -1221,6 +1224,7 @@ namespace TP2
                                     listeAnimaux.Add(new Animal(Animaux.Mouton, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(45);
                                     placedAnimal = true;
+                                    prixAnimal = 20;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                                     ajouterVisiteur();
                                 }
@@ -1233,6 +1237,7 @@ namespace TP2
                                     listeAnimaux.Add(new Animal(Animaux.Grizzly, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(46);
                                     placedAnimal = true;
+                                    prixAnimal = 30;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                                     ajouterVisiteur();
                                 }
@@ -1245,6 +1250,7 @@ namespace TP2
                                     listeAnimaux.Add(new Animal(Animaux.Rhinoceros, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(47);
                                     placedAnimal = true;
+                                    prixAnimal = 40;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                                     ajouterVisiteur();
                                 }
@@ -1257,6 +1263,7 @@ namespace TP2
                                     listeAnimaux.Add(new Animal(Animaux.Licorne, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(48);
                                     placedAnimal = true;
+                                    prixAnimal = 50;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                                     ajouterVisiteur();
                                 }
@@ -1269,6 +1276,7 @@ namespace TP2
                                     listeAnimaux.Add(new Animal(Animaux.Buffle, xAnimal, yAnimal));
                                     bmAnimaux[e.X / 32, e.Y / 32] = TilesetImageGenerator.GetTile(49);
                                     placedAnimal = true;
+                                    prixAnimal = 40;
                                     remplirEnclosAnimal(e, listeAnimaux.Last().TypeAnimal);
                                     ajouterVisiteur();
                                 }

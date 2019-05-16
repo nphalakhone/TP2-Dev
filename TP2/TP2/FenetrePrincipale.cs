@@ -30,7 +30,7 @@ namespace TP2
     public partial class FenetrePrincipale : Form
     {
         Map m;
-        int argent;
+        double argent;
         int tempsMax = 300000; // 5 minustes in milliseconds
         int comptDate;
         int moisDate;
@@ -43,6 +43,7 @@ namespace TP2
         int rhino = 0;
         int licorne = 0;
         int buffle = 0;
+        double coutTrash = 0.0;
         Animal animal;
         Visiteur visiteur;
 
@@ -55,7 +56,7 @@ namespace TP2
             comptDate = 1;
             moisDate = 1;
             anneeDate = 2019;
-            argent = 100000;/*ConvertLabelToInt(LblArgent);*/
+            argent = 100;/*ConvertLabelToInt(LblArgent);*/
             PicConcierge.Image = GeneratorPersonnage.GetTile(40);
             tempsPasser = 0;
         }
@@ -72,12 +73,12 @@ namespace TP2
 
         private void InitializeBtnAchat()
         {
-            BtnAchatLion.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixLion.Text, "Lion"); };
-            BtnAchatMouton.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixMouton.Text, "Mouton"); };
-            BtnAchatGrizzly.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixGrizzly.Text, "Grizzly"); };
-            BtnAchatRhino.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixRhino.Text, "Rhino"); };
-            BtnAchatLicorne.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixLicorne.Text, "Licorne"); };
-            BtnAchatBuffle.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, LblPrixBuffle.Text, "Buffle"); };
+            BtnAchatLion.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Lion"); };
+            BtnAchatMouton.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Mouton"); };
+            BtnAchatGrizzly.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Grizzly"); };
+            BtnAchatRhino.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Rhino"); };
+            BtnAchatLicorne.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Licorne"); };
+            BtnAchatBuffle.Click += (sender, EventArgs) => { Acheter_Animal_Click(sender, EventArgs, "Buffle"); };
 
             BtnAchatLion.Enabled = false;
             BtnAchatMouton.Enabled = false;
@@ -237,6 +238,8 @@ namespace TP2
             LblDate.Text = comptDate + " " + dates + " " + anneeDate;
             comptDate++;
             tempsPasser++;
+
+            
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
@@ -264,9 +267,30 @@ namespace TP2
                 {
                     m.DeplacementAI(v);
                     c1++;
-                }                
+                }
 
                 v.tempsPasserV++;
+
+                if (v.tempsPasserV == 1)
+                {
+                    argent = argent + (2 * m.listeAnimaux.Count());
+                    LblArgent.Text = "" + argent;
+                }
+                else if ((v.tempsPasserV % 60) == 0)
+                {
+                    argent = argent + (m.listeVisiteur.Count() * m.listeAnimaux.Count());
+                    coutTrash = coutTrash + (m.listeTrash.Count() * 0.10);
+                    argent -= coutTrash;
+                    LblArgent.Text = "" + argent;
+                }
+
+                if (m.placedAnimal && (argent - m.prixAnimal) >= 0)
+                {
+                    argent = argent - m.prixAnimal;
+                    LblArgent.Text = "" + argent;
+                    m.placedAnimal = false;
+                    m.prixAnimal = 0;
+                }
 
                 Random r = new Random();
                 int dropT = r.Next(1, 51);
@@ -293,24 +317,13 @@ namespace TP2
                     m.deplacementConcierge(c);
                     c2++;
                 }
-                
+
             }
         }
 
-        private void Acheter_Animal_Click(object sender, EventArgs e, string prix, string nomAnimal)
+        private void Acheter_Animal_Click(object sender, EventArgs e, string nomAnimal)
         {
-            string resultatString = new String(prix.Where(Char.IsDigit).ToArray());
-            int price = Convert.ToInt32(resultatString);
-            if ((argent - price) >= 0)
-            {
-                m.animalChoisi = nomAnimal;
-                argent = argent - price;
-                if (m.placedAnimal == true)
-                {
-                    LblArgent.Text = "" + argent;
-                    m.placedAnimal = false;
-                }
-            }
+            m.animalChoisi = nomAnimal;
         }
 
         private void Enable_Btn_Animal(bool b)
