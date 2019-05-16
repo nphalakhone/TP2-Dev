@@ -173,5 +173,23 @@
   <ItemGroup>
     <None Include="Resources\lion.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buffalo.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hippopotame.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licorne.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lion.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mouton.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ours.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

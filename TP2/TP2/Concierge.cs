@@ -24,6 +24,11 @@ namespace TP2
 
         public List<Image> listeC = new List<Image>();
 
+        /// <summary>
+        /// Constructeur Concierge
+        /// </summary>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
         public Concierge(int x2, int y2)
         {
             x = x2;
