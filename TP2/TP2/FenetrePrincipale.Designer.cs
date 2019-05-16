@@ -116,11 +116,11 @@ namespace TP2
             // 
             this.LblArgent.AutoSize = true;
             this.LblArgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblArgent.Location = new System.Drawing.Point(297, 18);
+            this.LblArgent.Location = new System.Drawing.Point(322, 18);
             this.LblArgent.Name = "LblArgent";
-            this.LblArgent.Size = new System.Drawing.Size(64, 20);
+            this.LblArgent.Size = new System.Drawing.Size(39, 20);
             this.LblArgent.TabIndex = 1;
-            this.LblArgent.Text = "100.00";
+            this.LblArgent.Text = "100";
             // 
             // LblDate
             // 
@@ -215,7 +215,7 @@ namespace TP2
             // 
             this.LblDollarSign.AutoSize = true;
             this.LblDollarSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDollarSign.Location = new System.Drawing.Point(367, 18);
+            this.LblDollarSign.Location = new System.Drawing.Point(297, 18);
             this.LblDollarSign.Name = "LblDollarSign";
             this.LblDollarSign.Size = new System.Drawing.Size(19, 20);
             this.LblDollarSign.TabIndex = 10;
@@ -693,7 +693,7 @@ namespace TP2
             this.MappeMonde.placedAnimal = false;
             this.MappeMonde.placeListeAnimal = 999;
             this.MappeMonde.placeListeVisiteur = 999;
-            this.MappeMonde.prixAnimal = 0;
+            this.MappeMonde.prixAnimal = 0D;
             this.MappeMonde.Size = new System.Drawing.Size(1376, 799);
             this.MappeMonde.sizeListeAnimaux = 0;
             this.MappeMonde.sizeListeVisiteur = 0;
@@ -744,6 +744,7 @@ namespace TP2
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FenetrePrincipale_FormClosing);
             this.GrpInfosVis.ResumeLayout(false);
             this.GrpInfosVis.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicInfoVis)).EndInit();

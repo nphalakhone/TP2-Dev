@@ -239,7 +239,13 @@ namespace TP2
             comptDate++;
             tempsPasser++;
 
-            
+            if (m.placedAnimal && (argent - m.prixAnimal) >= 0)
+            {
+                argent = argent - m.prixAnimal;
+                LblArgent.Text = "" + argent;
+                m.placedAnimal = false;
+                m.prixAnimal = 0;
+            }
         }
 
         private void TimerAnimaux_Tick(object sender, EventArgs e)
@@ -278,18 +284,10 @@ namespace TP2
                 }
                 else if ((v.tempsPasserV % 60) == 0)
                 {
-                    argent = argent + (m.listeVisiteur.Count() * m.listeAnimaux.Count());
+                    argent = argent + (1 * m.listeAnimaux.Count());
                     coutTrash = coutTrash + (m.listeTrash.Count() * 0.10);
                     argent -= coutTrash;
                     LblArgent.Text = "" + argent;
-                }
-
-                if (m.placedAnimal && (argent - m.prixAnimal) >= 0)
-                {
-                    argent = argent - m.prixAnimal;
-                    LblArgent.Text = "" + argent;
-                    m.placedAnimal = false;
-                    m.prixAnimal = 0;
                 }
 
                 Random r = new Random();
@@ -312,12 +310,19 @@ namespace TP2
                 tempXC = c.x;
                 tempYC = c.y;
 
+                c.tempsPasserC++;
+
                 while (tempXC == c.x && tempYC == c.y && c2 != 2)
                 {
                     m.deplacementConcierge(c);
                     c2++;
                 }
 
+                if ((c.tempsPasserC % 60) == 0)
+                {
+                    argent = argent - 2;
+                    LblArgent.Text = "" + argent;
+                }
             }
         }
 
@@ -372,6 +377,11 @@ namespace TP2
         private void Acheter_Concierge_Click(object sender, EventArgs e)
         {
             m.conciergeChoisi = true;
+        }
+
+        private void FenetrePrincipale_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Félicitation!\nVous avez fait un profit de : " + (argent  - 100) + "$!");
         }
     }
 }
